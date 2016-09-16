@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('homePage', 'HomePageController@index');
+Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

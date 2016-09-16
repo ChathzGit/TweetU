@@ -81,7 +81,7 @@
                         <div class="col-sm-12">
                             <hr>
                         </div>
-                        <a href="#" class="btn btn-default btn-full-width">Analyze Topic</a>
+                        <a href="tweetAnalytics" class="btn btn-default btn-full-width">Analyze Topic</a>
                     </div>
                 </div>
             </div>
