@@ -1,0 +1,29 @@
+.m-t-20
+{
+    margin-top: 20px;
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.hp-container
+{
+    padding: 0 5px 5px 5px;
+}
+
+.hp-panel
+{
+    border: 1px solid #adadad;
+    -webkit-border-radius: 2%;
+    -moz-border-radius: 2%;
+    border-radius: 2%;
+
+    padding: 10px;
+}
+
+.btn-full-width
+{
+    width: 100%;
+}
