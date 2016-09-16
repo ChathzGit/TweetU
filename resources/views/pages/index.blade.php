@@ -141,14 +141,12 @@
 
 <!-- Footer -->
 <footer>
-    <div class="row">
         <div class="col-sm-12">
             <hr>
         </div>
         <div class="col-sm-12 text-center">
             <p>Copyright &copy; Tweet-U 2016</p>
         </div>
-    </div>
 </footer>
 
 
