@@ -157,11 +157,43 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+
 <!-- Script to Activate the Carousel -->
 <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
-    })
+    });
+
+
+    var data = {
+        labels: [
+            "Good",
+            "Bad"
+        ],
+        datasets: [
+            {
+                data: [75, 25],
+                backgroundColor: [
+                    "#66ff66",
+                    "#ff471a"
+                ],
+                hoverBackgroundColor: [
+                    "#009900",
+                    "#C40D0D"
+                ]
+            }]
+    };
+
+
+    var ctx = document.getElementById("myChart");
+
+
+    var myPieChart = new Chart(ctx,{
+        type: 'pie',
+        data: data
+    });
 </script>
 
 

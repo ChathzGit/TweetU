@@ -47,13 +47,18 @@
         </div>
 
 
-
-
-
-
         <!-- ---------------- Pie Chart Section Start ------------------------------------------------------------------------------------------- -->
         <div class="col-sm-12 well">
             <h4>Pie Chart:</h4>
+
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4">
+                <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+
+            <div class="col-sm-4"></div>
+
         </div>
         <!-- ---------------- Pie Chart Section End ------------------------------------------------------------------------------------------- -->
 
@@ -62,35 +67,57 @@
         </div>
 
 
-
-
-
-
-
-
         <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
         <div class="col-sm-12 well">
-            <h4>Top 5 Good & Bad:</h4>
+            <h4>Top 5 <strong class="c-green">Good</strong> & <strong class="c-red">Bad</strong> :</h4>
 
-            <div class="col-sm-12">
+            <div class="row p-0">
 
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="col-xs-12 good-tweet gb-tweet">
+                        <p>This is a good tweet yaaaayy!!</p>
+                    </div>
 
+                    <div class="col-xs-12 good-tweet gb-tweet">
+                        <p>This is a good tweet yaaaayy!!</p>
+                    </div>
 
+                    <div class="col-xs-12 good-tweet gb-tweet">
+                        <p>This is a good tweet yaaaayy!!</p>
+                    </div>
                 </div>
 
-                <div class="col-sm-6">
-
+                <div class="col-xs-12 visible-xs">
+                    <hr>
                 </div>
+
+
+                <div class="col-sm-6 col-xs-12">
+
+                    <div class="col-xs-12 bad-tweet gb-tweet">
+                        <p>This is a bad tweet boooo!!</p>
+                    </div>
+
+                    <div class="col-xs-12 bad-tweet gb-tweet">
+                        <p>This is a bad tweet boooo!!</p>
+                    </div>
+
+                    <div class="col-xs-12 bad-tweet gb-tweet">
+                        <p>This is a bad tweet boooo!!</p>
+                    </div>
+
+                    <div class="col-xs-12 bad-tweet gb-tweet">
+                        <p>This is a bad tweet boooo!!</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
-
-
-
-
-
     </div>
+    <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
+
+
+
 
 
 
