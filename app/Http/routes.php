@@ -15,6 +15,11 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('get_tweets', 'SentimentController@getTweets');
+
+//not using for now
+//Route::get('get_pos_neg', 'SentimentController@getPositiveNegative');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
