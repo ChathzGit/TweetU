@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomePageController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('TweetAnalyzePage', 'WelcomeController@index');
 
-Route::get('homePage', 'HomePageController@index');
+Route::get('home', 'HomePageController@index');
+
 Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
 
 Route::get('get_tweets', 'SentimentController@getTweets');
+
+Route::get('admin_home', 'AdminHomepageController@index');
 
 //not using for now
 //Route::get('get_pos_neg', 'SentimentController@getPositiveNegative');
