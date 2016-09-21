@@ -18,7 +18,7 @@ class TweetAnalyticsController extends Controller {
 	//
 	public function index()
 	{
-		return view('pages.tweetanalytics');
+		return view('pages.frontEnd.tweetanalytics');
 	}
 
 }
