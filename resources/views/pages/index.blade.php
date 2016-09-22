@@ -105,9 +105,9 @@
                         {{--</li>--}}
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>--}}
+                    {{--<ul class="dropdown-menu">--}}
                         {{--<li>--}}
                             {{--<a href="full-width.html">Full Width Page</a>--}}
                         {{--</li>--}}
@@ -123,7 +123,11 @@
                         {{--<li>--}}
                             {{--<a href="pricing.html">Pricing Table</a>--}}
                         {{--</li>--}}
-                    </ul>
+                    {{--</ul>--}}
+                {{--</li>--}}
+
+                <li>
+                    <a href="admin_home">Admin Login</a>
                 </li>
             </ul>
         </div>
