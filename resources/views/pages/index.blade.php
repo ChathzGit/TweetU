@@ -8,7 +8,7 @@
 --}}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myAppIndex">
 
 <head>
 
@@ -31,6 +31,12 @@
     <!-- Custom Fonts -->
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     {{--<link href="{{ URL::asset('resources/assets/font-awesome/css/modern-business.css') }}" rel="stylesheet">--}}
+
+    <!-- jQuery -->
+    <script src="{{ URL::asset('js/jquery.js') }}"></script>
+
+    <!-- Angular -->
+    <script src="{{ asset('/js/angular.min.js') }}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -145,58 +151,23 @@
             <hr>
         </div>
         <div class="col-sm-12 text-center">
-            <p>Copyright &copy; Tweet-U 2016</p>
+            <p id="aaaa">Copyright &copy; Tweet-U 2016</p>
         </div>
 </footer>
 
 
 
-<!-- jQuery -->
-<script src="{{ URL::asset('js/jquery.js') }}"></script>
+<!-- Tweet Sentiment JS -->
+<script src="{{ asset('/js/twitter-sentiment.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
+<!-- Chart.js -->
+<script src="{{ URL::asset('js/Chart.js') }}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
-
-<!-- Script to Activate the Carousel -->
-<script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    });
-
-
-    var data = {
-        labels: [
-            "Good",
-            "Bad"
-        ],
-        datasets: [
-            {
-                data: [75, 25],
-                backgroundColor: [
-                    "#66ff66",
-                    "#ff471a"
-                ],
-                hoverBackgroundColor: [
-                    "#009900",
-                    "#C40D0D"
-                ]
-            }]
-    };
-
-
-    var ctx = document.getElementById("myChart");
-
-
-    var myPieChart = new Chart(ctx,{
-        type: 'pie',
-        data: data
-    });
-</script>
-
-
+<!-- angular-chart.js -->
+<script src="{{ URL::asset('js/angular-chart.js') }}"></script>
 
 </body>
 

@@ -45,7 +45,7 @@ class SentimentController extends Controller{
             $connection = new TwitterOAuth($consumer, $consumer_secret, $access_token, $access_token_secret);
             $content = $connection->get("account/verify_credentials");
 
-            if($isRecent) {
+            if($isRecent == 1) {
                 if ($maxID == -1) {
                     $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en"]);
                 } else {
@@ -66,17 +66,20 @@ class SentimentController extends Controller{
                     foreach ($tweet as $t) {
                         if (isset($t->text)) {
 
-                            array_push($arr, $t->text);
+                            $singleTweet = array();
+                            $singleTweet["text"] = htmlspecialchars_decode($t->text);
 
-                            if ($maxID == -1 || $maxID > ($t->id)) {
-                                $maxID = $t->id;
+                            if($isRecent == 0) {
+                                $singleTweet["retweet"] = $t->retweet_count;
+                                $singleTweet["user"] = $t->user->name;
                             }
 
+                            array_push($arr, $singleTweet);
                         }
                     }
                 }
 
-                array_push($arr, $maxID);
+                array_push($arr, $status->search_metadata->max_id_str);
                 return json_encode($arr);
             } else {
                 $error = array("Error" => "1");
@@ -85,7 +88,7 @@ class SentimentController extends Controller{
         }
         catch(\Exception $e)
         {
-            $error = array("Error" => "1");
+            $error = array("Error" => "1", "Error_Type" => $e->getMessage());
             return json_encode($error);
         }
     }
