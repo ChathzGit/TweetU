@@ -63,6 +63,7 @@
                             {{--<td><label><%items["description"]%></label></td>--}}
                             {{--<td><label><div ng-model="account.original"><%items["verify"]%></div></label></td>--}}
 
+                            
                             <td>
                                 <button ng-click="loadSelection($index)">Check Profile</button>
                             </td>

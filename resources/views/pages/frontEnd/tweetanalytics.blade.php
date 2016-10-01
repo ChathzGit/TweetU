@@ -91,7 +91,7 @@
                     <hr>
                 </div>
 
-{{--KNLKJ--}}
+{{--ghh--}}
                 <div class="col-sm-6 col-xs-12">
 
                     <div class="col-xs-12 bad-tweet gb-tweet">
