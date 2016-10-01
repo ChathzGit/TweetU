@@ -30,3 +30,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('get_profiles','ProfileController@getProfiles');
+
+Route::get('get_profiles_view','ProfileController@index');
