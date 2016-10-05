@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 
 /**
@@ -17,8 +18,18 @@ class AdminHomepageController extends Controller {
 	//
     public function index()
     {
+
+        if ($user = Sentinel::check())
+        {
+            return view('pages.backEnd.adminhomepage');
+        }
+
+        else
+        {
+            return view('pages.frontEnd.homepage');
+        }
 //        return view('pages.backEnd.adminhomepage');
-        return view('pages.backEnd.adminhomepage');
+
     }
 
 }

@@ -146,6 +146,8 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+
 	],
 
 	/*
@@ -193,6 +195,11 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+		'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+		'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+
 
 	],
 
