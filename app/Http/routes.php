@@ -34,3 +34,12 @@ Route::controllers([
 Route::get('get_profiles','ProfileController@getProfiles');
 
 Route::get('get_profiles_view','ProfileController@index');
+
+
+/*
+ * User accounts routes
+ */
+Route::get('register_user', 'UserAccountController@index');
+
+Route::post('save_user', 'UserAccountController@saveUser');
+
