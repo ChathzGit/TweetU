@@ -36,7 +36,7 @@
         <div class="item">
             <div class="fill" style="background-image:url('{{ URL::asset('images/3.jpg') }}');"></div>
             <div class="carousel-caption">
-                <h2>Check up on your favourite topics</h2>
+                <h2>Checkkkkkk up on your favourite topics</h2>
             </div>
         </div>
     </div>
