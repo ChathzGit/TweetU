@@ -66,7 +66,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Tweet-U</a>
+            <a class="navbar-brand" href="home">Tweet-U</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -136,6 +136,9 @@
                     {{--</ul>--}}
                 {{--</li>--}}
 
+                <li>
+                    <a href="register_user">Register</a>
+                </li>
                 <li>
                     <a href="admin_home">Admin Login</a>
                 </li>
