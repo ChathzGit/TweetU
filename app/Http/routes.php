@@ -43,3 +43,8 @@ Route::get('register_user', 'UserAccountController@index');
 
 Route::post('save_user', 'UserAccountController@saveUser');
 
+/*
+ * Login interface routes
+ */
+Route::get('login_page', 'LoginController@index');
+

@@ -140,7 +140,7 @@
                     <a href="register_user">Register</a>
                 </li>
                 <li>
-                    <a href="admin_home">Admin Login</a>
+                    <a href="login_page">Log In</a>
                 </li>
             </ul>
         </div>
@@ -182,6 +182,7 @@
 
 {{-- Angular controllers --}}
 <script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
