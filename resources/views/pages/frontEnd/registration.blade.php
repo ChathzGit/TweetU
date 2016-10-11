@@ -3,7 +3,7 @@
 -- Author - Sahan Munasinghe <munasinghets93@gmail.com>
 -- Version - v1.0.0
 --
--- This is the home page
+-- This is the registration page
 --
 --}}
 
@@ -21,8 +21,12 @@
 
             <!-- --------------------------------------------------------------------------------------------------------------- -->
             <div class="col-sm-10">
+                <div class="col-sm-12 text-center m-t-20">
+                    <h4>Create User Account</h4>
+                </div>
+
                 <div class="col-sm-12">
-                    <h4>User Registration:</h4>
+                    <hr>
                 </div>
 
                 <div class="col-sm-12">
@@ -95,8 +99,8 @@
 
                 </div>
                 <div class="col-sm-12 text-right">
-                    <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(id)"
-                            ng-disabled="frmEmployees.$invalid">Create User
+                    <button type="button" class="btn btn-primary p-l-30 p-r-30" id="btn-save" ng-click="save(id)"
+                            ng-disabled="frmEmployees.$invalid">Create Account
                     </button>
                 </div>
             </div>
