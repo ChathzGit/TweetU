@@ -47,4 +47,5 @@ Route::post('save_user', 'UserAccountController@saveUser');
  * Login interface routes
  */
 Route::get('login_page', 'LoginController@index');
+Route::post('check_credentials', 'LoginController@checkCredentials');
 

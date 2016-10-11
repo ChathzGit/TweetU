@@ -14,4 +14,9 @@ class LoginController extends Controller {
         return view('pages.frontEnd.userlogin');
     }
 
+    public  function checkCredentials()
+    {
+        return false;
+    }
+
 }

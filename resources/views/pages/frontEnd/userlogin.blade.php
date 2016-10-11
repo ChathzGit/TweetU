@@ -69,7 +69,7 @@
                 <div class="col-sm-12 text-center">
                     {{--<div class="col-sm-3"></div>--}}
                     <div class="col-sm-12 p-0">
-                        <button type="button" class="btn btn-primary btn-full-width" id="btn-save" ng-click="save(id)"
+                        <button type="button" class="btn btn-primary btn-full-width" id="btn-save" ng-click="checkCredentials()"
                                 ng-disabled="frmEmployees.$invalid">Log in
                         </button>
                     </div>
