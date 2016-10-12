@@ -67,11 +67,15 @@ class SentimentController extends Controller{
                         if (isset($t->text)) {
 
                             $singleTweet = array();
-                            $singleTweet["text"] = htmlspecialchars_decode($t->text);
 
                             if($isRecent == 0) {
+
+                                $singleTweet["text"] = htmlspecialchars_decode($t->text);
                                 $singleTweet["retweet"] = $t->retweet_count;
                                 $singleTweet["user"] = $t->user->name;
+
+                            } else {
+                                $singleTweet["text"] = htmlspecialchars_decode($t->text);
                             }
 
                             array_push($arr, $singleTweet);

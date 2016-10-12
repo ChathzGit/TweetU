@@ -139,9 +139,7 @@ twitterThing.factory('getPosNeg', function(getTweets, checkPosNeg) {
                             var posNeg = checkPosNeg.getType(response[i]["text"]);
                             posNeg.type.then(function (result) {
 
-                                console.log(result["score"]);
-
-                                if(result["score"] >= 0.5 || result["score"] <= -0.5 || result["ratio"] == 1) {
+                                if(result["score"] >= 0.05 || result["score"] <= -0.05 || result["ratio"] == 1) {
 
                                     if ($scope.loading) {
                                         $scope.loading = false;
@@ -270,6 +268,8 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
 
                     (function (response, i) {
 
+                        console.log(response[i]["date"]);
+
                         var posNeg = checkPosNeg.getType(response[i]["text"]);
                         posNeg.type.then(function (result) {
 
@@ -277,7 +277,7 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
                                 $scope.loading = false;
                             }
 
-                            if (result["type"] == "positive" && (result["score"] >= -0.5 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            if (result["type"] == "positive" && (result["score"] >= 0.05 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countPos > 0) {
                                     $scope.positives.push({
                                         text: response[i]["text"],
@@ -286,7 +286,7 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
                                     });
                                     countPos--;
                                 }
-                            } else if (result["type"] == "negative" && (result["score"] <= -0.5 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            } else if (result["type"] == "negative" && (result["score"] <= -0.05 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countNeg > 0) {
                                     $scope.negatives.push({
                                         text: response[i]["text"],
@@ -356,7 +356,7 @@ twitterThing.directive('topTweet', function($compile){
 
                             var word = hashTags[j].substring(1);
                             if(/^[a-zA-Z0-9]+$/.test(word)) {
-                                userAccount[j] = $compile('<span ng-click="$parent.newSearch(\'' + hashTags[j] + '\')" style="text-decoration: underline; color: blue">' + hashTags[j] + '</span>')($scope);
+                                userAccount[j] = $compile('<span ng-click="$parent.newSearch(\'' + hashTags[j] + '\')" style="text-decoration: underline; color: blue; cursor:pointer">' + hashTags[j] + '</span>')($scope);
                             } else {
                                 var lastLetterIndex = 0;
                                 for(var k = 0; k < word.length; k++){
@@ -368,7 +368,7 @@ twitterThing.directive('topTweet', function($compile){
 
                                 if(lastLetterIndex != 0) {
                                     userAccount[j] = $compile(
-                                        '<span ng-click="$parent.newSearch(\'' + hashTags[j].substring(0, lastLetterIndex + 1) + '\')" style="text-decoration: underline; color: blue">' + hashTags[j].substring(0, lastLetterIndex + 1) + '</span>' +
+                                        '<span ng-click="$parent.newSearch(\'' + hashTags[j].substring(0, lastLetterIndex + 1) + '\')" style="text-decoration: underline; color: blue; cursor:pointer">' + hashTags[j].substring(0, lastLetterIndex + 1) + '</span>' +
                                         '<span>' + hashTags[j].substring(lastLetterIndex + 1) + '</span>'
                                     )($scope);
                                 } else {
@@ -380,7 +380,7 @@ twitterThing.directive('topTweet', function($compile){
                         }
 
                     } else {
-                        userAccount = $compile('<span style="color: blue; text-decoration: underline">' + tweetTxt[i] + '</span>')($scope);
+                        userAccount = $compile('<span style="color: blue; text-decoration: underline; cursor:pointer">' + tweetTxt[i] + '</span>')($scope);
                     }
 
                     ele.append(userAccount);

@@ -88,7 +88,8 @@
                                 <label>by <span style="color: blue;"><%items['user']%></span></label>
                             </div>
                             <div class="pull-right">
-                                <label><i class="fa fa-retweet" aria-hidden="true"></i><%items['retweet']%></label>
+                                <i class="fa fa-info-circle top-5-info" aria-hidden="true"></i>
+                                <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
                             </div>
                         </div>
                     </div>
@@ -104,7 +105,8 @@
                                 <label>by <span style="color: blue;"><%items['user']%></span></label>
                             </div>
                             <div class="pull-right">
-                                <label><i class="fa fa-retweet" aria-hidden="true"></i><%items['retweet']%></label>
+                                <i class="fa fa-info-circle top-5-info" aria-hidden="true"></i>
+                                <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
                             </div>
                         </div>
                     </div>
@@ -115,6 +117,12 @@
     </div>
     <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 
+
+    <div id="sentiment-howto" style="display: none">
+        <div>
+
+        </div>
+    </div>
 
     <!-- Script to Activate the Carousel -->
     {{--<script>--}}
