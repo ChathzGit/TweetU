@@ -139,23 +139,31 @@ twitterThing.factory('getPosNeg', function(getTweets, checkPosNeg) {
                             var posNeg = checkPosNeg.getType(response[i]["text"]);
                             posNeg.type.then(function (result) {
 
-                                if($scope.loading){
-                                    $scope.loading = false;
-                                }
+                                console.log(result["score"]);
 
-                                if (result["type"] == "positive") {
-                                    pos += 1;
-                                } else if (result["type"] == "negative") {
-                                    neg += 1;
-                                }
+                                if(result["score"] >= 0.5 || result["score"] <= -0.5 || result["ratio"] == 1) {
 
-                                $scope.data[0] = Math.round(100 * pos / (pos + neg));
-                                $scope.data[1] = Math.round(100 * neg / (pos + neg));
+                                    if ($scope.loading) {
+                                        $scope.loading = false;
+                                    }
+
+                                    if (result["type"] == "positive") {
+                                        pos += 1;
+                                    } else if (result["type"] == "negative") {
+                                        neg += 1;
+                                    }
+
+                                    $scope.data[0] = Math.round(100 * pos / (pos + neg));
+                                    $scope.data[1] = Math.round(100 * neg / (pos + neg));
+
+                                    count--;
+                                }
 
                                 if (i == Math.round(response.length * 20 / 100)) {
                                     maxIDSearch = response[response.length - 1];
-                                    return setPosNeg(search, count - 1, $scope);
+                                    return setPosNeg(search, count, $scope);
                                 }
+
 
                             });
 
@@ -269,7 +277,7 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
                                 $scope.loading = false;
                             }
 
-                            if (result["type"] == "positive") {
+                            if (result["type"] == "positive" && (result["score"] >= -0.5 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countPos > 0) {
                                     $scope.positives.push({
                                         text: response[i]["text"],
@@ -278,7 +286,7 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
                                     });
                                     countPos--;
                                 }
-                            } else if (result["type"] == "negative") {
+                            } else if (result["type"] == "negative" && (result["score"] <= -0.5 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countNeg > 0) {
                                     $scope.negatives.push({
                                         text: response[i]["text"],
