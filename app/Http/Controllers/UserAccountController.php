@@ -17,6 +17,11 @@ class UserAccountController extends Controller
         return view('pages.frontEnd.registration');
     }
 
+    public function loadUserPage()
+    {
+        return view('pages.backEnd.userAccountsPage');
+    }
+
     public function saveUser(Request $request)
     {
         $user = new User;

@@ -10,12 +10,28 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         * This is the object that will be passed to the back end to be saved to the database
         * All the values in this object are bound to the html inputs in the .blade file.
         */
-        $scope.employee = {
+        $scope.user = {
             name: "",
             email: "",
             password: "",
             confirmpassword: ""
         };
+
+
+        $scope.users = [
+            {
+                name: "ddddd",
+                email: "asdas",
+                password: "asdasd",
+                confirmpassword: "asdas"
+            },
+            {
+                name: "asd",
+                email: "asda",
+                password: "asda",
+                confirmpassword: "asdas"
+            }
+        ];
 
 
         /*
@@ -24,12 +40,12 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         */
         $scope.save = function () {
 
-            var employee = $scope.employee;
+            var user = $scope.user;
 
             /*
             * Calls the angular service dedicated to handle user account features
             */
-            userAccountService.saveUserAccount(employee, function (response) {
+            userAccountService.saveUserAccount(user, function (response) {
 
                 if (response.status === SUCCESS) {
                     toaster.success("Success", "User account created successfully");
@@ -47,6 +63,15 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
             });
 
         };
+
+
+
+
+
+        $scope.loadUsers = function () {
+
+
+        }
 
 
     }]);

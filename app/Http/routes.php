@@ -14,13 +14,14 @@
 Route::get('/', 'HomePageController@index');
 
 Route::get('TweetAnalyzePage', 'WelcomeController@index');
-
 Route::get('home', 'HomePageController@index');
-
 Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
-
 Route::get('get_tweets', 'SentimentController@getTweets');
 
+
+/*
+ * Admin routes
+ */
 Route::get('admin_home', 'AdminHomepageController@index');
 
 //not using for now
@@ -32,7 +33,6 @@ Route::controllers([
 ]);
 
 Route::get('get_profiles','ProfileController@getProfiles');
-
 Route::get('get_profiles_view','ProfileController@index');
 
 
@@ -40,8 +40,8 @@ Route::get('get_profiles_view','ProfileController@index');
  * User accounts routes
  */
 Route::get('register_user', 'UserAccountController@index');
-
 Route::post('save_user', 'UserAccountController@saveUser');
+Route::get('user_accounts', 'UserAccountController@loadUserPage');
 
 /*
  * Login interface routes
