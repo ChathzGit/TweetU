@@ -27,6 +27,7 @@
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/modern-business.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/tweetanalytics.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">

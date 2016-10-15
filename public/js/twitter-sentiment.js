@@ -9,12 +9,18 @@ var GetTopTweetPosNegRequests = [];
 var GetTweetRequests = [];
 var GetTweetPosNegRequests = [];
 
+var currentTopTweetResponse = [];
+currentTopTweetResponse["pos"] = [];
+currentTopTweetResponse["neg"] = [];
+
+var howToCheckingTweet = [];
+
 var twitterThing = angular.module('myAppIndex', ['chart.js'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 });
 
-twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, $window) {
+twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, $window, $timeout) {
 
     $scope.loading = false;
 
@@ -22,6 +28,15 @@ twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, 
     $scope.data = [50, 50];
     $scope.positives = [];
     $scope.negatives = [];
+    $scope.mouseHovered = [];
+
+    $scope.justTweets = [];
+    $scope.justTweets["pos"] = [];
+    $scope.justTweets["neg"] = [];
+
+    $scope.topAnalyzer = [];
+    $scope.topAnalyzer["pos"] = [];
+    $scope.topAnalyzer["neg"] = [];
 
     $scope.getInfo = function() {
 
@@ -47,20 +62,41 @@ twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, 
         }
         GetTweetRequests.length = 0;
 
-        //getting to pie chart...
-        // 20 change how much time you need from twitter... 1 ~ (aaaasannawa)100i.. sometimes under 40 but taking as near 100 :D
-        getPosNeg.setPosNeg($scope.search, 2, $scope);
-
         //getting top good bad, tweets
         var topResultCount = 5; // change here how much you need to get... hehe mama ganne 5i :D
         $scope.positives.length = 0;
         $scope.negatives.length = 0;
+
+        currentTopTweetResponse["pos"].length = 0;
+        currentTopTweetResponse["neg"].length = 0;
+
+        $scope.justTweets["pos"].length = 0;
+        $scope.justTweets["neg"].length = 0;
+
+        $scope.topAnalyzer["pos"].length = 0;
+        $scope.topAnalyzer["neg"].length = 0;
+
         getTops.setTops($scope.search, topResultCount, topResultCount, $scope);
+
+        //getting to pie chart...
+        // 20 change how much time you need from twitter... 1 ~ (aaaasannawa)100i.. sometimes under 40 but taking as near 100 :D
+        getPosNeg.setPosNeg($scope.search, 2, $scope);
     };
 
     $scope.newSearch = function(search){
         $scope.search = search;
         $window.scrollTo(0, 0);
+    }
+
+    $scope.loadHowSentimentWorks = function(number, type){
+
+        if($scope.justTweets[type][number]){
+            $scope.justTweets[type][number] = false;
+            $scope.topAnalyzer[type][number] = true;
+        } else {
+            $scope.justTweets[type][number] = true;
+            $scope.topAnalyzer[type][number] = false;
+        }
     }
 });
 
@@ -126,6 +162,60 @@ twitterThing.service("checkPosNeg", function($http, $q) {
 
 });
 
+twitterThing.service("settingTopTweetAnalyzer", function(){
+
+    var settingAnalyzer = function(array, index, result){
+
+        var totalValue = 0;
+
+        var splitText = array[index]["text"].split(" ");
+
+        for(var i = 0; i < splitText.length; i++) {
+
+            if(splitText[i].replace(/[^a-zA-Z]+/g, '').toLowerCase().indexOf("httpstco") >= 0){
+                continue;
+            }
+
+            var foundedIndex = -1, color = "", str = "", value = 0;
+
+            for (var j = 0; j < result["keywords"].length; j++) {
+
+                if (splitText[i].toLowerCase().indexOf(result["keywords"][j]["word"]) >= 0) {
+                    foundedIndex = j;
+                }
+            }
+
+            if (foundedIndex != -1) {
+                if (result["keywords"][foundedIndex]["score"] > 0) {
+                    color = "green";
+                    str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+                    value = result["keywords"][foundedIndex]["score"];
+                } else {
+                    color = "red";
+                    str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+                    value = result["keywords"][foundedIndex]["score"];
+                }
+            } else {
+                color = "black";
+                str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+            }
+
+            totalValue += value;
+
+            array[index]["analyzed"].push({
+                color: color,
+                word: str
+            });
+        }
+
+        array[index]["total"] = (totalValue > 0) ? totalValue : (-1 * totalValue);
+    };
+
+    return {
+        settingAnalyzer: settingAnalyzer
+    };
+});
+
 twitterThing.factory('getPosNeg', function(getTweets, checkPosNeg) {
     function setPosNeg(search, count, $scope) {
         if (count > 0) {
@@ -139,9 +229,7 @@ twitterThing.factory('getPosNeg', function(getTweets, checkPosNeg) {
                             var posNeg = checkPosNeg.getType(response[i]["text"]);
                             posNeg.type.then(function (result) {
 
-                                console.log(result["score"]);
-
-                                if(result["score"] >= 0.5 || result["score"] <= -0.5 || result["ratio"] == 1) {
+                                if(result["score"] >= 0.05 || result["score"] <= -0.05 || result["ratio"] == 1) {
 
                                     if ($scope.loading) {
                                         $scope.loading = false;
@@ -259,7 +347,7 @@ twitterThing.factory('getPosNeg', function(getTweets, checkPosNeg) {
 //    }
 //});
 
-twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
+twitterThing.factory('getTops', function(getTweets, checkPosNeg, settingTopTweetAnalyzer) {
 
     function setTops(search, countPos, countNeg, $scope) {
 
@@ -277,23 +365,57 @@ twitterThing.factory('getTops', function(getTweets, checkPosNeg) {
                                 $scope.loading = false;
                             }
 
-                            if (result["type"] == "positive" && (result["score"] >= -0.5 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            if (result["type"] == "positive" && (result["score"] >= 0.05 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countPos > 0) {
+
+                                    currentTopTweetResponse["pos"][countPos] = {
+                                        text: response[i]["text"].split(" "),
+                                        result: result
+                                    };
+
+                                    $scope.justTweets["pos"][countPos] = true;
+                                    $scope.topAnalyzer["pos"][countPos] = false;
+
                                     $scope.positives.push({
                                         text: response[i]["text"],
                                         retweet: response[i]["retweet"],
-                                        user: response[i]["user"]
+                                        user: response[i]["user"],
+                                        number: countPos,
+                                        analyzed: [],
+                                        total: 0
                                     });
                                     countPos--;
+
+                                    var posLength = $scope.positives.length;
+                                    (function (lastIndex, result) {
+                                        setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.positives, lastIndex, result), 0);
+                                    })(posLength - 1, result);
                                 }
-                            } else if (result["type"] == "negative" && (result["score"] <= -0.5 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            } else if (result["type"] == "negative" && (result["score"] <= -0.05 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countNeg > 0) {
+
+                                    currentTopTweetResponse["neg"][countNeg] = {
+                                        text: response[i]["text"].split(" "),
+                                        result: result
+                                    };
+
+                                    $scope.justTweets["neg"][countNeg] = true;
+                                    $scope.topAnalyzer["neg"][countNeg] = false;
+
                                     $scope.negatives.push({
                                         text: response[i]["text"],
                                         retweet: response[i]["retweet"],
-                                        user: response[i]["user"]
+                                        user: response[i]["user"],
+                                        number: countNeg,
+                                        analyzed: [],
+                                        total: 0
                                     });
                                     countNeg--;
+
+                                    var negLength = $scope.negatives.length;
+                                    (function (lastIndex, result) {
+                                        setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.negatives, lastIndex, result), 0);
+                                    })(negLength - 1, result);
                                 }
                             }
 
@@ -337,7 +459,7 @@ twitterThing.directive('topTweet', function($compile){
         controller: function($scope, $element) {
 
             var ele = $compile( "<div style='word-wrap: break-word'></div>" )( $scope );
-            var currentTypingLabel = $compile( "<span></span>" )( $scope );
+            var currentTypingLabel = $compile( "<span style='font-weight: bold;' ></span>" )( $scope );
 
             var tweetTxt = $scope.tweet.split(" ");
             var previousSpecialDetail = false;
@@ -356,7 +478,7 @@ twitterThing.directive('topTweet', function($compile){
 
                             var word = hashTags[j].substring(1);
                             if(/^[a-zA-Z0-9]+$/.test(word)) {
-                                userAccount[j] = $compile('<span ng-click="$parent.newSearch(\'' + hashTags[j] + '\')" style="text-decoration: underline; color: blue">' + hashTags[j] + '</span>')($scope);
+                                userAccount[j] = $compile('<span ng-click="$parent.newSearch(\'' + hashTags[j] + '\')" style="text-decoration: underline; color: blue; cursor:pointer; font-weight: bold;">' + hashTags[j] + '</span>')($scope);
                             } else {
                                 var lastLetterIndex = 0;
                                 for(var k = 0; k < word.length; k++){
@@ -368,7 +490,7 @@ twitterThing.directive('topTweet', function($compile){
 
                                 if(lastLetterIndex != 0) {
                                     userAccount[j] = $compile(
-                                        '<span ng-click="$parent.newSearch(\'' + hashTags[j].substring(0, lastLetterIndex + 1) + '\')" style="text-decoration: underline; color: blue">' + hashTags[j].substring(0, lastLetterIndex + 1) + '</span>' +
+                                        '<span ng-click="$parent.newSearch(\'' + hashTags[j].substring(0, lastLetterIndex + 1) + '\')" style="text-decoration: underline; color: blue; cursor:pointer; font-weight: bold;">' + hashTags[j].substring(0, lastLetterIndex + 1) + '</span>' +
                                         '<span>' + hashTags[j].substring(lastLetterIndex + 1) + '</span>'
                                     )($scope);
                                 } else {
@@ -380,7 +502,7 @@ twitterThing.directive('topTweet', function($compile){
                         }
 
                     } else {
-                        userAccount = $compile('<span style="color: blue; text-decoration: underline">' + tweetTxt[i] + '</span>')($scope);
+                        userAccount = $compile('<span style="color: blue; text-decoration: underline; cursor:pointer; font-weight: bold;">' + tweetTxt[i] + '</span>')($scope);
                     }
 
                     ele.append(userAccount);
@@ -389,7 +511,7 @@ twitterThing.directive('topTweet', function($compile){
                     if(previousSpecialDetail && currentTypingLabel.text() != ""){
                         previousSpecialDetail = false;
                         ele.append(currentTypingLabel);
-                        currentTypingLabel = $compile( "<span></span>" )( $scope );
+                        currentTypingLabel = $compile( "<span style='font-weight: bold;'></span>" )( $scope );
                         currentTypingLabel.text(" " + tweetTxt[i] + " ");
                     } else {
                         currentTypingLabel.text(" " + currentTypingLabel.text() + tweetTxt[i] + " ");
@@ -402,3 +524,19 @@ twitterThing.directive('topTweet', function($compile){
         }
     }
 });
+
+//twitterThing.directive('sentimentHowToPopOver', function () {
+//
+//    return {
+//        restrict: "A",
+//        link: function (scope, element, attrs) {
+//            var options = {
+//                content: document.getElementById("sentiment-howto").innerHTML,
+//                placement: "bottom",
+//                html: true,
+//                trigger: "hover"
+//            };
+//            $(element).popover(options);
+//        }
+//    };
+//});
