@@ -355,6 +355,7 @@
 
 {{-- Angular controllers --}}
 <script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
 
 {{-- Angular services --}}

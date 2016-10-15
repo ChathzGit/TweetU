@@ -131,3 +131,16 @@
 {
     color: #C40D0D;
 }
+
+
+.user_account_div
+{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #0000C2;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

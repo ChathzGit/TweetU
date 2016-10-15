@@ -42,7 +42,7 @@
                             <div class="col-sm-9">
                                 <input type="text" class="form-control has-error" id="name" name="name"
                                        placeholder="Fullname"
-                                       ng-model="employee.name" ng-required="true">
+                                       ng-model="user.name" ng-required="true">
                                         <span class="help-inline c-red"
                                               ng-show="frmEmployees.name.$invalid && frmEmployees.name.$touched">Name field is required</span>
                             </div>
@@ -56,7 +56,7 @@
                             <div class="col-sm-9">
                                 <input type="email" class="form-control" id="email" name="email"
                                        placeholder="Email Address"
-                                       ng-model="employee.email" ng-required="true">
+                                       ng-model="user.email" ng-required="true">
                                         <span class="help-inline c-red"
                                               ng-show="frmEmployees.email.$invalid && frmEmployees.email.$touched">Valid Email field is required</span>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="password" name="password"
                                        placeholder="Password"
-                                       ng-model="employee.password" ng-required="true">
+                                       ng-model="user.password" ng-required="true">
                                     <span class="help-inline c-red"
                                           ng-show="frmEmployees.password.$invalid && frmEmployees.password.$touched">Password field is required</span>
                             </div>
@@ -83,13 +83,13 @@
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                        placeholder="Confirm Password"
-                                       ng-model="employee.confirmpassword" ng-required="true">
+                                       ng-model="user.confirmpassword" ng-required="true">
 
                                     <span class="help-inline c-red"
                                           ng-show="frmEmployees.confirm_password.$invalid && frmEmployees.confirm_password.$touched">Please type the password again</span>
 
                                 <span class="help-inline c-red"
-                                      ng-show="employee.password != employee.confirmpassword && frmEmployees.confirm_password.$valid">Mismatching passwords</span>
+                                      ng-show="user.password != user.confirmpassword && frmEmployees.confirm_password.$valid">Mismatching passwords</span>
                             </div>
                         </div>
 

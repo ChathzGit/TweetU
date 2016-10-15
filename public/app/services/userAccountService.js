@@ -48,5 +48,42 @@ app.service(serviceName,
             };
 
 
+            /*
+            * This method calls the server and requests a list of all the users in the database*/
+            this.loadAllUsers = function (callback) {
+                var url = API_URL + "load_all_users";
+
+                $http.get(url)
+                    .success(function (response) {
+                        if(response.status === SUCCESS)
+                        {
+                            var userData;
+
+                            if(response.userList.length > 0)
+                            {
+                                toaster.info("User Accounts", "No users registered yet")
+                            }
+
+                            userData = response.userList;
+                            callback(userData);
+                        }
+                        else if (response.status === ERROR)
+                        {
+                            toaster.error("Error","Error in reading user accounts");
+                        }
+
+                        else
+                        {
+
+                        }
+                    })
+                    .error(function () {
+                        toaster.error("Error", "Error in reading user accounts");
+                    })
+            };
+
+
+
+
         }]);
 

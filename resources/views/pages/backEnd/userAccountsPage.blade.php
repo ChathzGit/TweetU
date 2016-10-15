@@ -10,7 +10,7 @@
 @extends('pages.adminIndex')
 
 @section('content')
-    <div id="page-wrapper" ng-controller="userAccountController">
+    <div id="page-wrapper" ng-controller="adminUserAccountController">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">User accounts</h1>
@@ -19,15 +19,31 @@
         </div>
 
 
-
         <div class="row">
             <div class="col-sm-12">
-                <div class="border" ng-repeat="user in users">
-                    <% user.name %>
+                <div ng-repeat="user in users">
+                    <div class="col-sm-12 user_account_div">
+
+                        <div class="col-sm-12">
+                            <strong>User ID:</strong>
+                            <% user.id %>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <strong>User name:</strong>
+                            <% user.name %>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <strong>User email:</strong>
+                            <% user.email %>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-
 
 
     </div>

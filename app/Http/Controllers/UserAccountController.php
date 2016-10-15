@@ -11,17 +11,26 @@ use Unirest\Exception;
 class UserAccountController extends Controller
 {
 
-    //
+    /*
+     * Loads the user registration page
+     */
     public function index()
     {
         return view('pages.frontEnd.registration');
     }
 
+    /*
+     * Loads the users page
+     */
     public function loadUserPage()
     {
         return view('pages.backEnd.userAccountsPage');
     }
 
+
+    /*
+     * Saves a user into the database
+     */
     public function saveUser(Request $request)
     {
         $user = new User;
@@ -34,20 +43,15 @@ class UserAccountController extends Controller
         $responseCode = new TweetUResponseCode();
 
         try {
-            if($user->save())
-            {
+            if ($user->save()) {
                 $response = array(
                     'status' => $responseCode->success
                 );
-            }
-
-            else
-            {
+            } else {
                 $response = array(
                     'status' => $responseCode->error
                 );
             }
-
 
 
             return json_encode($response);
@@ -65,36 +69,33 @@ class UserAccountController extends Controller
     }
 
 
-    public function test(Request $request)
+    /*
+     * Gets all the users from the database
+     */
+    public function getAllUsers()
     {
-        $user = new User;
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-
-
+        $userList = [];
         $responseCode = new TweetUResponseCode();
+        $response = "";
 
         try {
-            $user->save();
 
+            $userList = User::all();
             $response = array(
                 'status' => $responseCode->success,
+                'userList' => $userList
             );
 
             return json_encode($response);
 
         } catch (Exception $e) {
-
             $response = array(
-                'status' => $responseCode->error,
-                'error' => $e
+                'status' => $responseCode->error
             );
-
             return json_encode($response);
-
         }
+
+
     }
 
 

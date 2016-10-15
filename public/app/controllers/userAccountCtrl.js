@@ -1,5 +1,5 @@
 /**
- * Created by Sahan on 10/8/2016.
+ * Created by Sahan on 8/10/2016.
  */
 app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$location', 'toaster', 'userAccountService', 'SUCCESS', 'ERROR',
     function ($scope, $http, API_URL, $location, toaster, userAccountService, SUCCESS, ERROR) {
@@ -18,21 +18,6 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         };
 
 
-        $scope.users = [
-            {
-                name: "ddddd",
-                email: "asdas",
-                password: "asdasd",
-                confirmpassword: "asdas"
-            },
-            {
-                name: "asd",
-                email: "asda",
-                password: "asda",
-                confirmpassword: "asdas"
-            }
-        ];
-
 
         /*
         * This function calls the relevant service which in turn calls the server method to save the data
@@ -41,6 +26,8 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         $scope.save = function () {
 
             var user = $scope.user;
+
+            alert(user.name);
 
             /*
             * Calls the angular service dedicated to handle user account features
@@ -63,15 +50,5 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
             });
 
         };
-
-
-
-
-
-        $scope.loadUsers = function () {
-
-
-        }
-
 
     }]);
