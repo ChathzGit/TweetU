@@ -83,13 +83,23 @@
                 <div class="row p-0">
                     <div class="col-sm-6 col-xs-12">
                         <div class="col-xs-12 good-tweet gb-tweet" ng-repeat="items in positives">
-                            <div tweet="items['text']" top-tweet></div>
-                            <div class="pull-left">
-                                <label>by <span style="color: blue;"><%items['user']%></span></label>
+                            <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
+                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
                             </div>
-                            <div class="pull-right">
-                                <i class="fa fa-info-circle top-5-info" aria-hidden="true"></i>
-                                <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
+                            <div ng-if="justTweets['pos'][items['number']]" class="just-tweet" style="margin-top: 5px;">
+                                <div tweet="items['text']" top-tweet></div>
+                                <div class="pull-left" style="margin-top: 10px">
+                                    <span>by <label style="color: blue;"><%items['user']%></label></span>
+                                </div>
+                                <div class="pull-right" style="margin-top: 10px">
+                                    <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
+                                </div>
+                            </div>
+                            <div ng-if="topAnalyzer['pos'][items['number']]" class="tweet-analyzer">
+                                <span ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%> </span>
+                                <div style="margin-top: 10px; text-align: center">
+                                    <label style="text-decoration: underline; color: green">  + <%items['total']%></label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,13 +110,23 @@
 
                     <div class="col-sm-6 col-xs-12">
                         <div class="col-xs-12 bad-tweet gb-tweet" ng-repeat="items in negatives">
-                            <div tweet="items['text']" top-tweet></div>
-                            <div class="pull-left">
-                                <label>by <span style="color: blue;"><%items['user']%></span></label>
+                            <div ng-class="{'showingAnalyzer': topAnalyzer['neg'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'neg')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
+                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
                             </div>
-                            <div class="pull-right">
-                                <i class="fa fa-info-circle top-5-info" aria-hidden="true"></i>
-                                <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
+                            <div ng-if="justTweets['neg'][items['number']]" class="just-tweet" style="margin-top: 5px;">
+                                <div tweet="items['text']" top-tweet></div>
+                                <div class="pull-left" style="margin-top: 10px">
+                                    <span>by <label style="color: blue;"><%items['user']%></label></span>
+                                </div>
+                                <div class="pull-right" style="margin-top: 10px">
+                                    <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
+                                </div>
+                            </div>
+                            <div ng-if="topAnalyzer['neg'][items['number']]" class="tweet-analyzer">
+                                <span ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%> </span>
+                                <div style="margin-top: 10px; text-align: center">
+                                    <label style="text-decoration: underline; color: red">  - <%items['total']%></label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,62 +134,27 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 
-
-    <div id="sentiment-howto" style="display: none">
-        <div>
-
+        <div id="sentiment-howto" style="display: none">
+            <table class="table table-hover">
+                <tr style="text-align: center" class="row" ng-repeat="text in mouseHovered">
+                    <td>
+                        <label style="color:<%text['color']%>"><%text['str']%></label>
+                    </td>
+                    <td>
+                        <label><%text['value']%></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="color:<%totalColor%>"><%totalType%></label>
+                    </td>
+                    <td>
+                        <label style="color:<%totalColor%>"><%totalValue%></label>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-
-    <!-- Script to Activate the Carousel -->
-    {{--<script>--}}
-        {{--$('.carousel').carousel({--}}
-            {{--interval: 5000 //changes the speed--}}
-        {{--});--}}
-
-
-        {{--var options = {--}}
-            {{--labels: [--}}
-                {{--"Good",--}}
-                {{--"Bad"--}}
-            {{--],--}}
-            {{--datasets: [--}}
-                {{--{--}}
-                    {{--backgroundColor: [--}}
-                        {{--"#66ff66",--}}
-                        {{--"#ff471a"--}}
-                    {{--],--}}
-                    {{--hoverBackgroundColor: [--}}
-                        {{--"#009900",--}}
-                        {{--"#C40D0D"--}}
-                    {{--]--}}
-                {{--}]--}}
-        {{--};--}}
-
-
-        {{--var ctx = document.getElementById("myChart");--}}
-
-        {{--new Chart(ctx,{--}}
-            {{--type: 'pie',--}}
-            {{--data: data--}}
-        {{--});--}}
-
-        {{--$(ctx).click(function(){--}}
-            {{--console.log("aa");--}}
-            {{--data["datasets"][0]["data"][0] = 50;--}}
-            {{--data["datasets"][0]["data"][1] = 50;--}}
-
-            {{--new Chart(ctx,{--}}
-                {{--type: 'pie',--}}
-                {{--data: data--}}
-            {{--});--}}
-
-        {{--});--}}
-
-    {{--</script>--}}
-
-
+    <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop

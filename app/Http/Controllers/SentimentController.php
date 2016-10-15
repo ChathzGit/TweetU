@@ -47,15 +47,15 @@ class SentimentController extends Controller{
 
             if($isRecent == 1) {
                 if ($maxID == -1) {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en"]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "include_entities" => false]);
                 } else {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "max_id" => $maxID]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "max_id" => $maxID, "include_entities" => false]);
                 }
             } else {
                 if ($maxID == -1) {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en"]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "include_entities" => false]);
                 } else {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "max_id" => $maxID]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "max_id" => $maxID, "include_entities" => false]);
                 }
             }
 
