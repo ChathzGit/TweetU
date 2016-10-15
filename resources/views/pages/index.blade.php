@@ -186,6 +186,7 @@
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
+<script src="{{ asset('/app/services/loginService.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>

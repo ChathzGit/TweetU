@@ -15,7 +15,7 @@ app.controller('loginController', ['$scope', '$http', 'API_URL', '$location', 't
                 email: $scope.email,
                 password: $scope.password
             };
-            loginService.checkCredentials(request, function (response) {
+            loginService.checkLoginCredentials(request, function (response) {
                 if (response.status === SUCCESS) {
                     //toaster.success("Success", "User account created successfully");
                     $location.path('home');
