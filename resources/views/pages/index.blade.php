@@ -139,8 +139,13 @@
                 <li>
                     <a href="register_user">Register</a>
                 </li>
+
                 <li>
                     <a href="login_page">Log In</a>
+                </li>
+
+                <li>
+                    <a href="admin_home"><span class="c-red">Admin pages</span></a>
                 </li>
             </ul>
         </div>

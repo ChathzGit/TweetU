@@ -19,6 +19,12 @@ class AdminHomepageController extends Controller {
     public function index()
     {
 
+        /*
+         * This section should only be used if the user is
+         * logged in, and has admin privileges
+         */
+
+        /*
         if ($user = Sentinel::check())
         {
             return view('pages.backEnd.adminhomepage');
@@ -28,7 +34,11 @@ class AdminHomepageController extends Controller {
         {
             return view('pages.frontEnd.homepage');
         }
-//        return view('pages.backEnd.adminhomepage');
+        */
+
+
+
+       return view('pages.backEnd.adminhomepage');
 
     }
 
