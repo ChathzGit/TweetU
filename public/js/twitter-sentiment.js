@@ -13,8 +13,6 @@ var currentTopTweetResponse = [];
 currentTopTweetResponse["pos"] = [];
 currentTopTweetResponse["neg"] = [];
 
-var howToCheckingTweet = [];
-
 var twitterThing = angular.module('myAppIndex', ['chart.js'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
@@ -86,7 +84,7 @@ twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, 
     $scope.newSearch = function(search){
         $scope.search = search;
         $window.scrollTo(0, 0);
-    }
+    };
 
     $scope.loadHowSentimentWorks = function(number, type){
 
@@ -97,7 +95,7 @@ twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, 
             $scope.justTweets[type][number] = true;
             $scope.topAnalyzer[type][number] = false;
         }
-    }
+    };
 });
 
 twitterThing.service("getTweets", function($http, $q) {
