@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="col-sm-11 col-xs-10">
-                    <input id="search" class="form-control" type="text" ng-model="search">
+                    <input id="search" class="form-control" type="text" ng-model="search" ng-keyup="$event.keyCode == 13 && getInfo()">
                 </div>
 
                 <div class="col-sm-1 col-xs-2">
@@ -96,9 +96,12 @@
                                 </div>
                             </div>
                             <div ng-if="topAnalyzer['pos'][items['number']]" class="tweet-analyzer">
-                                <span ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%> </span>
+                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}" ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
+                                    <span ng-if="span['color'] != 'black'" class="analytic-tooltiptext"><%span['value']%></span>
+                                </span>
+                                <span> </span>
                                 <div style="margin-top: 10px; text-align: center">
-                                    <label style="text-decoration: underline; color: green">  + <%items['total']%></label>
+                                    <label style="text-decoration: underline; color: green">Total:  + <%items['total']%></label>
                                 </div>
                             </div>
                         </div>
@@ -123,9 +126,11 @@
                                 </div>
                             </div>
                             <div ng-if="topAnalyzer['neg'][items['number']]" class="tweet-analyzer">
-                                <span ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%> </span>
+                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}" ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
+                                    <span ng-if="span['color'] != 'black'" class="analytic-tooltiptext"><%span['value']%> </span>
+                                </span>
                                 <div style="margin-top: 10px; text-align: center">
-                                    <label style="text-decoration: underline; color: red">  - <%items['total']%></label>
+                                    <label style="text-decoration: underline; color: red">Total:  - <%items['total']%></label>
                                 </div>
                             </div>
                         </div>

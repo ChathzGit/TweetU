@@ -186,23 +186,24 @@ twitterThing.service("settingTopTweetAnalyzer", function(){
             if (foundedIndex != -1) {
                 if (result["keywords"][foundedIndex]["score"] > 0) {
                     color = "green";
-                    str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+                    str = splitText[i].replace(/[^$#@a-zA-Z0-9.]+/g, '');
                     value = result["keywords"][foundedIndex]["score"];
                 } else {
                     color = "red";
-                    str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+                    str = splitText[i].replace(/[^$#@a-zA-Z0-9d*.?d*]+/g, '');
                     value = result["keywords"][foundedIndex]["score"];
                 }
             } else {
                 color = "black";
-                str = splitText[i].replace(/[^a-zA-Z]+/g, '');
+                str = splitText[i].replace(/[^$#@a-zA-Z0-9d*.?d*]+/g, '');
             }
 
             totalValue += value;
 
             array[index]["analyzed"].push({
                 color: color,
-                word: str
+                word: str,
+                value: value
             });
         }
 
