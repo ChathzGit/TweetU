@@ -3,7 +3,6 @@
  */
 
 app.controller('mainCtrl',['$scope','$window','toaster',function($scope, $window, toaster) {
-   // twitterThing.controller('posNegSentiment', function($scope, getPosNeg, getTops, $window) {
 
-
+    
 }]);
