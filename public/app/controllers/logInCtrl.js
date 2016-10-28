@@ -35,14 +35,19 @@ app.controller('loginController', ['$scope', '$http', 'API_URL', '$location', 't
                 * On successful authentication, this happens
                 */
                 if (response.status === SUCCESS) {
-                    //$location.path('home');
+
+                    toaster.success("Welcome, "+ response.username);
+
+                    setTimeout(function () {
+                        window.location.href = 'home'
+                    }, 2000);
                 }
 
                 /*
                 * If the entered credentials are wrong, this happens
                 */
                 else if (response.status === ERROR) {
-                    toaster.error("Error", "Incorrect User Credentials");
+                    toaster.error("Error", response.error);
                 }
 
                 /*

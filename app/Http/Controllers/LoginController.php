@@ -2,9 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Util\TweetUResponseCode;
 
+use App\User;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
+use Unirest\Exception;
 
 class LoginController extends Controller {
 
@@ -19,28 +22,74 @@ class LoginController extends Controller {
     /*
      * This is the function that gets called by the loginService.js
      */
-    public  function checkCredentials()
+    public function checkCredentials(Request $request)
     {
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $responseCode = new TweetUResponseCode();
+
+        $user = new User;
 
 
-//-------------------------------------------------------------------------------------------------------------------------------
+        try{
 
-        /*
-         * Cartalyst sentinel code is here
-         */
+            $user = User::where('email', $email)
+                ->get()->first();
 
-        $credentials = [
-            'email'    => 'dda@asd.com',
-            'password' => 'asdad',
-        ];
+            if($user !== null)
+            {
+                $user = User::where('email', $email)
+                    ->where('password', $password)
+                    ->get()->first();
 
 
-        $response = Sentinel::authenticate($credentials);
 
-        return json_encode($response);
+                if($user !== null)
+                {
+                    $response = array(
+                        'status' => $responseCode->success,
+                        'email' => $user->email,
+                        'username' => $user->name
+                    );
 
-//-------------------------------------------------------------------------------------------------------------------------------
+                    return json_encode($response);
+                }
 
+                else{
+                    $response = array(
+                        'status' => $responseCode->error,
+                        'error' => "Wrong password"
+                    );
+
+                    return json_encode($response);
+                }
+            }
+
+            else
+            {
+                $response = array(
+                    'status' => $responseCode->error,
+                    'error' => "User not found"
+                );
+
+                return json_encode($response);
+            }
+
+
+        }
+
+        catch(Exception $e)
+        {
+            $response = array(
+                'status' => $responseCode->error,
+                'error' => $e
+            );
+
+            return json_encode($response);
+        }
+
+        
     }
 
 }
