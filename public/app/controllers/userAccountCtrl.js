@@ -7,9 +7,9 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
 
 
         /*
-        * This is the object that will be passed to the back end to be saved to the database
-        * All the values in this object are bound to the html inputs in the .blade file.
-        */
+         * This is the object that will be passed to the back end to be saved to the database
+         * All the values in this object are bound to the html inputs in the .blade file.
+         */
         $scope.user = {
             name: "",
             email: "",
@@ -18,36 +18,50 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         };
 
 
+        function checkPassword() {
+            return $scope.user.password === $scope.user.confirmpassword;
+        }
+
 
         /*
-        * This function calls the relevant service which in turn calls the server method to save the data
-        * Displays an appropriate message depending on the response.
-        */
+         * This function calls the relevant service which in turn calls the server method to save the data
+         * Displays an appropriate message depending on the response.
+         */
         $scope.save = function () {
 
-            var user = $scope.user;
+            if (checkPassword()) {
 
-            alert(user.name);
+                var user = $scope.user;
 
-            /*
-            * Calls the angular service dedicated to handle user account features
-            */
-            userAccountService.saveUserAccount(user, function (response) {
+                /*
+                 * Calls the angular service dedicated to handle user account features
+                 */
+                userAccountService.saveUserAccount(user, function (response) {
 
-                if (response.status === SUCCESS) {
-                    toaster.success("Success", "User account created successfully");
-                }
+                    if (response.status === SUCCESS) {
+                        toaster.success("Success", "User account created successfully");
 
-                else if (response.status === ERROR) {
-                    toaster.error("Error", response.error);
-                }
+                        setTimeout(function () {
+                            window.location.href = 'home'
+                        }, 2000);
+                    }
 
-                else {
-                    toaster.error("Error", response.error);
-                }
+                    else if (response.status === ERROR) {
+                        toaster.error("Error", response.error);
+                    }
+
+                    else {
+                        toaster.error("Error", response.error);
+                    }
 
 
-            });
+                });
+
+            }
+
+            else {
+                toaster.error("Error", "Mismatching passwords");
+            }
 
         };
 
