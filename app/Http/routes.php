@@ -50,3 +50,10 @@ Route::get('load_all_users','UserAccountController@getAllUsers');
 Route::get('login_page', 'LoginController@index');
 Route::post('check_credentials', 'LoginController@checkCredentials');
 
+/*
+ * Search log routes
+ */
+Route::get('getAllSearchLogs', 'SearchLogController@getAllSearchLogs');
+Route::get('getSearchLogs', 'SearchLogController@getSearchLogs');
+Route::post('saveSearchLog', 'SearchLogController@saveSearchLog');
+

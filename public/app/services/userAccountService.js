@@ -59,7 +59,7 @@ app.service(serviceName,
                         {
                             var userData;
 
-                            if(response.userList.length > 0)
+                            if(response.userList.length === 0)
                             {
                                 toaster.info("User Accounts", "No users registered yet")
                             }

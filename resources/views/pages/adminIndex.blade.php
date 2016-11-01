@@ -46,7 +46,7 @@
 
 </head>
 
-<body>
+<body ng-controller="mainCtrl">
 
 <div id="wrapper">
 
@@ -327,6 +327,8 @@
         <!-- /.navbar-static-side -->
     </nav>
 
+    <toaster-container
+            toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
     @yield('content')
     <!-- /#page-wrapper -->
 
@@ -354,13 +356,33 @@
 <script src="{{ asset('/app/mainCtrl.js') }}"></script>
 
 {{-- Angular controllers --}}
+{{--<script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>--}}
+
+{{-- Angular services --}}
+{{--<script src="{{ asset('/app/services/userAccountService.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/services/loginService.js') }}"></script>--}}
+
+{{-- Angular controllers --}}
 <script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/positiveNegativeCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
 <script src="{{ asset('/app/services/loginService.js') }}"></script>
+<script src="{{ asset('/app/services/positiveNegativeService.js') }}"></script>
+<script src="{{ asset('/app/services/tweetService.js') }}"></script>
+<script src="{{ asset('/app/services/searchLogService.js') }}"></script>
+
+{{-- Angular directives --}}
+<script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
+
+{{-- Angular factories --}}
+<script src="{{ asset('/app/factories/getPositiveNegativeFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/getTopTweetsFactory.js') }}"></script>
 
 
 

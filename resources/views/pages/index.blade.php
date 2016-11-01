@@ -195,6 +195,7 @@
 <script src="{{ asset('/app/services/loginService.js') }}"></script>
 <script src="{{ asset('/app/services/positiveNegativeService.js') }}"></script>
 <script src="{{ asset('/app/services/tweetService.js') }}"></script>
+<script src="{{ asset('/app/services/searchLogService.js') }}"></script>
 
 {{-- Angular directives --}}
 <script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
