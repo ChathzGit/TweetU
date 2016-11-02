@@ -83,7 +83,7 @@ class SearchLogController extends Controller
         $searchLog->key_word = $request->input('key_word');
         $searchLog->user_id = $request->input('user_id');
         $searchLog->type = $request->input('type');
-        $searchLog->timestamp = $request->input('timestamp');
+        $searchLog->timestamp = date('Y-m-d H:i:s');
 
         $responseCode = new TweetUResponseCode();
 

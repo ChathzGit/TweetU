@@ -5,13 +5,12 @@
 app.controller('mainCtrl', ['$scope', '$window', 'toaster', 'SUCCESS', 'ERROR', 'searchLogService', function ($scope, $window, toaster, SUCCESS, ERROR, searchLogService) {
 
 
-    $scope.checkSearchLog = function () {
+    $scope.saveTweetAnaylysisLog = function (type, keyword) {
 
         var request = {
-            key_word : "WOWOWWW",
-            type: "1",
-            user_id: "2",
-            timestamp: "2016-11-22 10:10:00"
+            key_word : keyword,
+            type: type,
+            user_id: "2"
         };
 
         searchLogService.saveSearchLogData(request, function (response) {
