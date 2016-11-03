@@ -245,7 +245,163 @@ class SearchLogController extends Controller
     public function destroy($id)
     {
         //
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function getPercentageChanges()
+    {
+        $date_time = new \DateTime('last month');
+        $last_month = $date_time->format('Y-m-d H:i:s');
+
+        $current_date = new \DateTime();
+        $prev_month = date('Y-m-d H:i:s',strtotime($last_month.' last month'));
+        //return json_encode(Date('Y-m-d H:i:s', strtotime($last_month)));
+
+
+        $searchLogList = [];
+        $responseCode = new TweetUResponseCode();
+        $response = "";
+
+        try {
+
+            /*
+             * Tweet analysis count*/
+            $TweetsThisMonth = SearchLog::where('type', '1')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+
+            $TweetsLastMonth = SearchLog::where('type', '1')
+                ->where('timestamp', '<=', $last_month)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+            $TotalTweets = SearchLog::where('type', '1')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+            /*
+             * Account analysis count
+             */
+            $AccountsThisMonth = SearchLog::where('type', '2')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+
+            $AccountsLastMonth = SearchLog::where('type', '2')
+                ->where('timestamp', '<=', $last_month)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+            $TotalAccounts = SearchLog::where('type', '2')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+
+            /*
+             * Comparisons count
+             */
+            $ComparisonsThisMonth = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+
+            $ComparisonsLastMonth = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $last_month)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+            $TotalComparisons = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+
+
+
+            $TweetPercentage = (($TweetsThisMonth / $TweetsLastMonth) * 100);
+             if($TweetPercentage < 100)
+             {
+                 $TweetPercentage = round((100 - $TweetPercentage), 2);
+             }
+
+            $AccountPercentage = ($AccountsThisMonth / $AccountsLastMonth * 100);
+            if($AccountPercentage < 100)
+            {
+                $AccountPercentage = round((100 - $AccountPercentage), 2);
+            }
+
+            $ComparisonPercentage = ($ComparisonsThisMonth / $ComparisonsLastMonth * 100);
+            if($ComparisonPercentage < 100)
+            {
+                $ComparisonPercentage = round((100 - $ComparisonPercentage), 2);
+            }
+
+
+            $response = array(
+                'status' => $responseCode->success,
+
+                'TweetsThisMonth' => $TweetsThisMonth,
+                'TweetsLastMonth' => $TweetsLastMonth,
+                'TotalTweets' => $TotalTweets,
+                'TweetPercentage' => $TweetPercentage,
+
+                'AccountsThisMonth' => $AccountsThisMonth,
+                'AccountsLastMonth' => $AccountsLastMonth,
+                'TotalAccounts' => $TotalAccounts,
+                'AccountPercentage' => $AccountPercentage,
+
+                'ComparisonsThisMonth' => $ComparisonsThisMonth,
+                'ComparisonsLastMonth' => $ComparisonsLastMonth,
+                'TotalComparisons' => $TotalComparisons,
+                'ComparisonPercentage' => $ComparisonPercentage
+            );
+
+            return json_encode($response);
+
+        } catch (Exception $e) {
+            $response = array(
+                'status' => $responseCode->error,
+            );
+
+            return json_encode($response);
+        }
+    }
+
+
+
+
+
+
 
 }
 
