@@ -22,6 +22,11 @@ class SearchLogController extends Controller
         //
     }
 
+    public function loadUsageStatisticsPage()
+    {
+        return view('pages.backEnd.adminUsageDetails');
+    }
+
     public function loadSearchDataTestDataInterface()
     {
         return view('pages.backEnd.adminAddSearchLogsTest');
@@ -79,6 +84,38 @@ class SearchLogController extends Controller
 
 
     }
+
+
+    public function getAllSearchLogCount()
+    {
+
+        $searchLogList = [];
+        $responseCode = new TweetUResponseCode();
+        $response = "";
+
+        try {
+            $searchLogCountTweets = SearchLog::where('type', '1')->count();
+            $searchLogCountAccounts = SearchLog::where('type', '2')->count();
+            $searchLogCountComparisons = SearchLog::where('type', '3')->count();
+
+            $response = array(
+                'status' => $responseCode->success,
+                'searchLogCountTweets' => $searchLogCountTweets,
+                'searchLogCountAccounts' => $searchLogCountAccounts,
+                'searchLogCountComparisons' => $searchLogCountComparisons
+            );
+
+            return json_encode($response);
+
+        } catch (Exception $e) {
+            $response = array(
+                'status' => $responseCode->error,
+            );
+
+            return json_encode($response);
+        }
+    }
+
 
     public function saveSearchLog(Request $request)
     {

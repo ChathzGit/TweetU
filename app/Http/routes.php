@@ -54,7 +54,9 @@ Route::post('check_credentials', 'LoginController@checkCredentials');
  * Search log routes
  */
 Route::get('getAllSearchLogs', 'SearchLogController@getAllSearchLogs');
+Route::post('getAllSearchLogCount', 'SearchLogController@getAllSearchLogCount');
 Route::get('getSearchLogs', 'SearchLogController@getSearchLogs');
 Route::get('SearchLogTestData', 'SearchLogController@loadSearchDataTestDataInterface');
+Route::get('loadUsageStatistics', 'SearchLogController@loadUsageStatisticsPage');
 Route::post('saveSearchLog', 'SearchLogController@saveSearchLog');
 

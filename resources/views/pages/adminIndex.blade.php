@@ -294,6 +294,9 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usage Details<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
+                                <a href="loadUsageStatistics">Total Usage Statistics</a>
+                            </li>
+                            <li>
                                 <a href="#">Key Words</a>
                             </li>
                             <li>
@@ -372,6 +375,7 @@
 <script src="{{ asset('/app/controllers/positiveNegativeCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/usageStatisticsCtrl.js') }}"></script>
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
