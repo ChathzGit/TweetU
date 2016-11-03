@@ -14,7 +14,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">User accounts</h1>
-                <a href="" ng-click="saveTweetAnaylysisLog('3','WOWMAN')" class="btn btn-default btn-full-width">Analyze Topic</a>
             </div>
             <!-- /.col-lg-12 -->
         </div>

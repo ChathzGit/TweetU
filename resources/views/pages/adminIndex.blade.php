@@ -299,6 +299,9 @@
                             <li>
                                 <a href="#">Location</a>
                             </li>
+                            <li>
+                                <a href="SearchLogTestData">Testing Data Adding</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

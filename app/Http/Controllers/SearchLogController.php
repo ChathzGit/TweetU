@@ -22,6 +22,11 @@ class SearchLogController extends Controller
         //
     }
 
+    public function loadSearchDataTestDataInterface()
+    {
+        return view('pages.backEnd.adminAddSearchLogsTest');
+    }
+
     public function getSearchLogs()
     {
         $searchLogList = [];
