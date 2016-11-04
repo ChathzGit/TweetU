@@ -27,7 +27,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Site Usage
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Site Usage This Month
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle"
@@ -65,7 +65,7 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Site Usage
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Site Usage This Month
                             {{--<div class="pull-right">--}}
                             {{--<div class="btn-group">--}}
                             {{--<button type="button" class="btn btn-default btn-xs dropdown-toggle"--}}

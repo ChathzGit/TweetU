@@ -117,6 +117,54 @@ class SearchLogController extends Controller
     }
 
 
+    public function getMonthlySearchLogCount()
+    {
+
+        $date_time = new \DateTime('last month');
+        $last_month = $date_time->format('Y-m-d H:i:s');
+
+        $current_date = new \DateTime();
+        //return json_encode(Date('Y-m-d H:i:s', strtotime($last_month)));
+
+
+
+        $searchLogList = [];
+        $responseCode = new TweetUResponseCode();
+        $response = "";
+
+        try {
+            $searchLogCountTweets = SearchLog::where('type', '1')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+            $searchLogCountAccounts = SearchLog::where('type', '2')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+            $searchLogCountComparisons = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+
+            $response = array(
+                'status' => $responseCode->success,
+                'searchLogCountTweets' => $searchLogCountTweets,
+                'searchLogCountAccounts' => $searchLogCountAccounts,
+                'searchLogCountComparisons' => $searchLogCountComparisons
+            );
+
+            return json_encode($response);
+
+        } catch (Exception $e) {
+            $response = array(
+                'status' => $responseCode->error,
+            );
+
+            return json_encode($response);
+        }
+    }
+
+
     public function saveSearchLog(Request $request)
     {
         $searchLog = new SearchLog;

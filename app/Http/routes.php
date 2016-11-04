@@ -56,9 +56,13 @@ Route::post('check_credentials', 'LoginController@checkCredentials');
  */
 Route::get('getAllSearchLogs', 'SearchLogController@getAllSearchLogs');
 Route::get('getPercentageChange', 'SearchLogController@getPercentageChanges');
+
 Route::post('getAllSearchLogCount', 'SearchLogController@getAllSearchLogCount');
+Route::post('getMonthlySearchLogCount', 'SearchLogController@getMonthlySearchLogCount');
+
 Route::get('getSearchLogs', 'SearchLogController@getSearchLogs');
 Route::get('SearchLogTestData', 'SearchLogController@loadSearchDataTestDataInterface');
 Route::get('loadUsageStatistics', 'SearchLogController@loadUsageStatisticsPage');
+
 Route::post('saveSearchLog', 'SearchLogController@saveSearchLog');
 

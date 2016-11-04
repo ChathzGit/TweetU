@@ -40,7 +40,7 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
             });
 
-            searchLogService.loadUsageStatistics($scope.request, function (response) {
+            searchLogService.loadMonthlyUsageStatistics($scope.request, function (response) {
 
                 if (response.status === SUCCESS) {
 
