@@ -24,19 +24,24 @@
                 <div ng-repeat="user in users">
                     <div class="col-sm-12 user_account_div">
 
-                        <div class="col-sm-12">
-                            <strong>User ID:</strong>
-                            <% user.id %>
-                        </div>
+                        <div class="col-sm-10">
+                            <div class="col-sm-12">
+                                <strong>User ID:</strong>
+                                <% user.id %>
+                            </div>
 
-                        <div class="col-sm-12">
-                            <strong>User name:</strong>
-                            <% user.name %>
-                        </div>
+                            <div class="col-sm-12">
+                                <strong>User name:</strong>
+                                <% user.name %>
+                            </div>
 
-                        <div class="col-sm-12">
-                            <strong>User email:</strong>
-                            <% user.email %>
+                            <div class="col-sm-12">
+                                <strong>User email:</strong>
+                                <% user.email %>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-danger" ng-click="deleteUser(user.id)">Delete User</button>
                         </div>
 
                     </div>

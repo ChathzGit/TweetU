@@ -43,6 +43,7 @@ Route::get('register_user', 'UserAccountController@index');
 Route::post('save_user', 'UserAccountController@saveUser');
 Route::get('user_accounts', 'UserAccountController@loadUserPage');
 Route::get('load_all_users','UserAccountController@getAllUsers');
+Route::post('delete_user', 'UserAccountController@deleteUser');
 
 /*
  * Login interface routes

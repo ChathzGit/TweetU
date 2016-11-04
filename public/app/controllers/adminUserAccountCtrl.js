@@ -19,6 +19,41 @@ app.controller('adminUserAccountController', ['$scope', '$http', 'API_URL', '$lo
             });
         };
 
+        $scope.deleteUser = function (userID) {
+
+
+            var request = {
+                userID : userID
+            };
+
+           userAccountService.deleteUser(request, function (response) {
+
+               /*
+                * Checks if the user was deleted successfully 
+                */
+               if (response.status === SUCCESS) {
+
+                   toaster.success("Success","User successfully deleted");
+                   $scope.loadUsers();
+               }
+
+               /*
+                * If the entered credentials are wrong, this happens
+                */
+               else if (response.status === ERROR) {
+                   toaster.error("Error", response.error);
+               }
+
+               /*
+                * If neither happens, this is there as a last resort
+                */
+               else {
+                   toaster.error("Error", response.error);
+               }
+
+           })
+        };
+
 
         $scope.loadUsers();
     }

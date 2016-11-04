@@ -133,4 +133,34 @@ class UserAccountController extends Controller
     }
 
 
+    public  function deleteUser(Request $request)
+    {
+        $userID = $request->input('userID');
+
+        $responseCode = new TweetUResponseCode();
+
+        try{
+            $user = User::find($userID);
+            $user->delete();
+
+            $response = array(
+                'status' => $responseCode->success,
+            );
+
+            return json_encode($response);
+        }
+        catch(Exception $e)
+        {
+            $response = array(
+                'status' => $responseCode->error,
+                'error' => "Error deleting user",
+                'errorMessage' => $e->getMessage()
+            );
+            return json_encode($response);
+
+        }
+
+    }
+
+
 }
