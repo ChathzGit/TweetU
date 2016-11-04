@@ -97,7 +97,8 @@
                                     <span ng-class="{'c-green': TweetPercentage >= 100, 'c-red': TweetPercentage < 100 }"><% TweetPercentage %> %</span>
                                     <hr>
                                     <span ng-show="TweetPercentage >= 100">A <% TweetPercentage %>% increase in Tweet analytic usage</span>
-                                    <span ng-show="TweetPercentage < 100">A <% TweetPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="TweetPercentage == 0">Percentage not available</span>
+                                    <span ng-show="TweetPercentage < 100 && TweetPercentage != 0">A <% TweetPercentage %>% decrease in Tweet analytic usage</span>
                                 </div>
 
                                 <div class="col-sm-4">
@@ -105,7 +106,8 @@
                                     <span ng-class="{'c-green': AccountPercentage >= 100, 'c-red': AccountPercentage < 100 }"><% AccountPercentage %> %</span>
                                     <hr>
                                     <span ng-show="AccountPercentage >= 100">A <% AccountPercentage %>% increase in Tweet analytic usage</span>
-                                    <span ng-show="AccountPercentage < 100">A <% AccountPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="AccountPercentage == 0">Percentage not available</span>
+                                    <span ng-show="AccountPercentage < 100 && AccountPercentage != 0">A <% AccountPercentage %>% decrease in Tweet analytic usage</span>
                                 </div>
 
                                 <div class="col-sm-4">
@@ -113,7 +115,8 @@
                                     <span ng-class="{'c-green': ComparisonPercentage >= 100, 'c-red': ComparisonPercentage < 100 }"><% ComparisonPercentage %> %</span>
                                     <hr>
                                     <span ng-show="ComparisonPercentage >= 100">A <% ComparisonPercentage %>% increase in Tweet analytic usage</span>
-                                    <span ng-show="ComparisonPercentage < 100">A <% ComparisonPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="ComparisonPercentage == 0">Percentage not available</span>
+                                    <span ng-show="ComparisonPercentage < 100 && ComparisonPercentage != 0">A <% ComparisonPercentage %>% decrease in Tweet analytic usage</span>
                                 </div>
 
                             </div>

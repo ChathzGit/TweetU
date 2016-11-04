@@ -348,22 +348,41 @@ class SearchLogController extends Controller
 
 
 
-            $TweetPercentage = (($TweetsThisMonth / $TweetsLastMonth) * 100);
-             if($TweetPercentage < 100)
-             {
-                 $TweetPercentage = round((100 - $TweetPercentage), 2);
-             }
 
-            $AccountPercentage = ($AccountsThisMonth / $AccountsLastMonth * 100);
-            if($AccountPercentage < 100)
+
+            if($TweetsThisMonth > 0 && $TweetsLastMonth>0) {
+                $TweetPercentage = (($TweetsThisMonth / $TweetsLastMonth) * 100);
+                if ($TweetPercentage < 100) {
+                    $TweetPercentage = round((100 - $TweetPercentage), 2);
+                }
+            }
+            else
             {
-                $AccountPercentage = round((100 - $AccountPercentage), 2);
+                $TweetPercentage = 0;
             }
 
-            $ComparisonPercentage = ($ComparisonsThisMonth / $ComparisonsLastMonth * 100);
-            if($ComparisonPercentage < 100)
+            if($AccountsThisMonth > 0 && $AccountsLastMonth>0) {
+                $AccountPercentage = ($AccountsThisMonth / $AccountsLastMonth * 100);
+                if ($AccountPercentage < 100) {
+                    $AccountPercentage = round((100 - $AccountPercentage), 2);
+                }
+
+            }
+            else
             {
-                $ComparisonPercentage = round((100 - $ComparisonPercentage), 2);
+                $AccountPercentage = 0;
+            }
+
+
+            if($ComparisonsThisMonth > 0 && $ComparisonsLastMonth>0) {
+                $ComparisonPercentage = ($ComparisonsThisMonth / $ComparisonsLastMonth * 100);
+                if ($ComparisonPercentage < 100) {
+                    $ComparisonPercentage = round((100 - $ComparisonPercentage), 2);
+                }
+            }
+            else
+            {
+                $ComparisonPercentage = 0;
             }
 
 
