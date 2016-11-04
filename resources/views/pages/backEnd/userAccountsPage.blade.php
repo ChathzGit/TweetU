@@ -24,7 +24,7 @@
                 <div ng-repeat="user in users">
                     <div class="col-sm-12 user_account_div">
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <div class="col-sm-12">
                                 <strong>User ID:</strong>
                                 <% user.id %>
@@ -40,8 +40,15 @@
                                 <% user.email %>
                             </div>
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-danger" ng-click="deleteUser(user.id)">Delete User</button>
+                        <div class="col-sm-3">
+                            <div class="col-sm-12">
+                                <button class="btn btn-full-width btn-primary">Edit User</button>
+                            </div>
+                            <hr>
+                            <div class="col-sm-12">
+                                <button class="btn btn-full-width btn-danger" ng-click="deleteUser(user.id)">Delete User</button>
+                            </div>
+
                         </div>
 
                     </div>
