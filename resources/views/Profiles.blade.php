@@ -105,10 +105,6 @@
                             <td><label><% selectedAccount["createdAt"] %></label></td>
                         </tr>
                         <tr>
-                            <td>Total Tweet count :</td>
-                            <td><label><% selectedAccount["tweetcount"] %></label></td>
-                        </tr>
-                        <tr>
                             <td><button class="btn btn-primary" ng-click="loadTweets(selectedAccount['screenName'])">Analise Profile</button></td>
                         </tr>
 
@@ -140,8 +136,20 @@
             <div class="col-sm-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">Tweets per day</div>
-                    <div class="panel-body"><% selectedAccount["tweetsperday"] %></div>
+                    <div class="panel-heading">Tweets</div>
+                    <div class="panel-body">
+                        <table>
+                            <tr>
+                                <td>Total Tweets</td>
+                                <td><% selectedAccount["tweetcount"] %> </td>
+                            </tr>
+                            <tr>
+                                <td>Average tweets per day</td>
+                                <td><% selectedAccount["tweetsperday"] %></td>
+                            </tr>
+                        </table>
+
+                    </div>
                 </div>
 
             </div>
