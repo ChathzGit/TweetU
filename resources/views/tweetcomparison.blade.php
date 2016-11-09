@@ -181,6 +181,8 @@
             </div>
         </div>
 
+        <div id="chartContainer">A US map will load here!</div>
+
         {{--<div id="sentiment-howto" style="display: none">--}}
             {{--<table class="table table-hover">--}}
                 {{--<tr style="text-align: center" class="row" ng-repeat="text in mouseHovered">--}}
@@ -204,3 +206,5 @@
     </div>
     <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop
+<script type="text/javascript" src="js/fusioncharts/fusioncharts.js"></script>
+<script type="text/javascript" src="js/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
