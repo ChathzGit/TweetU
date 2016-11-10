@@ -2,8 +2,17 @@
  * Created by Sahan on 10/8/2016.
  */
 
-app.controller('mainCtrl', ['$scope', '$window', 'toaster', 'SUCCESS', 'ERROR', 'searchLogService', function ($scope, $window, toaster, SUCCESS, ERROR, searchLogService) {
+app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toaster', 'SUCCESS', 'ERROR', 'searchLogService', function ($scope, $rootScope, $cookies, $window, toaster, SUCCESS, ERROR, searchLogService) {
 
+
+    $rootScope.loggedIn = $cookies.get('loggedIn');
+
+    $scope.logout = function(){
+
+        $cookies.put('loggedIn',false);
+        $rootScope.loggedIn = $cookies.get('loggedIn');
+        
+    };
 
     $scope.saveTweetAnaylysisLog = function (type, keyword) {
 

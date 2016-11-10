@@ -6,8 +6,8 @@
 var serviceName = 'loginService';
 
 app.service(serviceName,
-    ['$http', 'API_URL', '$location', 'toaster',  'SUCCESS', 'ERROR',
-        function ($http, API_URL, $location, toaster, SUCCESS, ERROR) {
+    ['$http', 'API_URL', '$location','$cookies', '$rootScope', 'toaster',  'SUCCESS', 'ERROR',
+        function ($http, API_URL, $location,$cookies, $rootScope, toaster, SUCCESS, ERROR) {
 
 
             /*
@@ -30,7 +30,10 @@ app.service(serviceName,
                     .success(function (response) {
 
                         if (response.status === SUCCESS) {
+                            $cookies.put('loggedIn',true);
+
                             callback(response);
+
                         }
 
                         else if (response.status === ERROR) {

@@ -141,11 +141,15 @@
                 </li>
 
                 <li>
-                    <a href="login_page">Log In</a>
+                    <a  ng-show="loggedIn=='false'" href="login_page">Log In</a>
                 </li>
 
                 <li>
                     <a href="admin_home"><span class="c-red">Admin pages</span></a>
+                </li>
+
+                <li>
+                    <a ng-show="loggedIn=='true'" href="" ng-click="logout()"><span class="c-red">Logout</span></a>
                 </li>
             </ul>
         </div>
@@ -216,6 +220,8 @@
 {{--Toaster js--}}
 <script src="{{ asset('/js/angular-animate.min.js') }}"></script>
 <script src="{{ asset('/js/toaster.js') }}"></script>
+<script src="{{ asset('/js/angular-cookies.js') }}"></script>
+
 
 
 

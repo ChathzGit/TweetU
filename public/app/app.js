@@ -4,7 +4,8 @@
 var app = angular.module('tweetU',
     [
         'chart.js',
-        'toaster'
+        'toaster',
+        'ngCookies'
     ],
 
     ['$interpolateProvider',
