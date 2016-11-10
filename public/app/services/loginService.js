@@ -31,7 +31,7 @@ app.service(serviceName,
 
                         if (response.status === SUCCESS) {
                             $cookies.put('loggedIn',true);
-                            $cookies.put('username',response.username);
+                            $cookies.put('userID',response.userID);
 
                             callback(response);
 
@@ -69,7 +69,6 @@ app.service(serviceName,
                     .success(function (response) {
 
                         if (response.sessionStatus === "active") {
-
                             $cookies.put('loggedIn',true);
 
                         }
@@ -109,9 +108,10 @@ app.service(serviceName,
 
                         if (response.status === SUCCESS) {
                             $cookies.put('loggedIn',false);
+                            $cookies.put('userID', 0);
                             $rootScope.loggedIn = $cookies.get('loggedIn');
 
-                            window.location.href = 'home'
+                            //window.location.href = 'home'
                         }
 
                         else if (response.status === ERROR) {
@@ -119,7 +119,7 @@ app.service(serviceName,
                         }
 
                         else {
-                            $cookies.put('loggedIn',true);
+                            $cookies.put('loggedIn',false);
                         }
                     })
 

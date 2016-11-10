@@ -140,10 +140,6 @@
                     <a href="register_user">Register</a>
                 </li>
 
-                <li>
-                    <a href="" ng-click="checkSession()">Check Session</a>
-                </li>
-
 
                 <li>
                     <a href="admin_home"><span class="c-red">Admin pages</span></a>

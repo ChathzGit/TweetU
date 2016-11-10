@@ -6,13 +6,10 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
 
 
 
-    loginService.checkSession();
+
     $rootScope.loggedIn = $cookies.get('loggedIn');
 
-    $scope.checkSession = function()
-    {
-        loginService.checkSession();
-    };
+
 
 
     $scope.logout = function(){
@@ -23,10 +20,17 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
 
     $scope.saveTweetAnaylysisLog = function (type, keyword) {
 
+        var userID = $cookies.get('userID');
+
+        if(userID === undefined)
+        {
+            userID = 0;
+        }
+
         var request = {
             key_word : keyword,
             type: type,
-            user_id: "2"
+            user_id: userID
         };
 
         searchLogService.saveSearchLogData(request, function (response) {

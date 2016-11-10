@@ -28,7 +28,6 @@ class LoginController extends Controller {
             if (session_status() == PHP_SESSION_ACTIVE) {
                 $response = array(
                     'status' => $responseCode->success,
-                    'username' => $_SESSION['username'],
                     'sessionStatusCode' => session_status(),
                     'sessionStatus' => 'active'
                 );
@@ -143,7 +142,7 @@ class LoginController extends Controller {
 
                     $response = array(
                         'status' => $responseCode->success,
-                        'sessionStatus' => $_SESSION['username'],
+                        'userID' => $_SESSION['userID'],
                         'email' => $user->email,
                         'username' => $user->name
                     );
