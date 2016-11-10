@@ -8,6 +8,8 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
 
 
     $rootScope.loggedIn = $cookies.get('loggedIn');
+    $rootScope.userRole = $cookies.get('userRole');
+    $rootScope.userID = $cookies.get('userID');
 
 
 

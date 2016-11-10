@@ -24,12 +24,56 @@ class SearchLogController extends Controller
 
     public function loadUsageStatisticsPage()
     {
-        return view('pages.backEnd.adminUsageDetails');
+        session_start();
+
+        if( isset($_SESSION['role']) ){
+
+            if($_SESSION['role'] == 'admin')
+            {
+                return view('pages.backEnd.adminUsageDetails');
+            }
+
+            else
+            {
+                return view('pages.frontEnd.homepage');
+            }
+
+        }
+
+        else
+        {
+            return view('pages.frontEnd.homepage');
+        }
+
+
     }
 
     public function loadSearchDataTestDataInterface()
     {
-        return view('pages.backEnd.adminAddSearchLogsTest');
+
+        session_start();
+
+        if( isset($_SESSION['role']) ){
+
+            if($_SESSION['role'] == 'admin')
+            {
+                return view('pages.backEnd.adminAddSearchLogsTest');
+            }
+
+            else
+            {
+                return view('pages.frontEnd.homepage');
+            }
+
+        }
+
+        else
+        {
+            return view('pages.frontEnd.homepage');
+        }
+
+
+
     }
 
     public function getSearchLogs()

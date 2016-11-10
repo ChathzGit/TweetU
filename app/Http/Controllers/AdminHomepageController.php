@@ -23,22 +23,29 @@ class AdminHomepageController extends Controller {
          * This section should only be used if the user is
          * logged in, and has admin privileges
          */
+        session_start();
 
-        /*
-        if ($user = Sentinel::check())
-        {
-            return view('pages.backEnd.adminhomepage');
+        if( isset($_SESSION['role']) ){
+
+            if($_SESSION['role'] == 'admin')
+            {
+                return view('pages.backEnd.adminhomepage');
+            }
+
+            else
+            {
+                return view('pages.frontEnd.homepage');
+            }
+
         }
 
         else
         {
             return view('pages.frontEnd.homepage');
         }
-        */
 
 
 
-       return view('pages.backEnd.adminhomepage');
 
     }
 

@@ -108,9 +108,14 @@ app.service(serviceName,
                     .success(function (response) {
 
                         if (response.status === SUCCESS) {
-                            $cookies.put('loggedIn',false);
-                            $cookies.put('userID', 0);
+                            $cookies.remove('loggedIn');
+                            $cookies.remove('userID');
+                            $cookies.remove('userRole');
+
                             $rootScope.loggedIn = $cookies.get('loggedIn');
+                            $rootScope.userRole = $cookies.get('userRole');
+                            $rootScope.userID = $cookies.get('userID');
+
 
                             //window.location.href = 'home'
                         }

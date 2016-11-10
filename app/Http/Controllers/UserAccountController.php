@@ -25,7 +25,28 @@ class UserAccountController extends Controller
      */
     public function loadUserPage()
     {
-        return view('pages.backEnd.userAccountsPage');
+
+        session_start();
+
+        if( isset($_SESSION['role']) ){
+
+            if($_SESSION['role'] == 'admin')
+            {
+                return view('pages.backEnd.userAccountsPage');
+            }
+
+            else
+            {
+                return view('pages.frontEnd.homepage');
+            }
+
+        }
+
+        else
+        {
+            return view('pages.frontEnd.homepage');
+        }
+
     }
 
 
