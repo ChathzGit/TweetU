@@ -98,7 +98,7 @@
                                     <hr>
                                     <span ng-show="TweetPercentage >= 100">A <% TweetPercentage %>% increase in Tweet analytic usage</span>
                                     <span ng-show="TweetPercentage == 0">Percentage not available</span>
-                                    <span ng-show="TweetPercentage < 100 && TweetPercentage != 0">A <% TweetPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="TweetPercentage < 100 && TweetPercentage != 0">A <% TweetPercentage %>% decrease in tweet analytic usage</span>
                                 </div>
 
                                 <div class="col-sm-4">
@@ -107,7 +107,7 @@
                                     <hr>
                                     <span ng-show="AccountPercentage >= 100">A <% AccountPercentage %>% increase in Tweet analytic usage</span>
                                     <span ng-show="AccountPercentage == 0">Percentage not available</span>
-                                    <span ng-show="AccountPercentage < 100 && AccountPercentage != 0">A <% AccountPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="AccountPercentage < 100 && AccountPercentage != 0">A <% AccountPercentage %>% decrease in account analytic usage</span>
                                 </div>
 
                                 <div class="col-sm-4">
@@ -116,7 +116,7 @@
                                     <hr>
                                     <span ng-show="ComparisonPercentage >= 100">A <% ComparisonPercentage %>% increase in Tweet analytic usage</span>
                                     <span ng-show="ComparisonPercentage == 0">Percentage not available</span>
-                                    <span ng-show="ComparisonPercentage < 100 && ComparisonPercentage != 0">A <% ComparisonPercentage %>% decrease in Tweet analytic usage</span>
+                                    <span ng-show="ComparisonPercentage < 100 && ComparisonPercentage != 0">A <% ComparisonPercentage %>% decrease in comparisons done</span>
                                 </div>
 
                             </div>
