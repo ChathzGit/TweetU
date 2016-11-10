@@ -50,6 +50,9 @@ Route::post('delete_user', 'UserAccountController@deleteUser');
  */
 Route::get('login_page', 'LoginController@index');
 Route::post('check_credentials', 'LoginController@checkCredentials');
+Route::get('logout', 'LoginController@logout');
+Route::get('checkSession', 'LoginController@checkSession');
+
 
 /*
  * Search log routes

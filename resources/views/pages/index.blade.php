@@ -141,11 +141,16 @@
                 </li>
 
                 <li>
-                    <a  ng-show="loggedIn=='false'" href="login_page">Log In</a>
+                    <a href="" ng-click="checkSession()">Check Session</a>
                 </li>
+
 
                 <li>
                     <a href="admin_home"><span class="c-red">Admin pages</span></a>
+                </li>
+
+                <li>
+                    <a  ng-show="loggedIn=='false' || loggedIn==undefined" href="login_page">Log In</a>
                 </li>
 
                 <li>

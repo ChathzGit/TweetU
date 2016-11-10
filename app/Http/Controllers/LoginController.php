@@ -18,6 +18,80 @@ class LoginController extends Controller {
         return view('pages.frontEnd.userlogin');
     }
 
+    public function checkSession()
+    {
+        session_start();
+
+        $responseCode = new TweetUResponseCode;
+
+        try {
+            if (session_status() == PHP_SESSION_ACTIVE) {
+                $response = array(
+                    'status' => $responseCode->success,
+                    'username' => $_SESSION['username'],
+                    'sessionStatusCode' => session_status(),
+                    'sessionStatus' => 'active'
+                );
+
+                return json_encode($response);
+            } else if (session_status() == PHP_SESSION_NONE) {
+                $response = array(
+                    'status' => $responseCode->success,
+                    'sessionStatusCode' => session_status(),
+                    'sessionStatus' => 'none'
+                );
+
+                return json_encode($response);
+            } else {
+                $response = array(
+                    'status' => $responseCode->success,
+                    'sessionStatusCode' => session_status(),
+                    'sessionStatus' => 'none'
+                );
+
+                return json_encode($response);
+            }
+        }
+
+        catch (Exception $e)
+        {
+            $response = array(
+                'status' => $responseCode->error,
+                'errorMessage' => $e->getMessage()
+            );
+
+            return json_encode($response);
+        }
+
+
+    }
+
+    public function logout()
+    {
+
+        session_start();
+        $responseCode = new TweetUResponseCode;
+
+        try {
+            session_destroy();
+
+            $response = array(
+                'status' => $responseCode->success,
+            );
+
+            return json_encode($response);
+        }
+        catch(Exception $e)
+        {
+            $response = array(
+                'status' => $responseCode->error,
+                'errorMessage' => $e->getMessage()
+            );
+
+            return json_encode($response);
+        }
+    }
+
 
     /*
      * This is the function that gets called by the loginService.js
@@ -61,8 +135,15 @@ class LoginController extends Controller {
                 // Check if the secondary search gives any results
                 if($user !== null)
                 {
+
+                    session_start();
+                    $_SESSION['userID'] = $user->id;
+                    $_SESSION['username'] = $user->name;
+                    $_SESSION['email'] = $user->email;
+
                     $response = array(
                         'status' => $responseCode->success,
+                        'sessionStatus' => $_SESSION['username'],
                         'email' => $user->email,
                         'username' => $user->name
                     );

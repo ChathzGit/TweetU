@@ -408,6 +408,7 @@
 {{--Toaster js--}}
 <script src="{{ asset('/js/angular-animate.min.js') }}"></script>
 <script src="{{ asset('/js/toaster.js') }}"></script>
+<script src="{{ asset('/js/angular-cookies.js') }}"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 {{--<script src="../vendor/metisMenu/metisMenu.min.js"></script>--}}

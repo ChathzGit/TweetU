@@ -31,6 +31,7 @@ app.service(serviceName,
 
                         if (response.status === SUCCESS) {
                             $cookies.put('loggedIn',true);
+                            $cookies.put('username',response.username);
 
                             callback(response);
 
@@ -47,6 +48,83 @@ app.service(serviceName,
 
                     .error(function () {
                         toaster.error("Error", "Error checking credentials");
+                    });
+            };
+
+
+
+
+
+
+
+            this.checkSession = function () {
+
+                var url = API_URL + "checkSession";
+
+                /*
+                 * HTTP post method to save the user data to the database.
+                 */
+                $http.get(url)
+
+                    .success(function (response) {
+
+                        if (response.sessionStatus === "active") {
+
+                            $cookies.put('loggedIn',true);
+
+                        }
+
+                        else if (response.sessionStatus === "none") {
+
+                            $cookies.put('loggedIn',true);
+                        }
+
+                        else {
+
+                            $cookies.put('loggedIn',true);
+                        }
+                    })
+
+                    .error(function () {
+
+                    });
+            };
+
+
+
+
+
+
+
+            this.destroySession = function () {
+
+                var url = API_URL + "logout";
+
+                /*
+                 * HTTP post method to save the user data to the database.
+                 */
+                $http.get(url)
+
+                    .success(function (response) {
+
+                        if (response.status === SUCCESS) {
+                            $cookies.put('loggedIn',false);
+                            $rootScope.loggedIn = $cookies.get('loggedIn');
+
+                            window.location.href = 'home'
+                        }
+
+                        else if (response.status === ERROR) {
+                            toaster.error("Error", "Error ending session");
+                        }
+
+                        else {
+                            $cookies.put('loggedIn',true);
+                        }
+                    })
+
+                    .error(function () {
+
                     });
             };
 
