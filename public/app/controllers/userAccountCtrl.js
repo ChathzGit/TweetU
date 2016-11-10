@@ -13,6 +13,7 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         $scope.user = {
             name: "",
             email: "",
+            role: "",
             password: "",
             confirmpassword: ""
         };
@@ -32,6 +33,8 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
             if (checkPassword()) {
 
                 var user = $scope.user;
+
+                $scope.user.role="guest";
 
                 /*
                  * Calls the angular service dedicated to handle user account features
