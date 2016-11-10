@@ -32,6 +32,7 @@ app.service(serviceName,
                         if (response.status === SUCCESS) {
                             $cookies.put('loggedIn',true);
                             $cookies.put('userID',response.userID);
+                            $cookies.put('userRole',response.userRole);
 
                             callback(response);
 

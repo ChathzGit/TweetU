@@ -138,11 +138,13 @@ class LoginController extends Controller {
                     session_start();
                     $_SESSION['userID'] = $user->id;
                     $_SESSION['username'] = $user->name;
+                    $_SESSION['role'] = $user->role;
                     $_SESSION['email'] = $user->email;
 
                     $response = array(
                         'status' => $responseCode->success,
                         'userID' => $_SESSION['userID'],
+                        'userRole' => $_SESSION['role'],
                         'email' => $user->email,
                         'username' => $user->name
                     );

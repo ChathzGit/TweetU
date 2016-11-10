@@ -2,8 +2,8 @@
  * Created by Sahan on 10/11/2016.
  */
 
-app.controller('loginController', ['$scope', '$http', 'API_URL', '$location', 'toaster', 'userAccountService', 'SUCCESS', 'ERROR', 'loginService',
-    function ($scope, $http, API_URL, $location, toaster, userAccountService, SUCCESS, ERROR, loginService) {
+app.controller('loginController', ['$scope', '$cookies', '$http', 'API_URL', '$location', 'toaster', 'userAccountService', 'SUCCESS', 'ERROR', 'loginService',
+    function ($scope,$cookies, $http, API_URL, $location, toaster, userAccountService, SUCCESS, ERROR, loginService) {
 
 
         $scope.email = "";
@@ -38,8 +38,18 @@ app.controller('loginController', ['$scope', '$http', 'API_URL', '$location', 't
 
                     toaster.success("Welcome, "+ response.username);
 
+
                     setTimeout(function () {
-                        window.location.href = 'home'
+
+                        if($cookies.get('userRole') === 'admin')
+                        {
+                            window.location.href = 'admin_home'
+                        }
+                        else
+                        {
+                            window.location.href = 'home'
+                        }
+
                     }, 2000);
                 }
 
