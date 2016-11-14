@@ -40,8 +40,11 @@ Route::get('get_profiles_view','ProfileController@index');
  * User accounts routes
  */
 Route::get('register_user', 'UserAccountController@index');
+Route::get('adminUserRegistration', 'UserAccountController@adminUserRegistration');
+
 Route::post('save_user', 'UserAccountController@saveUser');
 Route::get('user_accounts', 'UserAccountController@loadUserPage');
+
 Route::get('load_all_users','UserAccountController@getAllUsers');
 Route::post('delete_user', 'UserAccountController@deleteUser');
 

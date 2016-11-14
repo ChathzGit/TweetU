@@ -145,8 +145,6 @@
                     <a ng-show="userRole=='admin'"  href="admin_home"><span class="c-red">Administration</span></a>
                 </li>
 
-                userRole
-
                 <li>
                     <a  ng-show="loggedIn=='false' || loggedIn==undefined" href="login_page">Log In</a>
                 </li>

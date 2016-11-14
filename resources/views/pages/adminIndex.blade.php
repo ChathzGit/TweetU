@@ -313,7 +313,7 @@
                         <a href="#"><i class="fa fa-users fa-fw"></i> User Accounts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Add User</a>
+                                <a href="adminUserRegistration">Add User</a>
                             </li>
                             <li>
                                 <a href="user_accounts">View Users</a>

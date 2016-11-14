@@ -13,7 +13,7 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
         $scope.user = {
             name: "",
             email: "",
-            role: "",
+            role: "user",
             password: "",
             confirmpassword: ""
         };
@@ -34,7 +34,7 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
 
                 var user = $scope.user;
 
-                $scope.user.role="guest";
+                //$scope.user.role="guest";
 
                 /*
                  * Calls the angular service dedicated to handle user account features
@@ -47,6 +47,50 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
                         setTimeout(function () {
                             window.location.href = 'home'
                         }, 2000);
+                    }
+
+                    else if (response.status === ERROR) {
+                        toaster.error("Error", response.error);
+                    }
+
+                    else {
+                        toaster.error("Error", response.error);
+                    }
+
+
+                });
+
+            }
+
+            else {
+                toaster.error("Error", "Mismatching passwords");
+            }
+
+        };
+
+
+
+
+        $scope.adminSave = function () {
+
+            if (checkPassword()) {
+
+                var user = $scope.user;
+
+                //$scope.user.role="guest";
+
+                /*
+                 * Calls the angular service dedicated to handle user account features
+                 */
+                userAccountService.saveUserAccount(user, function (response) {
+
+                    if (response.status === SUCCESS) {
+                        toaster.success("Success", "User account created successfully");
+
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+
                     }
 
                     else if (response.status === ERROR) {

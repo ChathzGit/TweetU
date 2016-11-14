@@ -20,6 +20,11 @@ class UserAccountController extends Controller
         return view('pages.frontEnd.registration');
     }
 
+    public function adminUserRegistration()
+    {
+        return view('pages.backEnd.adminUserRegistration');
+    }
+
     /*
      * Loads the users page
      */
@@ -28,22 +33,15 @@ class UserAccountController extends Controller
 
         session_start();
 
-        if( isset($_SESSION['role']) ){
+        if (isset($_SESSION['role'])) {
 
-            if($_SESSION['role'] == 'admin')
-            {
+            if ($_SESSION['role'] == 'admin') {
                 return view('pages.backEnd.userAccountsPage');
-            }
-
-            else
-            {
+            } else {
                 return view('pages.frontEnd.homepage');
             }
 
-        }
-
-        else
-        {
+        } else {
             return view('pages.frontEnd.homepage');
         }
 
@@ -55,9 +53,20 @@ class UserAccountController extends Controller
      */
     public function saveUser(Request $request)
     {
+        $userID = $request->input('userID');
 
-        // Create empty user
-        $user = new User;
+        if ($userID > 0 && $userID != null) {
+
+            //Get the user from the database
+            $user = User::find($userID);
+
+        } else {
+            // Create empty user
+            $user = new User;
+        }
+
+
+
 
         /*
          * Get the data from the request and assign the
@@ -90,18 +99,15 @@ class UserAccountController extends Controller
         } catch (QueryException $e) {
 
             // Check if the QueryException is an integrity violation
-           if($e->getCode() === '23000')
-           {
-               $response = array(
-                   'status' => $responseCode->error,
-                   'error' => "User with the same email already exists"
-               );
+            if ($e->getCode() === '23000') {
+                $response = array(
+                    'status' => $responseCode->error,
+                    'error' => "User with the same email already exists"
+                );
 
-               return json_encode($response);
-           }
-
-           // Check if the QueryException is any other violation
-            else{
+                return json_encode($response);
+            } // Check if the QueryException is any other violation
+            else {
 
                 $response = array(
                     'status' => $responseCode->error,
@@ -110,9 +116,7 @@ class UserAccountController extends Controller
 
                 return json_encode($response);
             }
-        }
-
-        // Catch all other exceptions
+        } // Catch all other exceptions
         catch (Exception $e) {
 
             $response = array(
@@ -155,13 +159,13 @@ class UserAccountController extends Controller
     }
 
 
-    public  function deleteUser(Request $request)
+    public function deleteUser(Request $request)
     {
         $userID = $request->input('userID');
 
         $responseCode = new TweetUResponseCode();
 
-        try{
+        try {
             $user = User::find($userID);
             $user->delete();
 
@@ -170,9 +174,7 @@ class UserAccountController extends Controller
             );
 
             return json_encode($response);
-        }
-        catch(Exception $e)
-        {
+        } catch (Exception $e) {
             $response = array(
                 'status' => $responseCode->error,
                 'error' => "Error deleting user",
