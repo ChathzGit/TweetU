@@ -88,7 +88,7 @@ app.controller('userAccountController', ['$scope', '$http', 'API_URL', '$locatio
                         toaster.success("Success", "User account created successfully");
 
                         setTimeout(function () {
-                            window.location.reload();
+                            window.location.href = 'user_accounts'
                         }, 2000);
 
                     }

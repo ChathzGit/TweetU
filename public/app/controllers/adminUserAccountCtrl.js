@@ -7,6 +7,8 @@ app.controller('adminUserAccountController', ['$scope', '$http', 'API_URL', '$lo
 
         $scope.users = [];
 
+        $scope.selectedUser = {};
+
         /*
          * This function will call the service, which in turn will call the
          * server and get the registered users from the database
@@ -52,6 +54,51 @@ app.controller('adminUserAccountController', ['$scope', '$http', 'API_URL', '$lo
                }
 
            })
+        };
+
+
+        $scope.setSelectUser = function (selectedUser) {
+            $scope.selectedUser = selectedUser;
+
+
+        };
+
+        $scope.adminSave = function () {
+
+            if ($scope.selectedUser.password === $scope.selectedUser.confirmpassword) {
+
+                var user = $scope.selectedUser;
+
+                /*
+                 * Calls the angular service dedicated to handle user account features
+                 */
+                userAccountService.saveUserAccount(user, function (response) {
+
+                    if (response.status === SUCCESS) {
+                        toaster.success("Success", "Changes saved successfully");
+
+                        setTimeout(function () {
+                            window.location.href = 'user_accounts'
+                        }, 2000);
+                    }
+
+                    else if (response.status === ERROR) {
+                        toaster.error("Error", response.error);
+                    }
+
+                    else {
+                        toaster.error("Error", response.error);
+                    }
+
+
+                });
+
+            }
+
+            else {
+                toaster.error("Error", "Mismatching passwords");
+            }
+
         };
 
 
