@@ -28,7 +28,7 @@
             <!-- --------------------------------------------------------------------------------------------------------------- -->
             <div class="col-sm-8 m-t-20 well "  style="margin-left: 15%">
                 <div class="col-sm-12">
-                    <h4>Profile Name</h4>
+                    <h4>Search Profiles</h4>
                 </div>
 
                 <div class="col-xs-12" >
@@ -56,7 +56,7 @@
                                 <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
                             </td>
                             <td>
-                                <button class="btn btn-success" ng-click="loadSelection($index)">Check Profile</button>
+                                <button class="btn btn-success" ng-click="loadSelection($index)">Select Profile</button>
                             </td>
                         </tr>
 
