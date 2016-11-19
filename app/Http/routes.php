@@ -19,7 +19,9 @@ Route::get('home', 'HomePageController@index');
 
 Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
 
-Route::get('get_tweets', 'SentimentController@getTweets');
+Route::get('get_tweets', 'TweetComparisonController@getTweets');
+
+Route::get('get_ombeds', 'TweetComparisonController@getOmbeds');
 
 Route::get('admin_home', 'AdminHomepageController@index');
 
@@ -34,3 +36,7 @@ Route::controllers([
 Route::get('get_profiles','ProfileController@getProfiles');
 
 Route::get('get_profiles_view','ProfileController@index');
+
+Route::get('comparison_view', 'TweetComparisonController@index');
+
+//Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
