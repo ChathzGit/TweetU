@@ -21,6 +21,10 @@ Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
 
 Route::get('get_tweets', 'SentimentController@getTweets');
 
+
+/*
+ * Admin routes
+ */
 Route::get('admin_home', 'AdminHomepageController@index');
 
 //not using for now
@@ -32,7 +36,6 @@ Route::get('admin_home', 'AdminHomepageController@index');
 //]);
 
 Route::get('get_profiles','ProfileController@getProfiles');
-
 Route::get('get_profiles_view','ProfileController@index');
 
 Route::get('get_selected_profile','ProfileController@getSelectedProfileInfo');
@@ -44,3 +47,40 @@ Route::get('viewProfileController','ProfileController@viewProfileCompair');
 Route::get('getTweetInfo','ProfileController@getProfileTweetsInfo');
 
 Route::get('getUserLocation','ProfileController@GetUserLocations');
+
+/*
+ * User accounts routes
+ */
+Route::get('register_user', 'UserAccountController@index');
+Route::get('adminUserRegistration', 'UserAccountController@adminUserRegistration');
+
+Route::post('save_user', 'UserAccountController@saveUser');
+Route::get('user_accounts', 'UserAccountController@loadUserPage');
+
+Route::get('load_all_users','UserAccountController@getAllUsers');
+Route::post('delete_user', 'UserAccountController@deleteUser');
+
+/*
+ * Login interface routes
+ */
+Route::get('login_page', 'LoginController@index');
+Route::post('check_credentials', 'LoginController@checkCredentials');
+Route::get('logout', 'LoginController@logout');
+Route::get('checkSession', 'LoginController@checkSession');
+
+
+/*
+ * Search log routes
+ */
+Route::get('getAllSearchLogs', 'SearchLogController@getAllSearchLogs');
+Route::get('getPercentageChange', 'SearchLogController@getPercentageChanges');
+
+Route::post('getAllSearchLogCount', 'SearchLogController@getAllSearchLogCount');
+Route::post('getMonthlySearchLogCount', 'SearchLogController@getMonthlySearchLogCount');
+
+Route::get('getSearchLogs', 'SearchLogController@getSearchLogs');
+Route::get('SearchLogTestData', 'SearchLogController@loadSearchDataTestDataInterface');
+Route::get('loadUsageStatistics', 'SearchLogController@loadUsageStatisticsPage');
+
+Route::post('saveSearchLog', 'SearchLogController@saveSearchLog');
+

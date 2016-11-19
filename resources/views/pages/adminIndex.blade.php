@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="tweetU">
 
 <head>
 
@@ -24,6 +24,11 @@
     <!-- Custom CSS -->
     {{--<link href="../dist/css/sb-admin-2.css" rel="stylesheet">--}}
     <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
+
+    {{--Toaster css--}}
+    <link href="{{ asset('/css/toaster.css') }}" rel="stylesheet">
+
 
     <!-- Morris Charts CSS -->
     {{--<link href="../vendor/morrisjs/morris.css" rel="stylesheet">--}}
@@ -41,7 +46,7 @@
 
 </head>
 
-<body>
+<body ng-controller="mainCtrl">
 
 <div id="wrapper">
 
@@ -54,216 +59,216 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Tweet-U Admin</a>
+            <a class="navbar-brand" href="admin_home">Tweet-U Admin</a>
         </div>
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-messages -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-tasks">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 1</strong>
-                                    <span class="pull-right text-muted">40% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                        <span class="sr-only">40% Complete (success)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 2</strong>
-                                    <span class="pull-right text-muted">20% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                        <span class="sr-only">20% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 3</strong>
-                                    <span class="pull-right text-muted">60% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 4</strong>
-                                    <span class="pull-right text-muted">80% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                        <span class="sr-only">80% Complete (danger)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Tasks</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-tasks -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i> New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
+            {{--<li class="dropdown">--}}
+                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
+                    {{--<i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>--}}
+                {{--</a>--}}
+                {{--<ul class="dropdown-menu dropdown-messages">--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<strong>John Smith</strong>--}}
+                                    {{--<span class="pull-right text-muted">--}}
+                                        {{--<em>Yesterday</em>--}}
+                                    {{--</span>--}}
+                            {{--</div>--}}
+                            {{--<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<strong>John Smith</strong>--}}
+                                    {{--<span class="pull-right text-muted">--}}
+                                        {{--<em>Yesterday</em>--}}
+                                    {{--</span>--}}
+                            {{--</div>--}}
+                            {{--<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<strong>John Smith</strong>--}}
+                                    {{--<span class="pull-right text-muted">--}}
+                                        {{--<em>Yesterday</em>--}}
+                                    {{--</span>--}}
+                            {{--</div>--}}
+                            {{--<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a class="text-center" href="#">--}}
+                            {{--<strong>Read All Messages</strong>--}}
+                            {{--<i class="fa fa-angle-right"></i>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--<!-- /.dropdown-messages -->--}}
+            {{--</li>--}}
+            {{--<!-- /.dropdown -->--}}
+            {{--<li class="dropdown">--}}
+                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
+                    {{--<i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>--}}
+                {{--</a>--}}
+                {{--<ul class="dropdown-menu dropdown-tasks">--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<p>--}}
+                                    {{--<strong>Task 1</strong>--}}
+                                    {{--<span class="pull-right text-muted">40% Complete</span>--}}
+                                {{--</p>--}}
+                                {{--<div class="progress progress-striped active">--}}
+                                    {{--<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">--}}
+                                        {{--<span class="sr-only">40% Complete (success)</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<p>--}}
+                                    {{--<strong>Task 2</strong>--}}
+                                    {{--<span class="pull-right text-muted">20% Complete</span>--}}
+                                {{--</p>--}}
+                                {{--<div class="progress progress-striped active">--}}
+                                    {{--<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">--}}
+                                        {{--<span class="sr-only">20% Complete</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<p>--}}
+                                    {{--<strong>Task 3</strong>--}}
+                                    {{--<span class="pull-right text-muted">60% Complete</span>--}}
+                                {{--</p>--}}
+                                {{--<div class="progress progress-striped active">--}}
+                                    {{--<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">--}}
+                                        {{--<span class="sr-only">60% Complete (warning)</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<p>--}}
+                                    {{--<strong>Task 4</strong>--}}
+                                    {{--<span class="pull-right text-muted">80% Complete</span>--}}
+                                {{--</p>--}}
+                                {{--<div class="progress progress-striped active">--}}
+                                    {{--<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">--}}
+                                        {{--<span class="sr-only">80% Complete (danger)</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a class="text-center" href="#">--}}
+                            {{--<strong>See All Tasks</strong>--}}
+                            {{--<i class="fa fa-angle-right"></i>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--<!-- /.dropdown-tasks -->--}}
+            {{--</li>--}}
+            {{--<!-- /.dropdown -->--}}
+            {{--<li class="dropdown">--}}
+                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
+                    {{--<i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>--}}
+                {{--</a>--}}
+                {{--<ul class="dropdown-menu dropdown-alerts">--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-comment fa-fw"></i> New Comment--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-twitter fa-fw"></i> 3 New Followers--}}
+                                {{--<span class="pull-right text-muted small">12 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-envelope fa-fw"></i> Message Sent--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-tasks fa-fw"></i> New Task--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<div>--}}
+                                {{--<i class="fa fa-upload fa-fw"></i> Server Rebooted--}}
+                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li>--}}
+                        {{--<a class="text-center" href="#">--}}
+                            {{--<strong>See All Alerts</strong>--}}
+                            {{--<i class="fa fa-angle-right"></i>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--<!-- /.dropdown-alerts -->--}}
+            {{--</li>--}}
+            {{--<!-- /.dropdown -->--}}
+            {{--<li class="dropdown">--}}
+                {{--<a class="dropdown-toggle" data-toggle="dropdown" href="#">--}}
+                    {{--<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>--}}
+                {{--</a>--}}
+                {{--<ul class="dropdown-menu dropdown-user">--}}
+                    {{--<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="divider"></li>--}}
+                    {{--<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+                {{--<!-- /.dropdown-user -->--}}
+            {{--</li>--}}
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->
@@ -283,16 +288,22 @@
                         {{--<!-- /input-group -->--}}
                     {{--</li>--}}
                     <li>
-                        <a href="#"><i class="fa fa-briefcase fa-fw"></i> Dashboard</a>
+                        <a href="admin_home"><i class="fa fa-briefcase fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usage Details<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
+                                <a href="loadUsageStatistics">Total Usage Statistics</a>
+                            </li>
+                            <li>
                                 <a href="#">Key Words</a>
                             </li>
                             <li>
                                 <a href="#">Location</a>
+                            </li>
+                            <li>
+                                <a href="SearchLogTestData">Testing Data Adding</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -302,10 +313,10 @@
                         <a href="#"><i class="fa fa-users fa-fw"></i> User Accounts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Add User</a>
+                                <a href="adminUserRegistration">Add User</a>
                             </li>
                             <li>
-                                <a href="#">View Users</a>
+                                <a href="user_accounts">View Users</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -322,19 +333,82 @@
         <!-- /.navbar-static-side -->
     </nav>
 
+    <toaster-container
+            toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
     @yield('content')
     <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 
+
+<!-- Angular -->
+{{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
+<script src="{{ asset('/js/angular.min.js') }}"></script>
+
+
 <!-- jQuery -->
 {{--<script src="../vendor/jquery/jquery.min.js"></script>--}}
 <script src="{{ URL::asset('sb-admin-resources/jquery/jquery.min.js') }}"></script>
 
+
+
+
+<!-- Tweet Sentiment JS -->
+<script src="{{ asset('/js/twitter-sentiment.js') }}"></script>
+
+{{-- Angular controllers --}}
+<script src="{{ asset('/app/app.js') }}"></script>
+<script src="{{ asset('/app/mainCtrl.js') }}"></script>
+
+{{-- Angular controllers --}}
+{{--<script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>--}}
+
+{{-- Angular services --}}
+{{--<script src="{{ asset('/app/services/userAccountService.js') }}"></script>--}}
+{{--<script src="{{ asset('/app/services/loginService.js') }}"></script>--}}
+
+{{-- Angular controllers --}}
+<script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/positiveNegativeCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/adminUserAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/usageStatisticsCtrl.js') }}"></script>
+
+{{-- Angular services --}}
+<script src="{{ asset('/app/services/userAccountService.js') }}"></script>
+<script src="{{ asset('/app/services/loginService.js') }}"></script>
+<script src="{{ asset('/app/services/positiveNegativeService.js') }}"></script>
+<script src="{{ asset('/app/services/tweetService.js') }}"></script>
+<script src="{{ asset('/app/services/searchLogService.js') }}"></script>
+
+{{-- Angular directives --}}
+<script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
+
+{{-- Angular factories --}}
+<script src="{{ asset('/app/factories/getPositiveNegativeFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/getTopTweetsFactory.js') }}"></script>
+
+
+
+
+
 <!-- Bootstrap Core JavaScript -->
 {{--<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>--}}
 <script src="{{ URL::asset('sb-admin-resources/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<!-- Chart.js -->
+<script src="{{ URL::asset('js/Chart.js') }}"></script>
+
+<!-- angular-chart.js -->
+<script src="{{ URL::asset('js/angular-chart.js') }}"></script>
+
+{{--Toaster js--}}
+<script src="{{ asset('/js/angular-animate.min.js') }}"></script>
+<script src="{{ asset('/js/toaster.js') }}"></script>
+<script src="{{ asset('/js/angular-cookies.js') }}"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 {{--<script src="../vendor/metisMenu/metisMenu.min.js"></script>--}}

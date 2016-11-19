@@ -8,7 +8,7 @@
 --}}
 
 <!DOCTYPE html>
-<html lang="en" ng-app="myAppIndex">
+<html lang="en" ng-app="tweetU">
 
 <head>
 
@@ -29,6 +29,9 @@
     <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/tweetanalytics.css') }}" rel="stylesheet">
 
+    {{--Toaster css--}}
+    <link href="{{ asset('/css/toaster.css') }}" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     {{--<link href="{{ URL::asset('resources/assets/font-awesome/css/modern-business.css') }}" rel="stylesheet">--}}
@@ -37,6 +40,7 @@
     <script src="{{ URL::asset('js/jquery.js') }}"></script>
 
     <!-- Angular -->
+    {{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
     <script src="{{ asset('/js/angular.min.js') }}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -48,7 +52,7 @@
 
 </head>
 
-<body>
+<body ng-controller="mainCtrl">
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -63,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="homePage">Tweet-U</a>
+            <a class="navbar-brand" href="home">Tweet-U</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -134,7 +138,20 @@
                 {{--</li>--}}
 
                 <li>
-                    <a href="admin_home">Admin Login</a>
+                    <a href="register_user">Register</a>
+                </li>
+
+
+                <li>
+                    <a ng-show="userRole=='admin'"  href="admin_home"><span class="c-red">Administration</span></a>
+                </li>
+
+                <li>
+                    <a  ng-show="loggedIn=='false' || loggedIn==undefined" href="login_page">Log In</a>
+                </li>
+
+                <li>
+                    <a ng-show="loggedIn=='true'" href="" ng-click="logout()"><span class="c-red">Logout</span></a>
                 </li>
             </ul>
         </div>
@@ -147,6 +164,8 @@
 
 <!-- Page Content -->
 
+<toaster-container
+        toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
     @yield('content')
 
 
@@ -163,8 +182,34 @@
 
 
 
-<!-- Tweet Sentiment JS -->
-<script src="{{ asset('/js/twitter-sentiment.js') }}"></script>
+
+
+{{--<!-- Tweet Sentiment JS -->--}}
+{{--<script src="{{ asset('/js/twitter-sentiment.js') }}"></script>--}}
+
+{{-- Angular controllers --}}
+<script src="{{ asset('/app/app.js') }}"></script>
+<script src="{{ asset('/app/mainCtrl.js') }}"></script>
+
+{{-- Angular controllers --}}
+<script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/positiveNegativeCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
+
+{{-- Angular services --}}
+<script src="{{ asset('/app/services/userAccountService.js') }}"></script>
+<script src="{{ asset('/app/services/loginService.js') }}"></script>
+<script src="{{ asset('/app/services/positiveNegativeService.js') }}"></script>
+<script src="{{ asset('/app/services/tweetService.js') }}"></script>
+<script src="{{ asset('/app/services/searchLogService.js') }}"></script>
+<script src="{{ asset('/app/services/topTweetAnalysisService.js') }}"></script>
+
+{{-- Angular directives --}}
+<script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
+
+{{-- Angular factories --}}
+<script src="{{ asset('/app/factories/getPositiveNegativeFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/getTopTweetsFactory.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
@@ -174,6 +219,16 @@
 
 <!-- angular-chart.js -->
 <script src="{{ URL::asset('js/angular-chart.js') }}"></script>
+
+{{--Toaster js--}}
+<script src="{{ asset('/js/angular-animate.min.js') }}"></script>
+<script src="{{ asset('/js/toaster.js') }}"></script>
+<script src="{{ asset('/js/angular-cookies.js') }}"></script>
+
+
+
+
+
 
 </body>
 

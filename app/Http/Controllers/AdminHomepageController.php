@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 
 /**
@@ -17,8 +18,35 @@ class AdminHomepageController extends Controller {
 	//
     public function index()
     {
-//        return view('pages.backEnd.adminhomepage');
-        return view('pages.backEnd.adminhomepage');
+
+        /*
+         * This section should only be used if the user is
+         * logged in, and has admin privileges
+         */
+        session_start();
+
+        if( isset($_SESSION['role']) ){
+
+            if($_SESSION['role'] == 'admin')
+            {
+                return view('pages.backEnd.adminhomepage');
+            }
+
+            else
+            {
+                return view('pages.frontEnd.homepage');
+            }
+
+        }
+
+        else
+        {
+            return view('pages.frontEnd.homepage');
+        }
+
+
+
+
     }
 
 }

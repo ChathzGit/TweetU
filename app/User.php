@@ -5,8 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Cartalyst\Sentinel\Users\EloquentUser as EloquentUser;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends EloquentUser implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
 
