@@ -33,7 +33,9 @@ app.controller('ctrlProf', function($scope, getProf) {
         var link = document.getElementById('searchResult');
         link.style.visibility = 'visible';
 
-        getProf.setProf($scope);
+        getProf.setProf($scope.searchCriteria, function(response){
+            $scope.profiles = response;
+        });
 
         $scope.selectedAccount = $scope.profiles[0];
     };

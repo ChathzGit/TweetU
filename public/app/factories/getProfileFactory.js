@@ -6,9 +6,9 @@
 app.factory('getProf', function($http) {
 
 
-    function setProf($scope){
+    function setProf(searchCriteria, callback){
 
-        $scope.profiles = [];
+        var profiles = [];
 
         $http.get("get_profiles", {
 
@@ -18,12 +18,13 @@ app.factory('getProf', function($http) {
              * SO no need to pass as a parameter, since the ENTIRE
              * scopeis passed to the factory.(this one)
              */
-            params: {search: $scope.searchCriteria, maxID: maxIDSearch}
+            params: {search: searchCriteria, maxID: maxIDSearch}
         }).success(function (response) {
             //console.log(response);
             if (response["Error"] == undefined) {
 
-                $scope.profiles = response;
+                profiles = response;
+                callback(profiles);
 
             } else {
                 console.log("Error");
