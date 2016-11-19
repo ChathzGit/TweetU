@@ -19,6 +19,16 @@ Route::get('home', 'HomePageController@index');
 
 Route::get('tweetAnalytics', 'TweetAnalyticsController@index');
 
+
+
+Route::get('get_compare_tweets', 'TweetComparisonController@getTweets');
+
+Route::get('get_ombeds', 'TweetComparisonController@getOmbeds');
+
+Route::get('comparison_view', 'TweetComparisonController@index');
+
+
+
 Route::get('get_tweets', 'SentimentController@getTweets');
 
 

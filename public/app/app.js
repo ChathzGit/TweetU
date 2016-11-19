@@ -19,15 +19,9 @@ currentTopTweetResponse["neg"] = [];
 
 var maxIDSearch = -1, maxIDPopular = -1;
 
-var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
-
-var maxIDSearch = -1, maxIDPopular = -1;
-
-var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-
+var pos = 0, neg = 0, maxIDSearch = -1, maxIDPopular = -1;
+var pos2 = 0, neg2 = 0, maxIDSearch2 = -1, maxIDPopular2 = -1;
 
 
 
@@ -59,6 +53,9 @@ var app = angular.module('tweetU',
 
 
 
+app.filter('unsafe', function($sce){
+    return $sce.trustAsHtml;
+})
 
 
 

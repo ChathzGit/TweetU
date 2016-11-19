@@ -47,15 +47,15 @@ class SentimentController extends Controller{
 
             if($isRecent == 1) {
                 if ($maxID == -1) {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "include_entities" => false]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en"]);
                 } else {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "max_id" => $maxID, "include_entities" => false]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "max_id" => $maxID]);
                 }
             } else {
                 if ($maxID == -1) {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "include_entities" => false]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en"]);
                 } else {
-                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "max_id" => $maxID, "include_entities" => false]);
+                    $status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "max_id" => $maxID]);
                 }
             }
 
@@ -67,15 +67,11 @@ class SentimentController extends Controller{
                         if (isset($t->text)) {
 
                             $singleTweet = array();
+                            $singleTweet["text"] = htmlspecialchars_decode($t->text);
 
                             if($isRecent == 0) {
-
-                                $singleTweet["text"] = htmlspecialchars_decode($t->text);
                                 $singleTweet["retweet"] = $t->retweet_count;
                                 $singleTweet["user"] = $t->user->name;
-
-                            } else {
-                                $singleTweet["text"] = htmlspecialchars_decode($t->text);
                             }
 
                             array_push($arr, $singleTweet);

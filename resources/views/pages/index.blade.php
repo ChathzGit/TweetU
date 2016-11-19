@@ -86,19 +86,19 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {{--<li>--}}
-                            {{--<a href="portfolio-1-col.html">1 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-1-col.html">1 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-2-col.html">2 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-2-col.html">2 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-3-col.html">3 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-3-col.html">3 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-4-col.html">4 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-4-col.html">4 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-item.html">Single Portfolio Item</a>--}}
+                        {{--<a href="portfolio-item.html">Single Portfolio Item</a>--}}
                         {{--</li>--}}
                     </ul>
                 </li>
@@ -106,35 +106,35 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {{--<li>--}}
-                            {{--<a href="blog-home-1.html">Blog Home 1</a>--}}
+                        {{--<a href="blog-home-1.html">Blog Home 1</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="blog-home-2.html">Blog Home 2</a>--}}
+                        {{--<a href="blog-home-2.html">Blog Home 2</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="blog-post.html">Blog Post</a>--}}
+                        {{--<a href="blog-post.html">Blog Post</a>--}}
                         {{--</li>--}}
                     </ul>
                 </li>
                 {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li>--}}
-                            {{--<a href="full-width.html">Full Width Page</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="sidebar.html">Sidebar Page</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="faq.html">FAQ</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="404.html">404</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="pricing.html">Pricing Table</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
+                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>--}}
+                {{--<ul class="dropdown-menu">--}}
+                {{--<li>--}}
+                {{--<a href="full-width.html">Full Width Page</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="sidebar.html">Sidebar Page</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="faq.html">FAQ</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="404.html">404</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="pricing.html">Pricing Table</a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
                 {{--</li>--}}
 
                 <li>
@@ -169,14 +169,14 @@
     @yield('content')
 
 
-<!-- Footer -->
+        <!-- Footer -->
 <footer>
-        <div class="col-sm-12">
-            <hr>
-        </div>
-        <div class="col-sm-12 text-center">
-            <p id="aaaa">Copyright &copy; Tweet-U 2016</p>
-        </div>
+    <div class="col-sm-12">
+        <hr>
+    </div>
+    <div class="col-sm-12 text-center">
+        <p id="aaaa">Copyright &copy; Tweet-U 2016</p>
+    </div>
 </footer>
 
 
@@ -197,6 +197,7 @@
 <script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/profileCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/profileInfoCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/tweetComparisonCtrl.js') }}"></script>
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
@@ -205,6 +206,8 @@
 <script src="{{ asset('/app/services/tweetService.js') }}"></script>
 <script src="{{ asset('/app/services/searchLogService.js') }}"></script>
 <script src="{{ asset('/app/services/topTweetAnalysisService.js') }}"></script>
+<script src="{{ asset('/app/services/simpleTweetService.js') }}"></script>
+<script src="{{ asset('/app/services/simplePositiveNegativeService.js') }}"></script>
 
 {{-- Angular directives --}}
 <script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
@@ -214,6 +217,11 @@
 <script src="{{ asset('/app/factories/getTopTweetsFactory.js') }}"></script>
 <script src="{{ asset('/app/factories/getProfileFactory.js') }}"></script>
 <script src="{{ asset('/app/factories/getProfileInfoFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/keywordComparisonFactory.js') }}"></script>
+
+<!-- Tweet Comparison JS -->
+<script src="{{ asset('/js/twitter-sentiment-comparison.js') }}"></script>
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
