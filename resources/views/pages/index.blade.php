@@ -162,6 +162,7 @@
 
 
 
+
 <!-- Tweet Sentiment JS -->
 <script src="{{ asset('/js/twitter-sentiment.js') }}"></script>
 
@@ -169,7 +170,7 @@
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
 <!-- Chart.js -->
-<script src="{{ URL::asset('js/Chart.js') }}"></script>
+<script src="{{ URL::asset('js/Chart.min.js') }}"></script>
 
 <!-- angular-chart.js -->
 <script src="{{ URL::asset('js/angular-chart.js') }}"></script>
