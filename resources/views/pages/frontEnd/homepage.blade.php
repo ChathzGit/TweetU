@@ -70,7 +70,7 @@
 
         <div class="col-sm-12">
 
-            <div class="col-sm-4 hp-container">
+            <div class="col-sm-3 hp-container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-twitter"></i>Analyze topics</h4>
@@ -88,7 +88,7 @@
 
             <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-            <div class="col-sm-4 hp-container">
+            <div class="col-sm-3 hp-container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-fw fa-user"></i>Analyze Accounts</h4>
@@ -100,7 +100,7 @@
                         <div class="col-sm-12">
                             <hr>
                         </div>
-                        <a href="#" class="btn btn-default btn-full-width">Analyze Account</a>
+                        <a href="get_profiles_view" class="btn btn-default btn-full-width">Analyze Accounts</a>
                     </div>
                 </div>
             </div>
@@ -108,19 +108,38 @@
             <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-            <div class="col-sm-4 hp-container">
+            <div class="col-sm-3 hp-container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compress"></i>Compare topics</h4>
+                        <h4><i class="fa fa-fw fa-compress"></i>Compare Profiles</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Analyze two topics simultaneously, and compare the public perception of the two. Good for
-                            comparing two topics.</p>
+                        <p>Analyze two profiles simultaneously, and compare the public perception of the two. Good for
+                            comparing two people.</p>
 
                         <div class="col-sm-12">
                             <hr>
                         </div>
-                        <a href="#" class="btn btn-default btn-full-width">Compare Topics</a>
+                        <a href="viewProfileController" class="btn btn-default btn-full-width">Compare Profiles</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+            <div class="col-sm-3 hp-container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compress"></i>Compare Topics</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Analyze two topics simultaneously, and compare the public perception of the two.</p>
+
+                        <div class="col-sm-12">
+                            <hr>
+                        </div>
+                        <a href="comparison_view" class="btn btn-default btn-full-width">Compare Topics</a>
                     </div>
                 </div>
             </div>

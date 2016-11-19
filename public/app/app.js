@@ -17,6 +17,19 @@ var currentTopTweetResponse = [];
 currentTopTweetResponse["pos"] = [];
 currentTopTweetResponse["neg"] = [];
 
+var maxIDSearch = -1, maxIDPopular = -1;
+
+var getUrl = window.location;
+var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+
+var maxIDSearch = -1, maxIDPopular = -1;
+
+var getUrl = window.location;
+var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+
+
 
 var app = angular.module('tweetU',
     [

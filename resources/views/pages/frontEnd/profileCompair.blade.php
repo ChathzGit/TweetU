@@ -11,22 +11,23 @@
 
 @section('content')
 
-        <!Doctype html>
-<html ng-app="myAppProfile">
-<head>
-    <title>Profile analysis</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <script src="{{ asset('/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/js/angular.min.js') }}"></script>
-    <script src="{{ asset('/js/profileInfo.js') }}"></script>
-    <script src="{{ asset('/js/Chart.js') }}"></script>
-    <script src="{{ asset('/js/angular-chart.js') }}"></script>
+        {{--<!Doctype html>--}}
+{{--<html ng-app="myAppProfile">--}}
+{{--<head>--}}
+    {{--<title>Profile analysis</title>--}}
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}"/>--}}
+    {{--<script src="{{ asset('/js/jquery.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/profileInfo.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/Chart.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/angular-chart.js') }}"></script>--}}
 
-</head>
-<body>
+{{--</head>--}}
+{{--<body>--}}
 <div class="container">
 
-    <div class="quote" ng-controller="ctrlProf">
+    <div class="quote" ng-controller="ctrlInfoProf">
+
 
         <!-- --------------------------------------------------------------------------------------------------------------- -->
         <div class="col-sm-8 m-t-20 well "  style="margin-left: 15%">
@@ -224,5 +225,5 @@
     </div>
 
 </div>
-</body>
-</html>
+{{--</body>--}}
+{{--</html>--}}

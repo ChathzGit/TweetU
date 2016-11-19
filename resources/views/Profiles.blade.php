@@ -11,16 +11,16 @@
 
 @section('content')
 
-<!Doctype html>
-<html ng-app="myApp">
-<head>
-    <title>Profile analysis</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <script src="{{ asset('/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/js/angular.min.js') }}"></script>
-    <script src="{{ asset('/js/profile-passer.js') }}"></script>
-</head>
-<body>
+{{--<!Doctype html>--}}
+{{--<html ng-app="myApp">--}}
+{{--<head>--}}
+    {{--<title>Profile analysis</title>--}}
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}"/>--}}
+    {{--<script src="{{ asset('/js/jquery.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/profile-passer.js') }}"></script>--}}
+{{--</head>--}}
+{{--<body>--}}
     <div class="container">
 
         <div class="quote" ng-controller="ctrlProf">
@@ -210,5 +210,5 @@
 
         </div>
     </div>
-</body>
-</html>
+{{--</body>--}}
+{{--</html>--}}

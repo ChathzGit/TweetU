@@ -195,6 +195,8 @@
 <script src="{{ asset('/app/controllers/userAccountCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/positiveNegativeCtrl.js') }}"></script>
 <script src="{{ asset('/app/controllers/logInCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/profileCtrl.js') }}"></script>
+<script src="{{ asset('/app/controllers/profileInfoCtrl.js') }}"></script>
 
 {{-- Angular services --}}
 <script src="{{ asset('/app/services/userAccountService.js') }}"></script>
@@ -210,6 +212,8 @@
 {{-- Angular factories --}}
 <script src="{{ asset('/app/factories/getPositiveNegativeFactory.js') }}"></script>
 <script src="{{ asset('/app/factories/getTopTweetsFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/getProfileFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/getProfileInfoFactory.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
