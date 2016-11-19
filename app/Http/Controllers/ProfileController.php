@@ -267,27 +267,24 @@ class ProfileController extends Controller {
         $connection = new TwitterOAuth($consumer, $consumer_secret, $access_token, $access_token_secret);
         $content = $connection->get("account/verify_credentials");
 
-        for($i = 0;$i<(20);$i++) {
+        for($i = 0;$i<(1);$i++) {
             if ($maxID == -1) {
                 $status2 = $connection->get("followers/list", ["screen_name" => $screenName, "count" => 20]);
 
             } else {
-              //  $status2 = $connection->get("followers/list", ["screen_name" => $screenName, "count" => 20, "include_entities" => true, "max_id" => $maxID]);
+               // $status2 = $connection->get("followers/list", ["screen_name" => $screenName, "count" => 200, "include_entities" => true, "cursor" => $maxID]);
             }
 
-
+            //return json_encode($status2);
             if (!isset($status2->error)) {
+
+
+                //$maxID = $status2->next_cursor_str;
                 foreach ($status2->users as $tweet2) {
 
                     array_push($locations, $tweet2->location);
 
-                            if ($maxID == -1 || $maxID > ($tweet2->id)) {
-                                $maxID = $tweet2->id;
-                            }
-                    }
-
-                //}
-
+                }
 
             }else {
                 $error = array("Error" => "1");

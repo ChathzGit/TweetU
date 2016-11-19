@@ -44,7 +44,7 @@ twitterThing.controller('ctrlProf', function($scope, getProf) {
 
         getProf.setProf($scope);
 
-        $scope.selectedAccount = $scope.profiles[0];
+          $scope.selectedAccount = $scope.profiles[0];
     };
 
     $scope.selectFirstProfile = function(index) {
