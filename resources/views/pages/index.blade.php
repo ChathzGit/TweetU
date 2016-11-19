@@ -7,7 +7,7 @@
 --
 --}}
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en" ng-app="myAppIndex">
 
 <head>
@@ -27,6 +27,7 @@
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/modern-business.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/tweetanalytics.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
@@ -81,19 +82,19 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {{--<li>--}}
-                            {{--<a href="portfolio-1-col.html">1 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-1-col.html">1 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-2-col.html">2 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-2-col.html">2 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-3-col.html">3 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-3-col.html">3 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-4-col.html">4 Column Portfolio</a>--}}
+                        {{--<a href="portfolio-4-col.html">4 Column Portfolio</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="portfolio-item.html">Single Portfolio Item</a>--}}
+                        {{--<a href="portfolio-item.html">Single Portfolio Item</a>--}}
                         {{--</li>--}}
                     </ul>
                 </li>
@@ -101,35 +102,35 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {{--<li>--}}
-                            {{--<a href="blog-home-1.html">Blog Home 1</a>--}}
+                        {{--<a href="blog-home-1.html">Blog Home 1</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="blog-home-2.html">Blog Home 2</a>--}}
+                        {{--<a href="blog-home-2.html">Blog Home 2</a>--}}
                         {{--</li>--}}
                         {{--<li>--}}
-                            {{--<a href="blog-post.html">Blog Post</a>--}}
+                        {{--<a href="blog-post.html">Blog Post</a>--}}
                         {{--</li>--}}
                     </ul>
                 </li>
                 {{--<li class="dropdown">--}}
-                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li>--}}
-                            {{--<a href="full-width.html">Full Width Page</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="sidebar.html">Sidebar Page</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="faq.html">FAQ</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="404.html">404</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="pricing.html">Pricing Table</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
+                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>--}}
+                {{--<ul class="dropdown-menu">--}}
+                {{--<li>--}}
+                {{--<a href="full-width.html">Full Width Page</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="sidebar.html">Sidebar Page</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="faq.html">FAQ</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="404.html">404</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                {{--<a href="pricing.html">Pricing Table</a>--}}
+                {{--</li>--}}
+                {{--</ul>--}}
                 {{--</li>--}}
 
                 <li>
@@ -146,23 +147,27 @@
 
 <!-- Page Content -->
 
-    @yield('content')
+@yield('content')
 
 
-<!-- Footer -->
+        <!-- Footer -->
 <footer>
-        <div class="col-sm-12">
-            <hr>
-        </div>
-        <div class="col-sm-12 text-center">
-            <p id="aaaa">Copyright &copy; Tweet-U 2016</p>
-        </div>
+    <div class="col-sm-12">
+        <hr>
+    </div>
+    <div class="col-sm-12 text-center">
+        <p id="aaaa">Copyright &copy; Tweet-U 2016</p>
+    </div>
 </footer>
 
 
 
 <!-- Tweet Sentiment JS -->
 <script src="{{ asset('/js/twitter-sentiment.js') }}"></script>
+
+<!-- Tweet Comparison JS -->
+<script src="{{ asset('/js/twitter-sentiment-comparison.js') }}"></script>
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
