@@ -22,12 +22,21 @@ twitterThing.controller('ctrlProf', function($scope, getProf) {
 
     $scope.selectedProfile = "";
 
+    $scope.issearched ;
+    $scope.isselected ;
+    $scope.isanalized ;
+
+
     /*
     * This function calls the service and gets all the twitter accounts
     * into an array and the first on that list is assigned to the "selectedAccount"
     * scope variable
     */
     $scope.loadProfiles = function() {
+
+        $scope.issearched = true;
+        $scope.isselected = false;
+        $scope.isanalized = false;
 
         //show search result div
         var link = document.getElementById('searchResult');
@@ -45,6 +54,9 @@ twitterThing.controller('ctrlProf', function($scope, getProf) {
     $scope.loadSelection = function(index) {
 
 
+        $scope.issearched = false;
+        $scope.isselected = true;
+
         //hide search result div
         var link = document.getElementById('searchResult');
         link.style.visibility = 'hidden';
@@ -56,6 +68,8 @@ twitterThing.controller('ctrlProf', function($scope, getProf) {
 
 
     $scope.loadTweets = function(scrnName) {
+
+        $scope.isanalized = true;
 
         getProf.getProfileTweets($scope,scrnName);
     };
@@ -102,9 +116,12 @@ twitterThing.factory('getProf', function($http) {
         $scope.tweets = [];
         $scope.usermentions = [];
         $scope.hashtags = [];
-        $scope.urls = [];
         $scope.retweets = [];
+        $scope.locations = [];
         $scope.HashTagPie = false;
+        $scope.locations = [];
+
+
 
         $http.get("getProfileTweets", {
 
@@ -125,6 +142,11 @@ twitterThing.factory('getProf', function($http) {
 
 
 
+
+
+
+
+
         $http.get("getTweetInfo", {
 
             params: {screenName: $sname}
@@ -134,11 +156,10 @@ twitterThing.factory('getProf', function($http) {
            // console.log(response);
             if (response["Error"] == undefined) {
 
+
                 $scope.usermentions = response['userMentions'];
                 $scope.hashtags = response['hashtags'];
-                $scope.urls = response['urls'];
                 $scope.retweets = response['retweets'];
-
 
 
                 $scope.HashtagKeys = Object.keys(response['hashtags']);
@@ -155,7 +176,6 @@ twitterThing.factory('getProf', function($http) {
                     responsive: false,
                     maintainAspectRatio: false
                 }
-
 
 
                 //pie chart user mentions
@@ -179,6 +199,37 @@ twitterThing.factory('getProf', function($http) {
             }
 
         });
+
+
+
+
+
+
+
+
+        //$http.get("getUserLocation", {
+        //
+        //    params: {screenName: $sname}
+        //    //params: {screenName: '@KasunKodithuwak'}
+        //}).success(function (response) {
+        //
+        //
+        //    if (response["Error"] == undefined) {
+        //
+        //        $scope.locations = response['l'];
+        //
+        //        console.log( $scope.locations);
+        //        console.log( response['locations']);
+        //
+        //    } else {
+        //        console.log("Error");
+        //        alert('fail')
+        //    }
+        //});
+
+
+
+
     }
 
     return {
