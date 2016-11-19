@@ -200,7 +200,11 @@
     });
 </script>
 
+<!-- Chart.js -->
+<script src="{{ URL::asset('js/Chart.min.js') }}"></script>
 
+<!-- angular-chart.js -->
+<script src="{{ URL::asset('js/angular-chart.js') }}"></script>
 
 </body>
 
