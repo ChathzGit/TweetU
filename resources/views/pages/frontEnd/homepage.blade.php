@@ -51,7 +51,7 @@
 {{--</header>--}}
 
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
@@ -63,154 +63,183 @@
         {{--</div>--}}
 
         {{--<div class="col-lg-12">--}}
-        <div class="jumbotron text-center">
-            <h1 class="page-header">
-                Welcome to Tweet-U
-            </h1>
+        <div class="jumbotron hp-jumbo text-center bg-opc-5">
+            <div class="container hp-jumbo-in-jumbo">
+                <h1 class="page-header">
+                    Welcome to Tweet-U
+                </h1>
 
-            <h2>
-                <small>Comprehensive twitter analytics</small>
-            </h2>
+                <h2 class="text-grey">
+                    :Comprehensive twitter analytics:
+                </h2>
+                <div class="col-sm-12">
+                <hr>
+                </div>
+                <h1><small class="text-grey">
+                    Search - Analyze - Compare</small>
+                </h1>
+            </div>
         </div>
 
+    </div>
+    <div class="row">
 
-        <div class="col-sm-12 text-center m-b-20">
-            <hr>
-            <h2>Services</h2>
+        <div class="container">
+
+            <div class="col-sm-12 text-center m-b-20">
+                <hr>
+                <h2>Services</h2>
+
+                <h3>
+                    <small class="text-grey">
+                        These are the services provided by Tweet-U. None of the services require a user
+                        account, so feel free to use any of these without hesitation.
+                    </small>
+                </h3>
+            </div>
+
+
+            <div class="col-sm-12">
+
+                <div class="col-sm-6 hp-container">
+                    <div class="panel panel-default bg-opc-65">
+
+                        <div class="panel-body text-center ">
+
+                            <div class="col-sm-12 text-center">
+                                <div class="col-sm-4 col-xs-12">
+                                    <img class="img img-responsive img-hp-thumb"
+                                         src="{{ URL::asset('images/hpageimg/atopics.png') }}">
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4>
+                                        Analyze topics
+                                    </h4>
+
+                                    <p class="text-grey">Analyze a topic of your choice, be it a trend, a product or
+                                        anything
+                                        really.</p>
+
+
+                                    <a href="tweetAnalytics"
+                                       class="btn btn-twitter-custom btn-full-width btn-side-padding">Analyze
+                                        Topic</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="col-sm-6 hp-container">
+                    <div class="panel panel-default bg-opc-65">
+
+                        <div class="panel-body text-center">
+
+                            <div class="col-sm-12 text-center">
+                                <div class="col-sm-4 col-xs-12">
+                                    <img class="img img-responsive img-hp-thumb"
+                                         src="{{ URL::asset('images/hpageimg/aaccounts.png') }}">
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4>
+                                        Analyze Accounts
+                                    </h4>
+
+                                    <p class="text-grey">Analyze a twitter account. Want to see how your favorite
+                                        celebrity
+                                        is
+                                        received by the public?
+                                        give it a try!</p>
+
+
+                                    <a href="get_profiles_view"
+                                       class="btn btn-twitter-custom btn-full-width btn-side-padding">Analyze
+                                        Accounts</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="col-sm-6 hp-container">
+                    <div class="panel panel-default bg-opc-65">
+
+                        <div class="panel-body text-center">
+
+                            <div class="col-sm-12 text-center">
+                                <div class="col-sm-4 col-xs-12">
+                                    <img class="img img-responsive img-hp-thumb"
+                                         src="{{ URL::asset('images/hpageimg/ctopics.png') }}">
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4>
+                                        Compare Topics
+                                    </h4>
+
+                                    <p class="text-grey">Analyze two topics simultaneously, and compare the public
+                                        perception of the
+                                        two.</p>
+
+
+                                    <a href="comparison_view"
+                                       class="btn btn-twitter-custom btn-full-width btn-side-padding">Compare Topics</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+                <div class="col-sm-6 hp-container">
+                    <div class="panel panel-default bg-opc-65">
+
+                        <div class="panel-body text-center">
+
+                            <div class="col-sm-12 text-center">
+                                <div class="col-sm-4 col-xs-12">
+                                    <img class="img img-responsive img-hp-thumb"
+                                         src="{{ URL::asset('images/hpageimg/caccounts.png') }}">
+                                </div>
+                                <div class="col-sm-8">
+                                    <h4>
+                                        Compare Accounts
+                                    </h4>
+
+                                    <p class="text-grey">Analyze two accounts simultaneously, and compare the public
+                                        perception of
+                                        the two. Good for
+                                        comparing two people.</p>
+
+
+                                    <a href="viewProfileController"
+                                       class="btn btn-twitter-custom btn-full-width btn-side-padding">Compare
+                                        Accounts</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-
-        <div class="col-sm-12">
-
-            <div class="col-sm-6 hp-container">
-                <div class="panel panel-default">
-
-                    <div class="panel-body text-center">
-
-                        <div class="col-sm-12 text-center">
-                            <div class="col-sm-4 col-xs-12">
-                                <img class="img img-responsive img-hp-thumb" src="{{ URL::asset('images/hpageimg/atopics.png') }}">
-                            </div>
-                            <div class="col-sm-8">
-                                <h4>
-                                    Analyze topics
-                                </h4>
-
-                                <p class="text-grey">Analyze a topic of your choice, be it a trend, a product or anything
-                                    really.</p>
-
-
-                                <a href="tweetAnalytics" class="btn btn-twitter-custom btn-full-width btn-side-padding">Analyze Topic</a>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-            <div class="col-sm-6 hp-container">
-                <div class="panel panel-default">
-
-                    <div class="panel-body text-center">
-
-                        <div class="col-sm-12 text-center">
-                            <div class="col-sm-4 col-xs-12">
-                                <img class="img img-responsive img-hp-thumb" src="{{ URL::asset('images/hpageimg/aaccounts.png') }}">
-                            </div>
-                            <div class="col-sm-8">
-                                <h4>
-                                    Analyze Accounts
-                                </h4>
-
-                                <p class="text-grey">Analyze a twitter account. Want to see how your favorite celebrity is
-                                    received by the public?
-                                    give it a try!</p>
-
-
-                                <a href="get_profiles_view" class="btn btn-twitter-custom btn-full-width btn-side-padding">Analyze Accounts</a>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-            <div class="col-sm-6 hp-container">
-                <div class="panel panel-default">
-
-                    <div class="panel-body text-center">
-
-                        <div class="col-sm-12 text-center">
-                            <div class="col-sm-4 col-xs-12">
-                                <img class="img img-responsive img-hp-thumb" src="{{ URL::asset('images/hpageimg/ctopics.png') }}">
-                            </div>
-                            <div class="col-sm-8">
-                                <h4>
-                                    Compare Topics
-                                </h4>
-
-                                <p class="text-grey">Analyze two topics simultaneously, and compare the public perception of the
-                                    two.</p>
-
-
-                                <a href="comparison_view" class="btn btn-twitter-custom btn-full-width btn-side-padding">Compare Topics</a>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-            <div class="col-sm-6 hp-container">
-                <div class="panel panel-default">
-
-                    <div class="panel-body text-center">
-
-                        <div class="col-sm-12 text-center">
-                            <div class="col-sm-4 col-xs-12">
-                                <img class="img img-responsive img-hp-thumb" src="{{ URL::asset('images/hpageimg/caccounts.png') }}">
-                            </div>
-                            <div class="col-sm-8">
-                                <h4>
-                                    Compare Accounts
-                                </h4>
-
-                                <p class="text-grey">Analyze two accounts simultaneously, and compare the public perception of
-                                    the two. Good for
-                                    comparing two people.</p>
-
-
-                                <a href="viewProfileController" class="btn btn-twitter-custom btn-full-width btn-side-padding">Compare Accounts</a>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
 
     </div>
 
