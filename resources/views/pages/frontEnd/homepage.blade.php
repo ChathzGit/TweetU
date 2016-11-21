@@ -72,12 +72,35 @@
                 <h2 class="text-grey">
                     :Comprehensive twitter analytics:
                 </h2>
+
                 <div class="col-sm-12">
-                <hr>
+                    <hr>
                 </div>
-                <h1><small class="text-grey">
-                    Search - Analyze - Compare</small>
+                <h1>
+                    <small class="text-grey">
+                        Search - Analyze - Compare
+                    </small>
                 </h1>
+                <div class="col-sm-12">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2 col-xs-3">
+                        <img class="img img-responsive img-hp-thumb"
+                             src="{{ URL::asset('images/hpageimg/atopics.png') }}">
+                    </div>
+                    <div class="col-sm-2 col-xs-3">
+                        <img class="img img-responsive img-hp-thumb"
+                             src="{{ URL::asset('images/hpageimg/aaccounts.png') }}">
+                    </div>
+                    <div class="col-sm-2 col-xs-3">
+                        <img class="img img-responsive img-hp-thumb"
+                             src="{{ URL::asset('images/hpageimg/ctopics.png') }}">
+                    </div>
+                    <div class="col-sm-2 col-xs-3">
+                        <img class="img img-responsive img-hp-thumb"
+                             src="{{ URL::asset('images/hpageimg/caccounts.png') }}">
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
             </div>
         </div>
 
