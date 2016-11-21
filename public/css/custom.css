@@ -2,9 +2,21 @@
     margin-top: 20px;
 }
 
+.img-hp-thumb
+{
+    max-height: 120px;
+    display: block;
+    margin: 5px auto 10px auto;
+}
+
 .m-b-20
 {
     margin-bottom: 20px;
+}
+
+.text-grey
+{
+    color: #657786;
 }
 
 .p-0
@@ -87,7 +99,8 @@
 }
 
 .hp-container p {
-    height: 50px;
+    min-height: 70px;
+    max-height: 150px;
 }
 
 .hp-panel {
@@ -165,4 +178,71 @@
     border: 1px solid #0000C2;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+
+
+.btn-side-padding
+{
+    min-width: 150px;
+    max-width: 250px;
+}
+
+
+.btn-twitter-custom {
+    color: #fff;
+    background-color: #55acee;
+    border-color: #ccc;
+}
+.btn-twitter-custom:focus,
+.btn-twitter-custom.focus {
+    color: #fff;
+    background-color: #4078a2;
+    border-color: #8c8c8c;
+}
+.btn-twitter-custom:hover {
+    color: #fff;
+    background-color: #4078a2;
+    border-color: #adadad;
+}
+.btn-twitter-custom:active,
+.btn-twitter-custom.active,
+.open > .dropdown-toggle.btn-twitter-custom {
+    color: #fff;
+    background-color: #4078a2;
+    border-color: #adadad;
+}
+.btn-twitter-custom:active:hover,
+.btn-twitter-custom.active:hover,
+.open > .dropdown-toggle.btn-twitter-custom:hover,
+.btn-twitter-custom:active:focus,
+.btn-twitter-custom.active:focus,
+.open > .dropdown-toggle.btn-twitter-custom:focus,
+.btn-twitter-custom:active.focus,
+.btn-twitter-custom.active.focus,
+.open > .dropdown-toggle.btn-twitter-custom.focus {
+    color: #fff;
+    background-color: #4078a2;
+    border-color: #8c8c8c;
+}
+.btn-twitter-custom:active,
+.btn-twitter-custom.active,
+.open > .dropdown-toggle.btn-twitter-custom {
+    background-image: none;
+}
+.btn-twitter-custom.disabled:hover,
+.btn-twitter-custom[disabled]:hover,
+fieldset[disabled] .btn-twitter-custom:hover,
+.btn-twitter-custom.disabled:focus,
+.btn-twitter-custom[disabled]:focus,
+fieldset[disabled] .btn-twitter-custom:focus,
+.btn-twitter-custom.disabled.focus,
+.btn-twitter-custom[disabled].focus,
+fieldset[disabled] .btn-twitter-custom.focus {
+    background-color: #55acee;
+    border-color: #ccc;
+}
+.btn-twitter-custom .badge {
+    color: #55acee;
+    background-color: #333;
 }
