@@ -2,7 +2,7 @@
  * Created by ACer on 10/28/2016.
  */
 
-app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer) {
+app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer, settingError) {
 
     function setTops(search, countPos, countNeg, $scope) {
 
@@ -20,7 +20,7 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
                                 $scope.loading = false;
                             }
 
-                            if (result["type"] == "positive" && (result["score"] >= 0.05 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            if (result["type"] == "positive" && (result["score"] >= 0.1 || result["ratio"] == 1) && !$scope.positives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countPos > 0) {
 
                                     currentTopTweetResponse["pos"][countPos] = {
@@ -46,7 +46,7 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
                                         setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.positives, lastIndex, result), 0);
                                     })(posLength - 1, result);
                                 }
-                            } else if (result["type"] == "negative" && (result["score"] <= -0.05 || result["ratio"] == 1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
+                            } else if (result["type"] == "negative" && (result["score"] <= -0.1 || result["ratio"] == -1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countNeg > 0) {
 
                                     currentTopTweetResponse["neg"][countNeg] = {
@@ -75,6 +75,7 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
                             }
 
                             if (i == response.length - 2 && (countNeg > 0 || countPos > 0)) {
+                                maxIDPopular = response[response.length - 1];
                                 return setTops(search, countPos, countNeg, $scope);
                             } else if (countNeg == 0 && countPos == 0) {
 
@@ -92,6 +93,15 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
 
                         GetTopTweetPosNegRequests[GetTopTweetPosNegRequests.length] = posNeg;
                     })(response, i);
+                }
+            } else {
+                if(maxIDPopular == -1) {
+
+                    if($scope.loading){
+                        $scope.loading = false;
+                    }
+
+                    settingError.networkError();
                 }
             }
         });

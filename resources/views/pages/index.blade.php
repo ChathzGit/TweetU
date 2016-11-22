@@ -208,6 +208,7 @@
 <script src="{{ asset('/app/services/topTweetAnalysisService.js') }}"></script>
 <script src="{{ asset('/app/services/simpleTweetService.js') }}"></script>
 <script src="{{ asset('/app/services/simplePositiveNegativeService.js') }}"></script>
+<script src="{{ asset('/app/services/networkErrorModalShowService.js') }}"></script>
 
 {{-- Angular directives --}}
 <script src="{{ asset('/app/directives/topTweetDirective.js') }}"></script>
@@ -225,6 +226,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('js/ui-bootstrap-tpls.min.js') }}"></script>
 
 <!-- Chart.js -->
 <script src="{{ URL::asset('js/Chart.min.js') }}"></script>

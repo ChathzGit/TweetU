@@ -28,12 +28,8 @@
 
                 <!-- --------------------------------------------------------------------------------------------------------------- -->
                 <div class="col-sm-10">
-                    <div class="col-sm-12">
-                        <h4>Search Topic:</h4>
-                    </div>
-
                     <div class="col-sm-11 col-xs-10">
-                        <input id="search" class="form-control" type="text" ng-model="search"
+                        <input id="search" class="form-control" type="text" ng-model="search" placeholder="Search Topics"
                                ng-keyup="$event.keyCode == 13 && getInfo()">
                     </div>
 
@@ -96,6 +92,9 @@
                                 <div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #4078a2;"></div><span class="text-grey">Negative</span>
                             </div>
 
+                            <div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">
+                                <label><%tweetChecked%> tweets analyzed</label>
+                            </div>
                         </div>
 
                     </div>
@@ -105,88 +104,68 @@
 
 
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
-            <div class="row m-t-20 well bg-opc-65">
-                <div class="col-sm-12">
-                    <h4>This Week Most Popular <strong class="c-green">Goods</strong> & <strong
-                                class="c-red">Bads</strong> :</h4>
+            <div class="col-sm-12 well">
+                <h4>Latest Most Popular <strong class="c-green">Positives</strong> & <strong class="c-red">Negatives</strong> :</h4>
 
-                    <div class="row p-0">
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="col-xs-12 good-tweet gb-tweet" ng-repeat="items in positives">
-                                <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}"
-                                     ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze"
-                                     style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
-                                    <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                <div class="row p-0">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="col-xs-12 good-tweet gb-tweet" ng-repeat="items in positives">
+                            <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
+                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                            <div ng-if="justTweets['pos'][items['number']]" class="just-tweet" style="margin-top: 5px;">
+                                <div tweet="items['text']" top-tweet></div>
+                                <div class="pull-left" style="margin-top: 10px">
+                                    <span>by <label style="color: blue;"><%items['user']%></label></span>
                                 </div>
-                                <div ng-if="justTweets['pos'][items['number']]" class="just-tweet"
-                                     style="margin-top: 5px;">
-                                    <div tweet="items['text']" top-tweet></div>
-                                    <div class="pull-left" style="margin-top: 10px">
-                                        <span>by <label style="color: blue;"><%items['user']%></label></span>
-                                    </div>
-                                    <div class="pull-right" style="margin-top: 10px">
-                                        <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%>
-                                        </label>
-                                    </div>
+                                <div class="pull-right" style="margin-top: 10px">
+                                    <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
                                 </div>
-                                <div ng-if="topAnalyzer['pos'][items['number']]" class="tweet-analyzer">
-                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}"
-                                      ng-repeat="span in items['analyzed']"
-                                      style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
-                                    <span ng-if="span['color'] != 'black'"
-                                          class="analytic-tooltiptext"><%span['value']%></span>
+                            </div>
+                            <div ng-if="topAnalyzer['pos'][items['number']]" class="tweet-analyzer">
+                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}" ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
+                                    <span ng-if="span['color'] != 'black'" class="analytic-tooltiptext"><%span['value']%></span>
                                 </span>
-                                    <span> </span>
-
-                                    <div style="margin-top: 10px; text-align: center">
-                                        <label style="text-decoration: underline; color: green">Total:
-                                            + <%items['total']%></label>
-                                    </div>
+                                <span> </span>
+                                <div style="margin-top: 10px; text-align: center">
+                                    <label style="text-decoration: underline; color: green">Total:  + <%items['total']%></label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-xs-12 visible-xs">
-                            <hr>
-                        </div>
-
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="col-xs-12 bad-tweet gb-tweet" ng-repeat="items in negatives">
-                                <div ng-class="{'showingAnalyzer': topAnalyzer['neg'][items['number']]}"
-                                     ng-click="loadHowSentimentWorks(items['number'], 'neg')" title="Analyze"
-                                     style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
-                                    <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
-                                </div>
-                                <div ng-if="justTweets['neg'][items['number']]" class="just-tweet"
-                                     style="margin-top: 5px;">
-                                    <div tweet="items['text']" top-tweet></div>
-                                    <div class="pull-left" style="margin-top: 10px">
-                                        <span>by <label style="color: blue;"><%items['user']%></label></span>
-                                    </div>
-                                    <div class="pull-right" style="margin-top: 10px">
-                                        <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div ng-if="topAnalyzer['neg'][items['number']]" class="tweet-analyzer">
-                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}"
-                                      ng-repeat="span in items['analyzed']"
-                                      style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
-                                    <span ng-if="span['color'] != 'black'"
-                                          class="analytic-tooltiptext"><%span['value']%> </span>
-                                </span>
-
-                                    <div style="margin-top: 10px; text-align: center">
-                                        <label style="text-decoration: underline; color: red">Total:
-                                            - <%items['total']%></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <div class="col-xs-12 visible-xs">
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="col-xs-12 bad-tweet gb-tweet" ng-repeat="items in negatives">
+                            <div ng-class="{'showingAnalyzer': topAnalyzer['neg'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'neg')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
+                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                            <div ng-if="justTweets['neg'][items['number']]" class="just-tweet" style="margin-top: 5px;">
+                                <div tweet="items['text']" top-tweet></div>
+                                <div class="pull-left" style="margin-top: 10px">
+                                    <span>by <label style="color: blue;"><%items['user']%></label></span>
+                                </div>
+                                <div class="pull-right" style="margin-top: 10px">
+                                    <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>
+                                </div>
+                            </div>
+                            <div ng-if="topAnalyzer['neg'][items['number']]" class="tweet-analyzer">
+                                <span ng-class="{'analytic-tooltip' : span['color'] != 'black'}" ng-repeat="span in items['analyzed']" style="font-weight: bold; color: <%span['color']%>"><%span['word']%>
+                                    <span ng-if="span['color'] != 'black'" class="analytic-tooltiptext"><%span['value']%> </span>
+                                </span>
+                                <div style="margin-top: 10px; text-align: center">
+                                    <label style="text-decoration: underline; color: red">Total:  - <%items['total']%></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>
             <!-- -------------------- Good Bad Tweets Section End --------------------------------------------------------------- -->
 
         </div>
@@ -211,6 +190,14 @@
                 </tr>
             </table>
         </div>
+
+        <!--Error Modal -->
+        <script type="text/ng-template" id="NetworkError.html">
+            <div class="modal-body">
+                <button onclick="location.reload()" type="button" class="close" data-dismiss="modal"><i style="color: red" class="fa fa-refresh" aria-hidden="true"></i></button>
+                <h4 class="modal-title">Error in connection. Please retry...</h4>
+            </div>
+        </script>
     </div>
     <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop

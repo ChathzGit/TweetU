@@ -17,19 +17,13 @@ var currentTopTweetResponse = [];
 currentTopTweetResponse["pos"] = [];
 currentTopTweetResponse["neg"] = [];
 
-var maxIDSearch = -1, maxIDPopular = -1;
-
-
-var pos = 0, neg = 0, maxIDSearch = -1, maxIDPopular = -1;
-var pos2 = 0, neg2 = 0, maxIDSearch2 = -1, maxIDPopular2 = -1;
-
-
 
 var app = angular.module('tweetU',
     [
         'chart.js',
         'toaster',
-        'ngCookies'
+        'ngCookies',
+        'ui.bootstrap'
     ],
 
     ['$interpolateProvider',

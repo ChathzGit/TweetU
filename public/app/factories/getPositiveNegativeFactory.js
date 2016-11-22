@@ -4,11 +4,11 @@
 
 
 
-app.factory('getPosNeg', function (getTweets, checkPosNeg) {
+app.factory('getPosNeg', function (getTweets, checkPosNeg, settingError) {
     function setPosNeg(search, count, $scope) {
         if (count > 0) {
 
-            var tweet = getTweets.getTweets(search, maxIDPopular, 1);
+            var tweet = getTweets.getTweets(search, maxIDSearch, 1);
             tweet.tweet.then(function (response) {
                 if (response["Error"] == undefined) {
                     for (var i = 0; i < response.length - 1; i++) {
@@ -17,7 +17,8 @@ app.factory('getPosNeg', function (getTweets, checkPosNeg) {
                             var posNeg = checkPosNeg.getType(response[i]["text"]);
                             posNeg.type.then(function (result) {
 
-                                if(result["score"] >= 0.05 || result["score"] <= -0.05 || result["ratio"] == 1) {
+                                $scope.tweetChecked += 1;
+                                if(result["score"] >= 0.1 || result["score"] <= -0.1 || result["ratio"] == 1 || result["ratio"] == -1) {
 
                                     if ($scope.loading) {
                                         $scope.loading = false;
@@ -31,12 +32,11 @@ app.factory('getPosNeg', function (getTweets, checkPosNeg) {
 
                                     $scope.data[0] = Math.round(100 * pos / (pos + neg));
                                     $scope.data[1] = Math.round(100 * neg / (pos + neg));
-
-                                    count--;
                                 }
 
                                 if (i == Math.round(response.length * 20 / 100)) {
                                     maxIDSearch = response[response.length - 1];
+                                    count--;
                                     return setPosNeg(search, count, $scope);
                                 }
 
@@ -48,7 +48,14 @@ app.factory('getPosNeg', function (getTweets, checkPosNeg) {
                         })(response, i);
                     }
                 } else {
-                    console.log("Error");
+                    if(maxIDSearch == -1) {
+
+                        if($scope.loading){
+                            $scope.loading = false;
+                        }
+
+                        settingError.networkError();
+                    }
                 }
             });
 
