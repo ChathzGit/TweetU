@@ -15,12 +15,15 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
     $scope.selectedFirstProfile="";
     $scope.selectedSecondProfile="";
 
+    $scope.isSearched = false;
+
 
     $scope.loading = false;
 
     $scope.loadProfiles = function() {
 
         $scope.loading = true;
+        $scope.isSearched = true;
 
         //show search result div
         var link = document.getElementById('searchResult');
