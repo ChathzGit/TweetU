@@ -164,12 +164,14 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
+<!-- ui-bootstrap-tpls.min for angular charts -->
+<script src="{{ URL::asset('js/ui-bootstrap-tpls.min.js') }}"></script>
+
 <!-- Chart.js -->
-<script src="{{ URL::asset('js/Chart.js') }}"></script>
+<script src="{{ URL::asset('js/Chart.min.js') }}"></script>
 
 <!-- angular-chart.js -->
 <script src="{{ URL::asset('js/angular-chart.js') }}"></script>
-
 </body>
 
 </html>

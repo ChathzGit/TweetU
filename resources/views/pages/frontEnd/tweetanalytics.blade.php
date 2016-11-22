@@ -63,10 +63,12 @@
                 <div class="col-sm-4"></div>
 
                 <div class="col-sm-4">
-                    <canvas class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options" width="200" height="200"></canvas>
+                    <canvas class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colors" width="200" height="200"></canvas>
                 </div>
 
-                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <label><%tweetChecked%> analyzed</label>
+                </div>
 
             </div>
             <!-- ---------------- Pie Chart Section End ------------------------------------------------------------------------------------------- -->
@@ -78,7 +80,7 @@
 
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
             <div class="col-sm-12 well">
-                <h4>This Week Most Popular <strong class="c-green">Goods</strong> & <strong class="c-red">Bads</strong> :</h4>
+                <h4>Latest Most Popular <strong class="c-green">Positives</strong> & <strong class="c-red">Negatives</strong> :</h4>
 
                 <div class="row p-0">
                     <div class="col-sm-6 col-xs-12">
@@ -160,6 +162,18 @@
                 </tr>
             </table>
         </div>
+
+
+        <!-- Modal -->
+        <script type="text/ng-template" id="NetworkError.html">
+
+                <div class="modal-body">
+                    <button onclick="location.reload()" type="button" class="close" data-dismiss="modal"><i style="color: red" class="fa fa-refresh" aria-hidden="true"></i></button>
+                    <h4 class="modal-title">Error in connection. Please retry...</h4>
+                </div>
+
+        </script>
+
     </div>
     <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop

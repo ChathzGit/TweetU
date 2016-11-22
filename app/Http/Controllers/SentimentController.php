@@ -79,11 +79,15 @@ class SentimentController extends Controller{
                             }
 
                             array_push($arr, $singleTweet);
+
+                            if((int)$maxID < (int)$t->id_str){
+                                $maxID = $t->id_str;
+                            }
                         }
                     }
                 }
 
-                array_push($arr, $status->search_metadata->max_id_str);
+                array_push($arr, $maxID);
                 return json_encode($arr);
             } else {
                 $error = array("Error" => "1");
