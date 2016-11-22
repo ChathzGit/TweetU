@@ -83,22 +83,38 @@
                 <div class="col-sm-12">
                     <hr>
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-1 col-xs-3">
-                        <img class="img img-responsive img-hp-thumb"
-                             src="{{ URL::asset('images/hpageimg/atopics.png') }}">
-                    </div>
-                    <div class="col-sm-1 col-xs-3">
-                        <img class="img img-responsive img-hp-thumb"
-                             src="{{ URL::asset('images/hpageimg/aaccounts.png') }}">
-                    </div>
-                    <div class="col-sm-1 col-xs-3">
-                        <img class="img img-responsive img-hp-thumb"
-                             src="{{ URL::asset('images/hpageimg/ctopics.png') }}">
-                    </div>
-                    <div class="col-sm-1 col-xs-3">
-                        <img class="img img-responsive img-hp-thumb"
-                             src="{{ URL::asset('images/hpageimg/caccounts.png') }}">
-                    </div>
+
+                    <a href="tweetAnalytics">
+                        <div class="col-sm-1 col-xs-3">
+                            <img class="img img-responsive img-hp-thumb"
+                                 src="{{ URL::asset('images/hpageimg/atopics.png') }}">
+                        </div>
+                    </a>
+
+
+                    <a href="get_profiles_view">
+                        <div class="col-sm-1 col-xs-3">
+                            <img class="img img-responsive img-hp-thumb"
+                                 src="{{ URL::asset('images/hpageimg/aaccounts.png') }}">
+                        </div>
+                    </a>
+
+
+                    <a href="comparison_view">
+                        <div class="col-sm-1 col-xs-3">
+                            <img class="img img-responsive img-hp-thumb"
+                                 src="{{ URL::asset('images/hpageimg/ctopics.png') }}">
+                        </div>
+                    </a>
+
+                    <a href="viewProfileController">
+                        <div class="col-sm-1 col-xs-3">
+                            <img class="img img-responsive img-hp-thumb"
+                                 src="{{ URL::asset('images/hpageimg/caccounts.png') }}">
+                        </div>
+                    </a>
+
+
                     <div class="col-sm-4"></div>
                 </div>
             </div>
