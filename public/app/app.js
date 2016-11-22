@@ -55,7 +55,7 @@ var app = angular.module('tweetU',
 
 app.filter('unsafe', function($sce){
     return $sce.trustAsHtml;
-})
+});
 
 
 

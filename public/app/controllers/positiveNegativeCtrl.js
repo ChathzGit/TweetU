@@ -12,6 +12,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
     $scope.negatives = [];
     $scope.mouseHovered = [];
 
+    $scope.colors = ['#4078a2', '#77c0f8'];
+
     $scope.justTweets = [];
     $scope.justTweets["pos"] = [];
     $scope.justTweets["neg"] = [];
