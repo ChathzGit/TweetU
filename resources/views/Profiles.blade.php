@@ -60,22 +60,31 @@
                 <div class="col-xs-12 col-sm-5"
                      style="height: 400px; overflow: scroll; padding-top: 20px; margin-bottom: 10px;">
 
-                    <div ng-show="profiles.length >0" ng-repeat="items in profiles">
-                        <table class="table">
-                            <tr class="col-xs-12 profiles profile-search">
-                                <td class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></td>
-                                <td class="col-xs-8">
-                                    <label><%items["name"]%></label>
-                                    <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
-                                </td>
-                                <td>
+                    <div ng-show="profiles.length >0">
+
+
+                        <div class="col-xs-12 selected-profile m-b-5" ng-repeat="items in profiles">
+
+                            <div class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></div>
+
+                            <div class="col-xs-10">
+                                <div class="col-xs-12 col-sm-7">
+
+                                        <strong><%items["name"]%></strong><i class="fa-li fa fa-check-circle text-twitter" ng-show="items['verify']"></i>
+
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-5">
                                     <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select
                                         Profile
                                     </button>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
 
-                        </table>
+                        </div>
+
+
                         <br>
                     </div>
                 </div>
