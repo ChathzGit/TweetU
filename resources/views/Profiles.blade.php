@@ -24,21 +24,19 @@
             <!-- --------------------------------------------------------------------------------------------------------------- -->
             <div class="row m-t-20 well bg-opc-65">
 
+
                 <div class="col-sm-1"></div>
 
                 <div class="col-sm-10">
 
-                    <div class="col-sm-12">
-                        <h4>Search For Account :</h4>
-                    </div>
 
                     <div class="col-sm-11 col-xs-10">
-                        <input id="search" class="form-control" type="text" ng-model="searchCriteria"
+                        <input id="search" class="form-control" type="text" ng-model="searchCriteria" placeholder="Search For Account"
                                ng-keyup="$event.keyCode == 13 && loadProfiles()">
                     </div>
 
                     <div class="col-sm-1 col-xs-2">
-                        <Button id="search-btn" class="btn btn-default" ng-click="loadProfiles()">
+                        <Button id="search-btn" class="btn btn-default" ng-click="getInfo()">
                             <i class="fa fa-search"></i>
                         </Button>
                     </div>

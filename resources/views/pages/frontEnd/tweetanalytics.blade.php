@@ -91,8 +91,8 @@
                                 <div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #4078a2;"></div><span class="text-grey">Negative</span>
                             </div>
 
-                            <div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">
-                                <label><%tweetChecked%> tweets analyzed</label>
+                            <div class="col-sm-12 col-xs-12 text-grey" style="margin-bottom: 10px; padding:0">
+                                <p><strong><%tweetChecked%></strong> tweets analyzed</p>
                             </div>
                         </div>
 
@@ -105,7 +105,7 @@
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
             <div class="row m-t-20 well bg-opc-65">
                 <div class="col-sm-12">
-                    <h4>This Week's Most Popular <strong class="c-green">Positive Tweets</strong> & <strong
+                    <h4 class="m-b-20">This Week's Most Popular <strong class="c-green">Positive Tweets</strong> & <strong
                                 class="c-red">Negative Tweets</strong> :</h4>
 
                     <div class="row p-0">
