@@ -101,7 +101,7 @@ app.factory('getProf', function($http) {
                 $scope.options1 =  {
                     responsive: false,
                     maintainAspectRatio: false
-                }
+                };
 
 
                 //pie chart user mentions
@@ -112,7 +112,9 @@ app.factory('getProf', function($http) {
                 $scope.options2 =  {
                     responsive: false,
                     maintainAspectRatio: false
-                }
+                };
+
+                $scope.loading = false;
 
 
                 //$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
@@ -152,8 +154,6 @@ app.factory('getProf', function($http) {
         //        alert('fail')
         //    }
         //});
-
-
 
 
     }

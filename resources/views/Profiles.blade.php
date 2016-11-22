@@ -31,12 +31,13 @@
 
 
                     <div class="col-sm-11 col-xs-10">
-                        <input id="search" class="form-control" type="text" ng-model="searchCriteria" placeholder="Search For Account"
+                        <input id="search" class="form-control" type="text" ng-model="searchCriteria"
+                               placeholder="Search For Account"
                                ng-keyup="$event.keyCode == 13 && loadProfiles()">
                     </div>
 
                     <div class="col-sm-1 col-xs-2">
-                        <Button id="search-btn" class="btn btn-default" ng-click="getInfo()">
+                        <Button id="search-btn" class="btn btn-default" ng-click="loadProfiles()">
                             <i class="fa fa-search"></i>
                         </Button>
                     </div>
@@ -68,7 +69,8 @@
                                     <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
                                 </td>
                                 <td>
-                                    <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select Profile
+                                    <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select
+                                        Profile
                                     </button>
                                 </td>
                             </tr>
@@ -133,7 +135,8 @@
                     </div>
 
                     <div class="col-sm-12">
-                        <button class="btn btn-twitter-custom btn-full-width" ng-click="loadTweets(selectedAccount['screenName'])">
+                        <button class="btn btn-twitter-custom btn-full-width"
+                                ng-click="loadTweets(selectedAccount['screenName'])">
                             Analyze Profile
                         </button>
                     </div>
@@ -143,104 +146,145 @@
             </div>
 
 
-            <div class="col-sm-12" ng-if="isanalized">
-                <div class="col-sm-12">
+            <div class="row m-t-20 well bg-opc-65" ng-if="isanalized">
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Tweets</div>
-                        <div class="panel-body">
-                            <table>
+
+                <div class="col-sm-12 p-0">
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4><strong>Tweet Summary:</strong></h4>
+                        </div>
+                        <div class="col-sm-12">
+                            <table class="table m-b-0">
+
                                 <tr>
-                                    <td>Total Tweets</td>
-                                    <td><% selectedAccount["tweetcount"] %> </td>
+                                    <td>Total Tweets :</td>
+                                    <td><label><% selectedAccount["tweetcount"] %></label></td>
                                 </tr>
                                 <tr>
-                                    <td>Average tweets per day</td>
-                                    <td><% selectedAccount["tweetsperday"] %></td>
+                                    <td>Average tweets per day :</td>
+                                    <td><label><% selectedAccount["tweetsperday"] | number:2 %></label></td>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12">
+                        <hr>
+                    </div>
+
+
+                    <div class="col-sm-12" ng-show="tweets.length >0">
+                        <div class="col-sm-12">
+                            <h4><strong>Recent Tweets:</strong></h4>
+                        </div>
+                        <div class="col-sm-12">
+
+
+                            <div ng-repeat="items in tweets" class="col-xs-12 selected-profile m-b-5">
+                                <p class="text-grey"><%items["text"]%></p>
+                            </div>
 
                         </div>
                     </div>
 
-                </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <hr>
+                    </div>
 
-
-                <div class="col-sm-12" ng-show="tweets.length >0" ng-repeat="items in tweets">
-                    <div>Recent Tweets of the user</div>
-                    <table class="table">
-                        <tr class="col-xs-12 profiles profile-search">
-                            <td class="col-xs-8">
-                                <label><%items["text"]%></label>
-                            </td>
-                        </tr>
-
-                    </table>
-                    <br>
-                </div>
-
-
-                <div class="row col-sm-12">
-                    <div>Summary of user timeline</div>
-                    <h3>Top Hash Tags Used</h3>
-
-                    <div class="col-sm-6">
-                        <div ng-repeat="items in hashtags">
-                            <table class="table">
-                                <tr>
-                                    <label><%HashtagKeys[$index]%></label> -
-                                    <label><%items%></label>
-                                </tr>
-
-                            </table>
-                            <br>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4><strong>Timeline Summary:</strong></h4>
                         </div>
-
-                        <canvas id="pie" class="chart chart-pie"
-                                chart-data="data1" chart-labels="labels1" chart-options="options1">
-                        </canvas>
-
-                    </div>
+                        <div class="col-sm-12">
 
 
-                    <h3>Top User Mentions</h3>
+                            <div class="col-sm-5 col-xs-12">
+                                <div class="col-sm-12 p-0">
+                                    <h4><strong>Top Hash Tags:</strong></h4>
+                                </div>
 
-                    <div class="col-sm-6">
-                        <div ng-repeat="items in usermentions">
-                            <table class="table">
-                                <tr>
-                                    <label><%UserMentionKeys[$index]%></label> -
-                                    <label><%items%></label>
-                                </tr>
 
-                            </table>
-                            <br>
+                                <table class="table m-b-20">
+
+                                    <tr ng-repeat="items in hashtags">
+                                        <td><%HashtagKeys[$index]%></td>
+                                        <td><label><%items%></label></td>
+                                    </tr>
+
+                                </table>
+
+                                <div class="col-sm-12">
+                                    <canvas id="pie" class="chart chart-pie"
+                                            chart-data="data1" chart-labels="labels1" chart-options="options1">
+                                    </canvas>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-1"></div>
+                            <div class="col-xs-12 visible-xs">
+                                <hr>
+                            </div>
+
+                            <div class="col-sm-5 col-xs-12">
+                                <div class="col-sm-12 p-0">
+                                    <h4><strong>Top User Mentions:</strong></h4>
+                                </div>
+
+
+                                <table class="table m-b-20">
+
+                                    <tr ng-repeat="items in usermentions">
+                                        <td><%UserMentionKeys[$index]%></td>
+                                        <td><label><%items%></label></td>
+                                    </tr>
+
+                                </table>
+
+                                <div class="col-sm-12">
+                                    <canvas id="pie" class="chart chart-pie"
+                                            chart-data="data2" chart-labels="labels2" chart-options="options2">
+                                    </canvas>
+                                </div>
+
+                            </div>
+
                         </div>
-
-                        <canvas id="pie" class="chart chart-pie"
-                                chart-data="data2" chart-labels="labels2" chart-options="options2">
-                        </canvas>
                     </div>
+
+                    <div class="col-sm-12 col-xs-12">
+                        <hr>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <h4><strong>Most retweeted tweets:</strong></h4>
+                        </div>
+                        <div class="col-sm-12" ng-repeat="items in retweets">
+                            <div class="col-sm-9 col-xs-12 selected-profile m-b-5">
+                                <p class="text-grey"><%RetweetKeys[$index]%></p>
+                            </div>
+
+                            <div class="col-sm-3 col-xs-12 m-t-5">
+                                <label class="text-grey"><%items%> retweets</label>
+                            </div>
+
+                            <div class="col-xs-12 visible-xs">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
-                <div class="row col-sm-12">
-                    <h3>Most retweeted tweets</h3>
 
-                    <div class="col-sm-12" ng-repeat="items in retweets">
-                        <table class="table">
-                            <tr class="col-xs-12 ">
-                                <td class="col-xs-8 profiles profile-search">
-                                    <label><%RetweetKeys[$index]%></label>
-                                </td>
-                                <td>
-                                    <label> retweets - <%items%></label>
-                                </td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
             </div>
+
 
         </div>
     </div>

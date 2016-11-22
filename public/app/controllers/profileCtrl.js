@@ -32,9 +32,6 @@ app.controller('ctrlProf', function($scope, getProf) {
         $scope.isselected = false;
         $scope.isanalized = false;
 
-        //show search result div
-        //var link = document.getElementById('searchResult');
-        //link.style.visibility = 'visible';
 
         getProf.setProf($scope);
 
@@ -49,12 +46,9 @@ app.controller('ctrlProf', function($scope, getProf) {
     $scope.loadSelection = function(index) {
 
 
-        //$scope.issearched = false;
         $scope.isselected = true;
+        $scope.isanalized = false;
 
-        //hide search result div
-        //var link = document.getElementById('searchResult');
-        //link.style.visibility = 'hidden';
 
         $scope.selectedProfile = index;
         $scope.selectedAccount = $scope.profiles[index];
@@ -64,6 +58,7 @@ app.controller('ctrlProf', function($scope, getProf) {
 
     $scope.loadTweets = function(scrnName) {
 
+        $scope.loading = true;
         $scope.isanalized = true;
 
         getProf.getProfileTweets($scope,scrnName);
