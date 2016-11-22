@@ -15,7 +15,12 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
     $scope.selectedFirstProfile="";
     $scope.selectedSecondProfile="";
 
+
+    $scope.loading = false;
+
     $scope.loadProfiles = function() {
+
+        $scope.loading = true;
 
         //show search result div
         var link = document.getElementById('searchResult');
@@ -41,14 +46,15 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
         $scope.selectedFirstProfile=$scope.profiles1[index];
         $scope.isclicked1stprof = false;
         $scope.firstprofileselected = true;
-    }
+    };
+
     $scope.selectSecondProfile = function(index) {
 
         $scope.secondProfile=index;
         $scope.selectedSecondProfile=$scope.profiles2[index];
         $scope.isclicked2ndprof = false;
         $scope.secondprofileselected = true;
-    }
+    };
 
     $scope.Compare = function()
     {
@@ -64,7 +70,7 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
         $scope.options =  {
             responsive: false,
             maintainAspectRatio: false
-        }
+        };
 
 
         //usage chart

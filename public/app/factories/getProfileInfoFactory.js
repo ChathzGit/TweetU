@@ -44,6 +44,7 @@ app.factory('getInfoProf', function($http) {
             if (response["Error"] == undefined) {
 
                 $scope.profiles2 = response;
+                $scope.loading = false;
 
             } else {
                 console.log("Error");

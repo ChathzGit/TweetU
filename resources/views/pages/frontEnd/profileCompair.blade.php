@@ -24,32 +24,78 @@
 
 {{--</head>--}}
 {{--<body>--}}
-<div class="container">
 
-    <div class="quote" ng-controller="ctrlInfoProf">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container-fluid" ng-controller="ctrlInfoProf">
+
+            <div class="loading-gif-one"
+                 ng-if="loading"
+                    ></div>
+
+            <div class="container">
+
+
+                <!-- --------------------------------------------------------------------------------------------------------------- -->
+                <div class="row m-t-20 well bg-opc-65">
+
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-10">
+
+
+                        <div class="col-sm-11 col-xs-10 p-0">
+                            <div class="col-sm-6 col-xs-12 m-b-5">
+                                <input id="search" class="form-control" type="text" ng-model="searchCriteria1"
+                                       placeholder="First Account"
+                                       ng-keyup="$event.keyCode == 13 && loadProfiles()">
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12 m-b-5">
+                                <input id="search" class="form-control" type="text" ng-model="searchCriteria2"
+                                       placeholder="Second Account"
+                                       ng-keyup="$event.keyCode == 13 && loadProfiles()">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2">
+                            <Button id="search-btn" class="btn btn-default" ng-click="loadProfiles()">
+                                <i class="fa fa-search"></i>
+                            </Button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+
+                </div>
+
+
+
+
 
 
         <!-- --------------------------------------------------------------------------------------------------------------- -->
-        <div class="col-sm-8 m-t-20 well "  style="margin-left: 15%">
-            <div class="col-sm-12">
-                <h4>Profile Name</h4>
-            </div>
 
-            <div class="col-xs-16" >
-                <div class="col-xs-6">
-                    <input class="form-control" ng-model="searchCriteria1" placeholder="profile name">
-                </div>
-                <div class="col-xs-6">
-                    <input class="form-control" ng-model="searchCriteria2" placeholder="profile name">
-                </div>
-                <div class="col-xs-4">
-                    <button class="btn btn-default" ng-click="loadProfiles()">
-                        <i class="fa fa-search"></i> SEARCH
-                    </button>
-                </div>
-            </div>
-
-        </div>
 
 
         {{--first profile set--}}
