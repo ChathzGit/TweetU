@@ -747,7 +747,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     //pie chart2
                                     $scope.labels2 = ["Good2", "Bad2"];
                                     $scope.data2 = [$scope.positive2, $scope.negative2];
-                                    $scope.colors2 = ['#FFC0CB', '#FFFF00', '#717984', '#F1C40F'];
+                                    $scope.colors2 = ['#4078a2', '#77c0f8'];
                                     $scope.options2 =  {};
 
                                     //bar chart good
@@ -755,7 +755,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     $scope.bardata2 = [
                                         [$scope.positive, $scope.positive2]
                                     ];
-                                    $scope.barcolors2 = ['#717984', '#F1C40F'];
+                                    $scope.barcolors2 = ['#4078a2', '#77c0f8'];
                                     $scope.baroptions2 =  {
                                         responsive: false,
                                         maintainAspectRatio: false

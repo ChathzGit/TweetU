@@ -8,7 +8,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
     $scope.labels = ["Negative", "Positive"];
     $scope.data = [50, 50];
-    $scope. colors = ['#4078a2', '#77c0f8'];
+    $scope.colors = ['#4078a2', '#77c0f8'];
     $scope.options = {
         responsive: true,
         hover: {

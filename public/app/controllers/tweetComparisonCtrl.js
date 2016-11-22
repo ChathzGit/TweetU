@@ -6,11 +6,13 @@
 app.controller('tweetComparisonCtrl', function($scope, comparisonFactory,  $window, $timeout, $http) {
 
     $scope.loading = false;
+    $scope.isCompared = false;
 
 
     $scope.getInfo = function() {
 
         $scope.loading = true;
+        $scope.isCompared = true;
 
         comparisonFactory.setPosNeg($scope.search, 2, $scope);
         comparisonFactory.setPosNeg2($scope.search2, 2, $scope);
