@@ -14,8 +14,7 @@
     <div class="container-fluid" ng-controller="posNegSentiment">
 
         <div class="loading-gif-one"
-             ng-if="loading"
-                ></div>
+             ng-if="loading"></div>
 
         <div class="container">
 
@@ -104,19 +103,24 @@
 
 
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
-            <div class="col-sm-12 well">
-                <h4>Latest Most Popular <strong class="c-green">Positives</strong> & <strong class="c-red">Negatives</strong> :</h4>
+            <div class="row m-t-20 well bg-opc-65">
+                <div class="col-sm-12">
+                    <h4>This Week's Most Popular <strong class="c-green">Positive Tweets</strong> & <strong
+                                class="c-red">Negative Tweets</strong> :</h4>
 
-                <div class="row p-0">
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="col-xs-12 good-tweet gb-tweet" ng-repeat="items in positives">
-                            <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
-                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-                            <div ng-if="justTweets['pos'][items['number']]" class="just-tweet" style="margin-top: 5px;">
-                                <div tweet="items['text']" top-tweet></div>
-                                <div class="pull-left" style="margin-top: 10px">
-                                    <span>by <label style="color: blue;"><%items['user']%></label></span>
+                    <div class="row p-0">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="col-xs-12 good-tweet gb-tweet" ng-repeat="items in positives">
+                                <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}"
+                                     ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze"
+                                     style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
+                                    <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+                                <div ng-if="justTweets['pos'][items['number']]" class="just-tweet"
+                                     style="margin-top: 5px;">
+                                    <div tweet="items['text']" top-tweet></div>
+                                    <div class="pull-left" style="margin-top: 10px">
+                                        <span>by <label style="color: blue;"><%items['user']%></label></span>
                                 </div>
                                 <div class="pull-right" style="margin-top: 10px">
                                     <label><i class="fa fa-retweet" aria-hidden="true"></i> <%items['retweet']%></label>

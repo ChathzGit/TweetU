@@ -11,103 +11,138 @@
 
 @section('content')
 
-{{--<!Doctype html>--}}
-{{--<html ng-app="myApp">--}}
-{{--<head>--}}
-    {{--<title>Profile analysis</title>--}}
-    {{--<meta name="csrf-token" content="{{ csrf_token() }}"/>--}}
-    {{--<script src="{{ asset('/js/jquery.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/profile-passer.js') }}"></script>--}}
-{{--</head>--}}
-{{--<body>--}}
-    <div class="container">
 
-        <div class="quote" ng-controller="ctrlProf">
+    <div class="container-fluid" ng-controller="ctrlProf">
+
+        <div class="loading-gif-one"
+             ng-if="loading"
+                ></div>
+
+        <div class="container">
+
 
             <!-- --------------------------------------------------------------------------------------------------------------- -->
-            <div class="col-sm-8 m-t-20 well "  style="margin-left: 15%">
-                <div class="col-sm-12">
-                    <h4>Search Profiles</h4>
+            <div class="row m-t-20 well bg-opc-65">
+
+                <div class="col-sm-1"></div>
+
+                <div class="col-sm-10">
+
+                    <div class="col-sm-12">
+                        <h4>Search For Account :</h4>
+                    </div>
+
+                    <div class="col-sm-11 col-xs-10">
+                        <input id="search" class="form-control" type="text" ng-model="searchCriteria"
+                               ng-keyup="$event.keyCode == 13 && loadProfiles()">
+                    </div>
+
+                    <div class="col-sm-1 col-xs-2">
+                        <Button id="search-btn" class="btn btn-default" ng-click="loadProfiles()">
+                            <i class="fa fa-search"></i>
+                        </Button>
+                    </div>
+
+
                 </div>
 
-                <div class="col-xs-12" >
-                    <div class="col-xs-8">
-                        <input class="form-control" ng-model="searchCriteria">
+                <div class="col-sm-1"></div>
+
+
+            </div>
+
+
+            <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+
+            <div class="row m-t-20 well bg-opc-65" ng-if="issearched">
+
+
+                <div class="col-xs-12 col-sm-5"
+                     style="height: 400px; overflow: scroll; padding-top: 20px; margin-bottom: 10px;">
+
+                    <div ng-show="profiles.length >0" ng-repeat="items in profiles">
+                        <table class="table">
+                            <tr class="col-xs-12 profiles profile-search">
+                                <td class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></td>
+                                <td class="col-xs-8">
+                                    <label><%items["name"]%></label>
+                                    <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
+                                </td>
+                                <td>
+                                    <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select Profile
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <br>
                     </div>
-                    <div class="col-xs-4">
-                        <button class="btn btn-default" ng-click="loadProfiles()">
-                            <i class="fa fa-search"></i> SEARCH
+                </div>
+
+                <div class="col-sm-1">
+
+                </div>
+
+                <div class="col-xs-12 visible-xs">
+                    <hr>
+                </div>
+
+
+                <div class="col-sm-6 col-xs-12 selected-profile" ng-if="isselected">
+
+                    <div class="col-sm-12 text-center m-b-10">
+                        <div class="col-sm-4">
+                            <img style="margin: auto;" src="<% selectedAccount['url'] %>" height="80" width="80">
+                        </div>
+
+                        <div class="col-sm-8">
+                            <h4><% selectedAccount["name"] %></h4>
+
+                            <div class="col-sm-12 p-0">
+                                <p class="text-grey"><% selectedAccount["description"] %></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <table class="table">
+
+                            <tr>
+                                <td>Followers :</td>
+                                <td><label><% selectedAccount["followersCount"] %></label></td>
+                            </tr>
+                            <tr>
+                                <td>Likes :</td>
+                                <td><label><% selectedAccount["favouritesCount"] %></label></td>
+                            </tr>
+                            <tr>
+                                <td>Following :</td>
+                                <td><label><% selectedAccount["friendsCount"] %></label></td>
+                            </tr>
+
+                            <tr>
+                                <td>Location :</td>
+                                <td><label><% selectedAccount["location"] %></label></td>
+                            </tr>
+                            <tr>
+                                <td>Created On :</td>
+                                <td><label><% selectedAccount["createdAt"] %></label></td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button class="btn btn-twitter-custom btn-full-width" ng-click="loadTweets(selectedAccount['screenName'])">
+                            Analyze Profile
                         </button>
                     </div>
                 </div>
 
+
             </div>
-            <!-- --------------------------------------------------------------------------------------------------------------- -->
-
-            <div class="col-xs-6 col-sm-6 " id="searchResult">
-
-                <div ng-show="profiles.length >0" ng-repeat="items in profiles"  ng-if="issearched">
-                    <table class="table">
-                        <tr class="col-xs-12 profiles profile-search">
-                            <td class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></td>
-                            <td class="col-xs-8">
-                                <label><%items["name"]%></label>
-                                <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
-                            </td>
-                            <td>
-                                <button class="btn btn-success" ng-click="loadSelection($index)">Select Profile</button>
-                            </td>
-                        </tr>
-
-                    </table>
-                    <br>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-xs-12">
-                <div class="col-xs-12" style="border: dotted" ng-if="isselected">
-                    <table class="table">
-                        <tr>
-                            <td ><img src="<% selectedAccount['url'] %>" height="80" width="80"></td>
-                        </tr>
-                        <tr>
-                            <td>Profile Name :</td>
-                            <td><label><% selectedAccount["name"] %></label></td>
-
-                        </tr>
-                        <tr>
-                            <td>FollowersS :</td>
-                            <td><label><% selectedAccount["followersCount"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td>Likes :</td>
-                            <td><label><% selectedAccount["favouritesCount"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td>Following :</td>
-                            <td><label><% selectedAccount["friendsCount"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td>Description :</td>
-                            <td><label><% selectedAccount["description"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td>Location :</td>
-                            <td><label><% selectedAccount["location"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td>Created At :</td>
-                            <td><label><% selectedAccount["createdAt"] %></label></td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-primary" ng-click="loadTweets(selectedAccount['screenName'])">Analise Profile</button></td>
-                        </tr>
-
-                    </table>
-                </div>
-            </div>
-
 
 
             <div class="col-sm-12" ng-if="isanalized">
@@ -133,8 +168,6 @@
                 </div>
 
 
-
-
                 <div class="col-sm-12" ng-show="tweets.length >0" ng-repeat="items in tweets">
                     <div>Recent Tweets of the user</div>
                     <table class="table">
@@ -152,10 +185,11 @@
                 <div class="row col-sm-12">
                     <div>Summary of user timeline</div>
                     <h3>Top Hash Tags Used</h3>
+
                     <div class="col-sm-6">
-                        <div  ng-repeat="items in hashtags" >
+                        <div ng-repeat="items in hashtags">
                             <table class="table">
-                                <tr >
+                                <tr>
                                     <label><%HashtagKeys[$index]%></label> -
                                     <label><%items%></label>
                                 </tr>
@@ -172,10 +206,11 @@
 
 
                     <h3>Top User Mentions</h3>
+
                     <div class="col-sm-6">
-                        <div  ng-repeat="items in usermentions" >
+                        <div ng-repeat="items in usermentions">
                             <table class="table">
-                                <tr >
+                                <tr>
                                     <label><%UserMentionKeys[$index]%></label> -
                                     <label><%items%></label>
                                 </tr>
@@ -192,7 +227,8 @@
 
                 <div class="row col-sm-12">
                     <h3>Most retweeted tweets</h3>
-                    <div class="col-sm-12"  ng-repeat="items in retweets">
+
+                    <div class="col-sm-12" ng-repeat="items in retweets">
                         <table class="table">
                             <tr class="col-xs-12 ">
                                 <td class="col-xs-8 profiles profile-search">
@@ -210,5 +246,4 @@
 
         </div>
     </div>
-{{--</body>--}}
-{{--</html>--}}
+

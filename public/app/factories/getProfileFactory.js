@@ -27,6 +27,7 @@ app.factory('getProf', function($http) {
 
                 $scope.profiles = response;
                 //callback(profiles);
+                $scope.loading = false;
 
             } else {
                 console.log("Error");

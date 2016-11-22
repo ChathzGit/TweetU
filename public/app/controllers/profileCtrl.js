@@ -6,6 +6,7 @@
 
 app.controller('ctrlProf', function($scope, getProf) {
 
+    $scope.loading = false;
 
     $scope.selectedAccount = "";
 
@@ -25,17 +26,20 @@ app.controller('ctrlProf', function($scope, getProf) {
      */
     $scope.loadProfiles = function() {
 
+        $scope.loading = true;
+
         $scope.issearched = true;
         $scope.isselected = false;
         $scope.isanalized = false;
 
         //show search result div
-        var link = document.getElementById('searchResult');
-        link.style.visibility = 'visible';
+        //var link = document.getElementById('searchResult');
+        //link.style.visibility = 'visible';
 
         getProf.setProf($scope);
 
         $scope.selectedAccount = $scope.profiles[0];
+
     };
 
     /*
@@ -45,12 +49,12 @@ app.controller('ctrlProf', function($scope, getProf) {
     $scope.loadSelection = function(index) {
 
 
-        $scope.issearched = false;
+        //$scope.issearched = false;
         $scope.isselected = true;
 
         //hide search result div
-        var link = document.getElementById('searchResult');
-        link.style.visibility = 'hidden';
+        //var link = document.getElementById('searchResult');
+        //link.style.visibility = 'hidden';
 
         $scope.selectedProfile = index;
         $scope.selectedAccount = $scope.profiles[index];
