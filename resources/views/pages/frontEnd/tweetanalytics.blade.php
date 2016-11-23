@@ -48,7 +48,7 @@
 
 
             <!-- ---------------- Pie Chart Section Start ------------------------------------------------------------------------------------------- -->
-            <div class="row m-t-20 well bg-opc-65">
+            <div class="row m-t-20 well bg-opc-65" ng-if="isSearched">
                 <div class="col-sm-12">
 
 
@@ -103,7 +103,7 @@
 
 
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
-            <div class="row m-t-20 well bg-opc-65">
+            <div class="row m-t-20 well bg-opc-65" ng-if="isSearched">
                 <div class="col-sm-12">
                     <h4 class="m-b-20">This Week's Most Popular <strong class="c-green">Positive Tweets</strong> & <strong
                                 class="c-red">Negative Tweets</strong> :</h4>

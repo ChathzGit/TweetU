@@ -6,6 +6,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
     $scope.loading = false;
 
+    $scope.isSearched = false;
+
     $scope.labels = ["Negative", "Positive"];
     $scope.data = [50, 50];
     $scope.colors = ['#4078a2', '#77c0f8'];
@@ -31,6 +33,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
     $scope.tweetChecked = 0;
 
     $scope.getInfo = function() {
+
+        $scope.isSearched = true;
 
         if($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
