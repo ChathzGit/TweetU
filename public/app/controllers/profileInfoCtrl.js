@@ -26,8 +26,8 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
         $scope.isSearched = true;
 
         //show search result div
-        var link = document.getElementById('searchResult');
-        link.style.visibility = 'visible';
+        //var link = document.getElementById('searchResult');
+        //link.style.visibility = 'visible';
 
         //selected profiles are null when search button is clicked
         $scope.firstProfile="";
@@ -69,7 +69,7 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
         //popularity chart
         $scope.labels = [$scope.selectedSecondProfile["name"], $scope.selectedFirstProfile["name"]];
         $scope.data = [$scope.selectedSecondProfile["followersCount"],$scope.selectedFirstProfile["followersCount"]];
-        $scope.colors = ['#88ff4d', '#66ccff'];
+        $scope.colors = ['#55acee', '#4078a2'];
         $scope.options =  {
             responsive: false,
             maintainAspectRatio: false
@@ -84,5 +84,18 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
             responsive: false,
             maintainAspectRatio: false
         }
+    };
+
+    $scope.SelectOtherFirst = function(){
+        $scope.compare = false;
+        $scope.isclicked1stprof = true;
+        $scope.firstprofileselected = false;
+    };
+
+
+    $scope.SelectOtherSecond = function(){
+        $scope.compare = false;
+        $scope.isclicked2ndprof = true;
+        $scope.secondprofileselected = false;
     }
 });

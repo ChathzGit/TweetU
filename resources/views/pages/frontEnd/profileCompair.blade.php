@@ -11,35 +11,6 @@
 
 @section('content')
 
-    {{--<!Doctype html>--}}
-    {{--<html ng-app="myAppProfile">--}}
-    {{--<head>--}}
-    {{--<title>Profile analysis</title>--}}
-    {{--<meta name="csrf-token" content="{{ csrf_token() }}"/>--}}
-    {{--<script src="{{ asset('/js/jquery.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/angular.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/profileInfo.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/Chart.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/angular-chart.js') }}"></script>--}}
-
-    {{--</head>--}}
-    {{--<body>--}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -95,12 +66,15 @@
 
             <div class="row m-t-20 well bg-opc-65" ng-if="isSearched">
 
-                <div class="col-xs-12 col-sm-5"
-                     style="height: 400px; overflow: scroll; padding-top: 20px; margin-bottom: 10px;">
-
-                    <div ng-show="profiles1.length >0">
+                <div class="col-xs-12 col-sm-6 p-l-10 p-r-10">
 
 
+                    <div class="col-sm-12 m-b-5">
+                        <h3 class="text-center">Select First Account:</h3>
+                    </div>
+
+                    <div class="col-xs-12" ng-show="profiles1.length >0" ng-if="isclicked1stprof"
+                         style="height: 400px; overflow: scroll; margin-bottom: 10px;">
 
 
                         <div class="col-xs-12 selected-profile m-b-5" ng-repeat="items in profiles1">
@@ -117,7 +91,7 @@
                                 </div>
 
                                 <div class="col-xs-12 col-sm-5">
-                                    <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select
+                                    <button class="btn btn-twitter-custom" ng-click="selectFirstProfile($index)">Select
                                         Profile
                                     </button>
                                 </div>
@@ -125,24 +99,48 @@
 
                         </div>
 
+                    </div>
 
-                        <br>
+
+                    <div class="col-xs-12 p-t-10 p-b-10 selected-profile compare-profile-one"
+                            {{--style="border: solid; border-color: #66ccff" --}}
+                         ng-if="firstprofileselected">
+
+                        <div class="col-sm-3 col-xs-12 text-center">
+                            <img src="<% selectedFirstProfile['url'] %>" height="80" width="80">
+                        </div>
+
+                        <div class="col-sm-9 col-xs-12 text-center">
+                            <div class="col-sm-12">
+                                <label><% selectedFirstProfile["name"] %></label>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 text-center hidden-xs">
+                                <p class="text-grey">
+                                    <% selectedFirstProfile["description"] %>
+                                </p>
+                            </div>
+
+                            <div class="col-sm-12 text-center">
+                                <button class="btn btn-twitter-custom btn-side-padding btn-full-width"
+                                        ng-click="SelectOtherFirst()">
+                                    Select Different Account
+                                </button>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
 
+                <div class="col-xs-12 col-sm-6 p-l-10 p-r-10">
 
-                <div class="col-sm-2">
+                    <div class="col-sm-12 col-xs-12 m-b-5">
+                        <h3 class="text-center">Select Second Account:</h3>
+                    </div>
 
-                </div>
-
-
-                <div class="col-xs-12 col-sm-5"
-                     style="height: 400px; overflow: scroll; padding-top: 20px; margin-bottom: 10px;">
-
-                    <div ng-show="profiles1.length >0">
-
-
+                    <div class="col-xs-12" ng-show="profiles1.length >0" ng-if="isclicked2ndprof"
+                         style="height: 400px; overflow: scroll; margin-bottom: 10px;">
 
 
                         <div class="col-xs-12 selected-profile m-b-5" ng-repeat="items in profiles2">
@@ -159,7 +157,7 @@
                                 </div>
 
                                 <div class="col-xs-12 col-sm-5">
-                                    <button class="btn btn-twitter-custom" ng-click="loadSelection($index)">Select
+                                    <button class="btn btn-twitter-custom" ng-click="selectSecondProfile($index)">Select
                                         Profile
                                     </button>
                                 </div>
@@ -167,193 +165,149 @@
 
                         </div>
 
-
-                        <br>
                     </div>
-                </div>
-            </div>
-
-{{----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------}}
 
 
+                    <div class="col-xs-12 p-t-10 p-b-10 selected-profile compare-profile-two"
+                            {{--style="border: solid; border-color: #66ccff" --}}
+                         ng-if="secondprofileselected">
 
+                        <div class="col-sm-3 col-xs-12 text-center">
+                            <img src="<% selectedSecondProfile['url'] %>" height="80" width="80">
+                        </div>
 
+                        <div class="col-sm-9 col-xs-12 text-center">
+                            <div class="col-sm-12">
+                                <label><% selectedSecondProfile["name"] %></label>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 hidden-xs">
+                                <p class="text-grey text-center">
+                                    <% selectedSecondProfile["description"] %>
+                                </p>
+                            </div>
 
-
-
-
-
-
-
-            {{--first profile set--}}
-            <div class="col-xs-6 col-sm-6 " id="searchResult" hidden>
-
-
-                {{--first result set--}}
-                <div ng-show="profiles1.length >0" ng-repeat="items in profiles1" ng-if="isclicked1stprof">
-                    <table class="table">
-                        <tr class="col-xs-12 profiles profile-search">
-                            <td class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></td>
-                            <td class="col-xs-8">
-                                <label><%items["name"]%></label>
-                                <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
-                            </td>
-                            <td>
-                                <button class="btn btn-primary" ng-click="selectFirstProfile($index)">Select Profile
+                            <div class="col-sm-12 text-center">
+                                <button class="btn btn-twitter-custom btn-side-padding btn-full-width"
+                                        ng-click="SelectOtherSecond()">
+                                    Select Different Account
                                 </button>
-                            </td>
-                        </tr>
+                            </div>
+                        </div>
 
-                    </table>
-                    <br>
+
+                    </div>
+
                 </div>
-
-
-                {{--selected first profile--}}
-                <div class="col-xs-12" style="border: solid; border-color: #66ccff" ng-if="firstprofileselected">
-                    <table class="table">
-                        <tr>
-                            <td><img src="<% selectedFirstProfile['url'] %>" height="80" width="80"></td>
-
-                            <td><label><% selectedFirstProfile["name"] %></label></td>
-                        </tr>
-
-                    </table>
-                </div>
-
-
-            </div>
-
-            {{--second profile set--}}
-            <div class="col-xs-6 col-sm-6 " id="searchResult" hidden>
-
-                {{--second result set--}}
-                <div ng-show="profiles2.length >0" ng-repeat="items in profiles2" ng-if="isclicked2ndprof">
-                    <table class="table">
-                        <tr class="col-xs-12 profiles good-tweet">
-                            <td class="col-xs-2"><img src="<%items['url']%>" height="42" width="42"></td>
-                            <td class="col-xs-8">
-                                <label><%items["name"]%></label>
-                                <i class="fa-li fa fa-check-square" ng-show="items['verify']"></i>
-                            </td>
-                            <td>
-                                <button class="btn btn-primary" ng-click="selectSecondProfile($index)">Select Profile
-                                </button>
-                            </td>
-                        </tr>
-
-                    </table>
-                    <br>
-                </div>
-
-
-                {{--selected second profile--}}
-                <div class="col-xs-12" style="border: solid; border-color: #88ff4d" ng-if="secondprofileselected">
-                    <table class="table">
-                        <tr>
-                            <td><img src="<% selectedSecondProfile['url'] %>" height="80" width="80"></td>
-
-                            <td><label><% selectedSecondProfile["name"] %></label></td>
-                        </tr>
-
-                    </table>
-                </div>
-
-
-            </div>
-
-            <button class="btn btn-primary" ng-click="Compare()">Compare Profile</button>
-
-
-            {{--comparison results--}}
-            <div class="row col-sm-12" ng-if="compare">
 
                 <div class="col-sm-12 col-xs-12">
+                    <hr>
+                </div>
 
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Twitter Popularity</div>
-                        <div class="panel-body">
 
-                            <div class="col-sm-6 col-xs-6">
-                                <canvas id="pie" class="chart chart-pie" style="height:160px;"
-                                        chart-data="data" chart-labels="labels" chart-options="options"
-                                        chart-colors="colors">
-                                </canvas>
-                            </div>
+                <div class="col-sm-12 col-xs-12" ng-if="firstprofileselected && secondprofileselected">
 
-                            <div class="col-sm-6 col-xs-6">
-                                <table class="table">
-                                    <tr>
-                                        <td style="border: none">
-                                            <div style="height: 10px; width: 10px; background-color: #66ccff"></div>
-                                        </td>
-                                        <td style="border: none"> <% selectedFirstProfile["name"] %> </td>
-                                    </tr>
+                    <div class="col-sm-3"></div>
 
-                                    <tr>
-                                        <td style="border: none">
-                                            <div style="height: 10px; width: 10px; background-color: #88ff4d"></div>
-                                        </td>
-                                        <td style="border: none"> <% selectedSecondProfile["name"] %> </td>
-                                    </tr>
-                                </table>
+                    <div class="col-sm-6">
+                        <button class="btn btn-twitter-custom btn-full-width p-10"
+                                ng-click="Compare()">
+                            <strong>Compare Accounts</strong>
+                        </button>
+                    </div>
 
-                            </div>
+                    <div class="col-sm-3"></div>
 
+
+                </div>
+
+
+            </div>
+
+            {{----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+
+
+            <div class="row m-t-20 well bg-opc-65" ng-if="compare">
+                <div class="col-xs-12 col-sm-6 p-l-10 p-r-10">
+
+                    <div class="col-sm-12 col-xs-12">
+                        <h4>Twitter Popularity:</h4>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-12 col-xs-12">
+                            <canvas id="pie" class="chart chart-pie" style="height:160px;"
+                                    chart-data="data" chart-labels="labels" chart-options="options"
+                                    chart-colors="colors">
+                            </canvas>
                         </div>
                     </div>
 
+                    <div class="col-sm-12 col-xs-12">
+                        <table class="table">
+                            <tr>
+                                <td style="border: none">
+                                    <div style="height: 10px; width: 10px; background-color: #55acee"></div>
+                                </td>
+                                <td style="border: none"> <% selectedFirstProfile["name"] %> </td>
+                            </tr>
+
+                            <tr>
+                                <td style="border: none">
+                                    <div style="height: 10px; width: 10px; background-color: #4078a2"></div>
+                                </td>
+                                <td style="border: none"> <% selectedSecondProfile["name"] %> </td>
+                            </tr>
+                        </table>
+
+                    </div>
 
                 </div>
 
+                <div class="col-xs-12 visible-xs">
+                    <hr>
+                </div>
 
-                <div class="col-sm-12 col-xs-12">
 
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Twitter Usage</div>
-                        <div class="panel-body">
+                <div class="col-xs-12 col-sm-6 p-l-10 p-r-10" ng-if="compare">
 
-                            <div class="col-sm-6 col-xs-6">
-                                <canvas id="pie2" class="chart chart-pie" style="height:160px;"
-                                        chart-data="data1" chart-labels="labels1" chart-options="options1"
-                                        chart-colors="colors1">
-                                </canvas>
-                            </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <h4>Twitter Usage:</h4>
+                    </div>
 
-                            <div class="col-sm-6 col-xs-6">
-                                <table class="table">
-                                    <tr>
-                                        <td style="border: none">
-                                            <div style="height: 10px; width: 10px; background-color: #66ccff"></div>
-                                        </td>
-                                        <td style="border: none"> <% selectedFirstProfile["name"] %> </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="border: none">
-                                            <div style="height: 10px; width: 10px; background-color: #88ff4d"></div>
-                                        </td>
-                                        <td style="border: none"> <% selectedSecondProfile["name"] %> </td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-6 col-xs-6">
+                            <canvas id="pie2" class="chart chart-pie" style="height:160px;"
+                                    chart-data="data1" chart-labels="labels1" chart-options="options1"
+                                    chart-colors="colors">
+                            </canvas>
                         </div>
                     </div>
 
+                    <div class="col-sm-12 col-xs-12">
+                        <table class="table">
+                            <tr>
+                                <td style="border: none">
+                                    <div style="height: 10px; width: 10px; background-color: #55acee"></div>
+                                </td>
+                                <td style="border: none"> <% selectedFirstProfile["name"] %> </td>
+                            </tr>
 
-                </div>
+                            <tr>
+                                <td style="border: none">
+                                    <div style="height: 10px; width: 10px; background-color: #4078a2"></div>
+                                </td>
+                                <td style="border: none"> <% selectedSecondProfile["name"] %> </td>
+                            </tr>
+                        </table>
 
-                <div class="col-sm-6 col-xs-6">
-
+                    </div>
 
                 </div>
             </div>
+
 
 
         </div>
 
     </div>
-    {{--</body>--}}
-    {{--</html>--}}
+

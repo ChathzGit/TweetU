@@ -95,6 +95,36 @@ body{
     color: #55acee;
 }
 
+.p-t-10
+{
+    padding-top: 10px;
+}
+
+.p-t-20
+{
+    padding-top: 20px;
+}
+
+.p-t-30
+{
+    padding-top: 30px;
+}
+
+.p-b-10
+{
+    padding-bottom: 10px;
+}
+
+.p-b-20
+{
+    padding-bottom: 20px;
+}
+
+.p-b-30
+{
+    padding-bottom: 30px;
+}
+
 .p-0
 {
     padding: 0;
@@ -223,6 +253,8 @@ body{
     border-radius: 4px;
 }
 
+
+
 .profiles {
     background-color: #edf7ff;
     border: 2px solid #bcd9f1;
@@ -276,6 +308,37 @@ body{
     max-width: 250px;
 }
 
+
+
+.compare-profile-one
+{
+    background-color: #edf7ff;
+    border: 3px solid #55acee;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    height: 200px;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.compare-profile-two
+{
+    background-color: #edf7ff;
+    border: 3px solid #4078a2;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    height: 200px;
+    max-height: 400px;
+    min-height: 150px;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
 
 .btn-twitter-custom {
     color: #fff;
