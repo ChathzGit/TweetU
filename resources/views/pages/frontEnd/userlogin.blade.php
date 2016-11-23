@@ -47,7 +47,7 @@
                                     <div class="col-sm-12">
                                         <input type="email" class="form-control" id="email" name="email"
                                                placeholder="Email Address"
-                                               ng-model="email" ng-required="true">
+                                               ng-model="email" ng-required="true" ng-keyup="$event.keyCode == 13 && checkCredentials()">
                                         <span class="help-inline c-red"
                                               ng-show="frmEmployees.email.$invalid && frmEmployees.email.$touched">Valid Email field is required</span>
                                     </div>
@@ -60,7 +60,7 @@
                                     <div class="col-sm-12">
                                         <input type="password" class="form-control" id="password" name="password"
                                                placeholder="Password"
-                                               ng-model="password" ng-required="true">
+                                               ng-model="password" ng-required="true" ng-keyup="$event.keyCode == 13 && checkCredentials()">
                                     <span class="help-inline c-red"
                                           ng-show="frmEmployees.password.$invalid && frmEmployees.password.$touched">Password field is required</span>
                                     </div>
