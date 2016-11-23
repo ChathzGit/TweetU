@@ -27,6 +27,8 @@ app.controller('ctrlProf', function($scope, getProf) {
      */
     $scope.loadProfiles = function() {
 
+        $scope.saveTweetAnaylysisLog('2', $scope.searchCriteria);
+
         $scope.loading = true;
         $scope.isSearched = true;
 

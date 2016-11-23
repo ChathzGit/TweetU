@@ -41,8 +41,6 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
              */
             if (response.status === SUCCESS) {
 
-                toaster.success("Success");
-
             }
 
             /*

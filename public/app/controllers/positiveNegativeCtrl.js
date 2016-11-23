@@ -34,6 +34,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
     $scope.getInfo = function() {
 
+        $scope.saveTweetAnaylysisLog('1', $scope.search);
+
         $scope.isSearched = true;
 
         if($scope.search != undefined && $scope.search.trim() != "") {

@@ -25,6 +25,9 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
         $scope.loading = true;
         $scope.isSearched = true;
 
+        $scope.saveTweetAnaylysisLog('4', $scope.searchCriteria1);
+        $scope.saveTweetAnaylysisLog('4', $scope.searchCriteria2);
+
         //show search result div
         //var link = document.getElementById('searchResult');
         //link.style.visibility = 'visible';

@@ -12,6 +12,9 @@ app.controller('tweetComparisonCtrl', function($scope, comparisonFactory,  $wind
 
     $scope.getInfo = function() {
 
+        $scope.saveTweetAnaylysisLog('3', $scope.search);
+        $scope.saveTweetAnaylysisLog('3', $scope.search2);
+
         $scope.loading = true;
         $scope.isCompared = true;
         $scope.isSearched = true;
