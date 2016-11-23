@@ -140,13 +140,15 @@ class SearchLogController extends Controller
         try {
             $searchLogCountTweets = SearchLog::where('type', '1')->count();
             $searchLogCountAccounts = SearchLog::where('type', '2')->count();
-            $searchLogCountComparisons = SearchLog::where('type', '3')->count();
+            $searchLogCountTopidComparisons = SearchLog::where('type', '3')->count();
+            $searchLogCountAccountComparisons = SearchLog::where('type', '4')->count();
 
             $response = array(
                 'status' => $responseCode->success,
                 'searchLogCountTweets' => $searchLogCountTweets,
                 'searchLogCountAccounts' => $searchLogCountAccounts,
-                'searchLogCountComparisons' => $searchLogCountComparisons
+                'searchLogCountTopidComparisons' => $searchLogCountTopidComparisons,
+                'searchLogCountAccountComparisons' => $searchLogCountAccountComparisons
             );
 
             return json_encode($response);
@@ -419,20 +421,40 @@ class SearchLogController extends Controller
                 ->count();
 
 
+
             /*
-             * Comparisons count
+             * Topic Comparisons count
              */
-            $ComparisonsThisMonth = SearchLog::where('type', '3')
+            $TopicComparisonsThisMonth = SearchLog::where('type', '3')
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $last_month)
                 ->count();
 
-            $ComparisonsLastMonth = SearchLog::where('type', '3')
+            $TopicComparisonsLastMonth = SearchLog::where('type', '3')
                 ->where('timestamp', '<=', $last_month)
                 ->where('timestamp', '>=', $prev_month)
                 ->count();
 
-            $TotalComparisons = SearchLog::where('type', '3')
+            $TopicTotalComparisons = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+
+            /*
+             * Account Comparisons count
+             */
+            $AccountComparisonsThisMonth = SearchLog::where('type', '4')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+
+            $AccountComparisonsLastMonth = SearchLog::where('type', '4')
+                ->where('timestamp', '<=', $last_month)
+                ->where('timestamp', '>=', $prev_month)
+                ->count();
+
+            $AccountTotalComparisons = SearchLog::where('type', '4')
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $prev_month)
                 ->count();
@@ -465,17 +487,29 @@ class SearchLogController extends Controller
                 $AccountPercentage = 0;
             }
 
-
-            if($ComparisonsThisMonth > 0 && $ComparisonsLastMonth>0) {
-                $ComparisonPercentage = ($ComparisonsThisMonth / $ComparisonsLastMonth * 100);
-                if ($ComparisonPercentage < 100) {
-                    $ComparisonPercentage = round((100 - $ComparisonPercentage), 2);
+            if($TopicComparisonsThisMonth > 0 && $TopicComparisonsLastMonth>0) {
+                $TopicComparisonPercentage = ($TopicComparisonsThisMonth / $TopicComparisonsLastMonth * 100);
+                if ($TopicComparisonPercentage < 100) {
+                    $TopicComparisonPercentage = round((100 - $TopicComparisonPercentage), 2);
                 }
             }
             else
             {
-                $ComparisonPercentage = 0;
+                $TopicComparisonPercentage = 0;
             }
+
+
+            if($AccountComparisonsThisMonth > 0 && $AccountComparisonsLastMonth>0) {
+                $AccountComparisonPercentage = ($AccountComparisonsThisMonth / $AccountComparisonsLastMonth * 100);
+                if ($AccountComparisonPercentage < 100) {
+                    $AccountComparisonPercentage = round((100 - $AccountComparisonPercentage), 2);
+                }
+            }
+            else
+            {
+                $AccountComparisonPercentage = 0;
+            }
+
 
 
             $response = array(
@@ -491,10 +525,15 @@ class SearchLogController extends Controller
                 'TotalAccounts' => $TotalAccounts,
                 'AccountPercentage' => $AccountPercentage,
 
-                'ComparisonsThisMonth' => $ComparisonsThisMonth,
-                'ComparisonsLastMonth' => $ComparisonsLastMonth,
-                'TotalComparisons' => $TotalComparisons,
-                'ComparisonPercentage' => $ComparisonPercentage
+                'TopicComparisonsThisMonth' => $TopicComparisonsThisMonth,
+                'TopicComparisonsLastMonth' => $TopicComparisonsLastMonth,
+                'TopicTotalComparisons' => $TopicTotalComparisons,
+                'TopicComparisonPercentage' => $TopicComparisonPercentage,
+
+                'AccountComparisonsThisMonth' => $AccountComparisonsThisMonth,
+                'AccountComparisonsLastMonth' => $AccountComparisonsLastMonth,
+                'AccountTotalComparisons' => $AccountTotalComparisons,
+                'AccountComparisonPercentage' => $AccountComparisonPercentage
             );
 
             return json_encode($response);

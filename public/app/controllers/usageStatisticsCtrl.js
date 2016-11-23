@@ -10,7 +10,13 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
         $scope.TweetPercentage = 0;
         $scope.AccountPercentage = 0;
-        $scope.ComparisonPercentage = 0;
+        $scope.AccountComparisonPercentage = 0;
+        $scope.TopicComparisonPercentage = 0;
+
+        $scope.AllTweets = 0;
+        $scope.AllAccounts = 0;
+        $scope.AllAccountComps = 0;
+        $scope.AllTopicComps = 0;
 
 
 
@@ -27,7 +33,19 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
                     $scope.TweetPercentage = response.TweetPercentage;
                     $scope.AccountPercentage = response.AccountPercentage;
-                    $scope.ComparisonPercentage = response.ComparisonPercentage;
+                    $scope.AccountComparisonPercentage = response.AccountComparisonPercentage;
+                    $scope.TopicComparisonPercentage = response.TopicComparisonPercentage;
+
+
+
+                    var graphData = [
+                        { Type: 'Tweet Analysis', value: response.TweetsThisMonth },
+                        { Type: 'Account Analysis', value: response.AccountsThisMonth },
+                        { Type: 'Topic Comparisons', value: response.TopicComparisonsThisMonth },
+                        { Type: 'Account Comparisons', value: response.AccountComparisonsThisMonth }
+                    ];
+
+                    drawLineGraph(graphData);
                 }
 
                 else if (response.status === ERROR) {
@@ -40,17 +58,14 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
             });
 
-            searchLogService.loadMonthlyUsageStatistics($scope.request, function (response) {
+            searchLogService.loadUsageStatistics($scope.request, function (response) {
 
                 if (response.status === SUCCESS) {
 
-                    var graphData = [
-                        { Type: 'Tweets', value: response.searchLogCountTweets },
-                        { Type: 'Accounts', value: response.searchLogCountAccounts },
-                        { Type: 'Comparisons', value: response.searchLogCountComparisons }
-                    ];
-
-                    drawLineGraph(graphData);
+                    $scope.AllTweets = response.searchLogCountTweets;
+                    $scope.AllAccounts = response.searchLogCountAccounts;
+                    $scope.AllAccountComps = response.searchLogCountTopidComparisons;
+                    $scope.AllTopicComps = response.searchLogCountAccountComparisons;
                 }
 
                 else if (response.status === ERROR) {
