@@ -52,7 +52,7 @@
 
 </head>
 
-<body ng-controller="mainCtrl">
+<body ng-controller="mainCtrl" class="front-end-body">
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

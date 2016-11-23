@@ -274,7 +274,7 @@
         <!-- /.navbar-top-links -->
 
         <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
+            <div class="sidebar-nav navbar-collapse" style="height: 100%;">
                 <ul class="nav" id="side-menu">
                     {{--<li class="sidebar-search">--}}
                         {{--<div class="input-group custom-search-form">--}}
@@ -397,7 +397,8 @@
 
 <!-- Bootstrap Core JavaScript -->
 {{--<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>--}}
-<script src="{{ URL::asset('sb-admin-resources/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('js/ui-bootstrap-tpls.min.js') }}"></script>
 
 <!-- Chart.js -->
 <script src="{{ URL::asset('js/Chart.js') }}"></script>
