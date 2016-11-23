@@ -107,15 +107,15 @@
                 <!-- Bar Chart comparing the two -->
                 <div class="col-sm-12">
                     <div class="col-sm-6">
-                        <label>Good comparison between each other</label>
-                        <canvas id="bar" class="chart chart-bar" style="height:150px;"
+                        <h4>Positive Tweet Comparison:</h4>
+                        <canvas id="bar" class="chart chart-bar" style="height:250px;"
                                 chart-data="bardata2" chart-labels="barlabels2" chart-options="baroptions2"
                                 chart-colors="barcolors2">
                         </canvas>
                     </div>
                     <div class="col-sm-6">
-                        <label>Bad comparison between each other</label>
-                        <canvas id="bar2" class="chart chart-bar" style="height:150px;"
+                        <h4>Negative Tweet Comparison:</h4>
+                        <canvas id="bar2" class="chart chart-bar" style="height:250px;"
                                 chart-data="bardata" chart-labels="barlabels" chart-options="baroptions"
                                 chart-colors="barcolors">
                         </canvas>
@@ -128,27 +128,57 @@
             <div class="row m-t-20 well bg-opc-65" ng-if="isCompared">
 
                 <div class="col-sm-12">
-                    <div class="col-sm-6">
-                        <label>Criteria One</label>
-                        <label style="color:#3498DB; font-size: x-large">Bad</label>
-                        <label id="negative" style="color:#3498DB; font-size: large"><%negative%>%</label>
-                        <canvas id="pie" class="chart chart-pie" style="height:60px;"
-                                chart-data="data" chart-labels="labels" chart-options="options"
-                                chart-colors="colors">
-                        </canvas>
-                        <label style="color:#72C02C; font-size: x-large">Good</label>
-                        <label id="positive" style="color:#72C02C; font-size: large"><%positive%>%</label>
+                    <div class="col-sm-6 col-xs-12">
+
+                        <div class="col-sm-12">
+                            <h4>First Topic</h4>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label style="color:#3498DB; font-size: x-large">Bad</label>
+                            <label id="negative" style="color:#3498DB; font-size: large"><%negative%>%</label>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <canvas id="pie" class="chart chart-pie" style="height:60px;"
+                                    chart-data="data" chart-labels="labels" chart-options="options"
+                                    chart-colors="colors">
+                            </canvas>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label style="color:#72C02C; font-size: x-large">Good</label>
+                            <label id="positive" style="color:#72C02C; font-size: large"><%positive%>%</label>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <label>Criteria Two</label>
-                        <label style="color:#3498DB; font-size: x-large">Bad2</label>
-                        <label id="negative2" style="color:#3498DB; font-size: large"><%negative2%>%</label>
-                        <canvas id="pie2" class="chart chart-pie" style="height:60px;"
-                                chart-data="data2" chart-labels="labels2" chart-options="options2"
-                                chart-colors="colors2">
-                        </canvas>
-                        <label style="color:#72C02C; font-size: x-large">Good2</label>
-                        <label id="positive2" style="color:#72C02C; font-size: large"><%positive2%>%</label>
+
+
+                    <div class="col-xs-12 visible-xs">
+                        <hr>
+                    </div>
+
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="col-sm-12">
+                            <h4>Second Topic</h4>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label style="color:#3498DB; font-size: x-large">Bad2</label>
+                            <label id="negative2" style="color:#3498DB; font-size: large"><%negative2%>%</label>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <canvas id="pie2" class="chart chart-pie" style="height:60px;"
+                                    chart-data="data2" chart-labels="labels2" chart-options="options2"
+                                    chart-colors="colors2">
+                            </canvas>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label style="color:#72C02C; font-size: x-large">Good2</label>
+                            <label id="positive2" style="color:#72C02C; font-size: large"><%positive2%>%</label>
+                        </div>
                     </div>
                 </div>
             </div>

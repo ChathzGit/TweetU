@@ -757,7 +757,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     ];
                                     $scope.barcolors2 = ['#4078a2', '#77c0f8'];
                                     $scope.baroptions2 =  {
-                                        responsive: false,
+                                        responsive: true,
                                         maintainAspectRatio: false
                                     }
 
@@ -768,7 +768,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     ];
                                     $scope.barcolors = ['#717984', '#F1C40F'];
                                     $scope.baroptions =  {
-                                        responsive: false,
+                                        responsive: true,
                                         maintainAspectRatio: false
                                     }
 
