@@ -7,12 +7,14 @@ app.controller('tweetComparisonCtrl', function($scope, comparisonFactory,  $wind
 
     $scope.loading = false;
     $scope.isCompared = false;
+    $scope.isSearched = false;
 
 
     $scope.getInfo = function() {
 
         $scope.loading = true;
         $scope.isCompared = true;
+        $scope.isSearched = true;
 
         comparisonFactory.setPosNeg($scope.search, 2, $scope);
         comparisonFactory.setPosNeg2($scope.search2, 2, $scope);

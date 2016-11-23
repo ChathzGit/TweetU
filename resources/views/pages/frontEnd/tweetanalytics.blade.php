@@ -37,6 +37,14 @@
                             <i class="fa fa-search"></i>
                         </Button>
                     </div>
+
+                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                        <hr>
+                        <p class="text-grey text-center">
+                            Analyze a topic of your choice. Tweet-U will read through the related tweets
+                            about the topic, and display a report of its reception. How positive, or negative it is.
+                        </p>
+                    </div>
                 </div>
                 <!-- --------------------------------------------------------------------------------------------------------------- -->
 

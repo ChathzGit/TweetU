@@ -155,9 +155,9 @@
                                         Analyze topics
                                     </h4>
 
-                                    <p class="text-grey">Analyze a topic of your choice, be it a trend, a product or
-                                        anything
-                                        really.</p>
+                                    <p class="text-grey">Analyze a topic of your choice. Tweet-U will read through the related tweets
+                                        about the topic, and display a report of its reception.
+                                    </p>
 
 
                                     <a href="tweetAnalytics"

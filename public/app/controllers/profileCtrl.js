@@ -7,6 +7,7 @@
 app.controller('ctrlProf', function($scope, getProf) {
 
     $scope.loading = false;
+    $scope.isSearched = false;
 
     $scope.selectedAccount = "";
 
@@ -27,6 +28,7 @@ app.controller('ctrlProf', function($scope, getProf) {
     $scope.loadProfiles = function() {
 
         $scope.loading = true;
+        $scope.isSearched = true;
 
         $scope.issearched = true;
         $scope.isselected = false;

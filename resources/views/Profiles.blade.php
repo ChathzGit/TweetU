@@ -42,6 +42,15 @@
                         </Button>
                     </div>
 
+                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                        <hr>
+                        <p class="text-grey text-center">Analyze a twitter account. Want to see how your favorite
+                            celebrity
+                            is
+                            received by the public?
+                            give it a try!</p>
+                    </div>
+
 
                 </div>
 
@@ -70,7 +79,8 @@
                             <div class="col-xs-10">
                                 <div class="col-xs-12 col-sm-7">
 
-                                        <strong><%items["name"]%></strong><i class="fa-li fa fa-check-circle text-twitter" ng-show="items['verify']"></i>
+                                    <strong><%items["name"]%></strong><i class="fa-li fa fa-check-circle text-twitter"
+                                                                         ng-show="items['verify']"></i>
 
 
                                 </div>

@@ -52,6 +52,14 @@
                         </Button>
                     </div>
 
+                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                        <hr>
+                        <p class="text-grey text-center">Analyze two accounts simultaneously, and compare the public
+                            perception of
+                            the two. Good for
+                            comparing two people.</p>
+                    </div>
+
 
                 </div>
 
