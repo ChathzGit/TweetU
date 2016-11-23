@@ -159,6 +159,15 @@
     padding-right: 40px;
 }
 
+.admin-hp-percentagecontainer
+{
+    height: 200px;
+}
+
+.admin-hp-usagecontainer
+{
+}
+
 .text-center {
     text-align: center;
 }
@@ -377,3 +386,13 @@ fieldset[disabled] .btn-twitter-custom.focus {
     background-size: 250px 250px !important;
     background: rgba(255, 255, 255, 0.65) url('../images/gears.gif') no-repeat center;
 }
+
+
+
+@media only screen and (max-width: 400px) {
+    .admin-hp-usagecontainer
+    {
+        height:170px;
+    }
+}
+
