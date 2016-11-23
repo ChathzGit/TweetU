@@ -65,7 +65,7 @@ app.controller('adminUserAccountController', ['$scope', '$http', 'API_URL', '$lo
 
         $scope.adminSave = function () {
 
-            if ($scope.selectedUser.password === $scope.selectedUser.confirmpassword) {
+
 
                 var user = $scope.selectedUser;
 
@@ -93,11 +93,9 @@ app.controller('adminUserAccountController', ['$scope', '$http', 'API_URL', '$lo
 
                 });
 
-            }
+            
 
-            else {
-                toaster.error("Error", "Mismatching passwords");
-            }
+
 
         };
 

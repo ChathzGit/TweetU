@@ -141,7 +141,7 @@ class UserAccountController extends Controller
 
         try {
 
-            $userList = User::all();
+            $userList = User::select(array('id','name','role','email','password'))->get();
             $response = array(
                 'status' => $responseCode->success,
                 'userList' => $userList

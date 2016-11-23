@@ -155,6 +155,11 @@
     padding-right: 30px;
 }
 
+.p-5
+{
+    padding: 5px;
+}
+
 .p-r-40 {
     padding-right: 40px;
 }

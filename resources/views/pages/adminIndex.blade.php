@@ -290,24 +290,24 @@
                     <li>
                         <a href="admin_home"><i class="fa fa-briefcase fa-fw"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usage Details<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="loadUsageStatistics">Total Usage Statistics</a>
-                            </li>
-                            <li>
-                                <a href="#">Key Words</a>
-                            </li>
-                            <li>
-                                <a href="#">Location</a>
-                            </li>
-                            <li>
-                                <a href="SearchLogTestData">Testing Data Adding</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usage Details<span class="fa arrow"></span></a>--}}
+                        {{--<ul class="nav nav-second-level">--}}
+                            {{--<li>--}}
+                                {{--<a href="loadUsageStatistics">Total Usage Statistics</a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#">Key Words</a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="#">Location</a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="SearchLogTestData">Testing Data Adding</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                        {{--<!-- /.nav-second-level -->--}}
+                    {{--</li>--}}
 
                     <li>
                         <a href="#"><i class="fa fa-users fa-fw"></i> User Accounts<span class="fa arrow"></span></a>
