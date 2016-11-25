@@ -61,7 +61,7 @@
 
 
                     <div class="col-sm-12 col-xs-12">
-                        <h4>Pie Chart:</h4>
+                        <h4>Tweet Analysis:</h4>
 
                         <div class="col-sm-3 col-xs-12">
                             <p class="text-grey hidden-xs">
