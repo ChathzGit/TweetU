@@ -217,6 +217,7 @@
 <script src="{{ asset('/app/factories/getProfileFactory.js') }}"></script>
 <script src="{{ asset('/app/factories/getProfileInfoFactory.js') }}"></script>
 <script src="{{ asset('/app/factories/keywordComparisonFactory.js') }}"></script>
+<script src="{{ asset('/app/factories/locationFactory.js') }}"></script>
 
 <!-- Tweet Comparison JS -->
 <script src="{{ asset('/js/twitter-sentiment-comparison.js') }}"></script>
