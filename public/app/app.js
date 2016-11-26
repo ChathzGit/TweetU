@@ -34,7 +34,7 @@ var app = angular.module('tweetU',
         }])
 
     // This will be used for the server calls
-    .constant('API_URL', 'http://localhost:8080/TweetU/public/')
+    .constant('API_URL', baseUrl)
 
     /*
     * Response Codes -
