@@ -15,7 +15,7 @@ app.service(serviceName,
             */
             this.checkLoginCredentials = function (request, callback) {
 
-                var url = API_URL + "check_credentials";
+                var url = "check_credentials";
 
                 /*
                  * HTTP post method to save the user data to the database.
@@ -60,7 +60,7 @@ app.service(serviceName,
 
             this.checkSession = function () {
 
-                var url = API_URL + "checkSession";
+                var url = "checkSession";
 
                 /*
                  * HTTP post method to save the user data to the database.
@@ -98,7 +98,7 @@ app.service(serviceName,
 
             this.destroySession = function () {
 
-                var url = API_URL + "logout";
+                var url = "logout";
 
                 /*
                  * HTTP post method to save the user data to the database.

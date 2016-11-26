@@ -5,7 +5,8 @@
 var pos = 0, neg = 0, maxIDSearch = -1, maxIDPopular = -1;
 
 var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/";
+//var baseUrl = getUrl .protocol + "//" + getUrl.host + "/";
+var baseUrl = "";
 
 var GetTopTweetsRequests = [];
 var GetTopTweetPosNegRequests = [];

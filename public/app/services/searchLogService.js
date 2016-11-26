@@ -11,7 +11,7 @@ app.service(serviceName,
 
             this.loadUsagePercentages = function (callback) {
 
-                var url = API_URL + "/getPercentageChange";
+                var url = "/getPercentageChange";
 
                 /*
                  * HTTP post method to save the user data to the database.
@@ -44,7 +44,7 @@ app.service(serviceName,
 
             this.loadMonthlyUsageStatistics = function (request, callback) {
 
-                var url = API_URL + "/getMonthlySearchLogCount";
+                var url = "/getMonthlySearchLogCount";
 
                 /*
                  * HTTP post method to save the user data to the database.
@@ -83,7 +83,7 @@ app.service(serviceName,
 
             this.loadUsageStatistics = function (request, callback) {
 
-                var url = API_URL + "/getAllSearchLogCount";
+                var url = "/getAllSearchLogCount";
 
                 /*
                  * HTTP post method to save the user data to the database.
