@@ -111,7 +111,7 @@ app.service(serviceName,
                     })
 
                     .error(function () {
-                        
+                        toaster.error("Error", "Error loading statistics");
                     });
 
 
@@ -151,7 +151,7 @@ app.service(serviceName,
                     })
 
                     .error(function () {
-                        toaster.error("Error", "Error saving search log");
+
                     });
             };
 
