@@ -206,6 +206,7 @@
 <script src="{{ asset('/app/services/topTweetAnalysisService.js') }}"></script>
 <script src="{{ asset('/app/services/simpleTweetService.js') }}"></script>
 <script src="{{ asset('/app/services/simplePositiveNegativeService.js') }}"></script>
+<script src="{{ asset('/app/services/getCountryMapService.js') }}"></script>
 <script src="{{ asset('/app/services/networkErrorModalShowService.js') }}"></script>
 
 {{-- Angular directives --}}
@@ -231,6 +232,11 @@
 
 <!-- angular-chart.js -->
 <script src="{{ URL::asset('js/angular-chart.js') }}"></script>
+
+<!-- angular-fusion-charts -->
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/fusioncharts.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/themes/fusioncharts.theme.fint.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/angular-fusioncharts.min.js') }}"></script>
 
 {{--Toaster js--}}
 <script src="{{ asset('/js/angular-animate.min.js') }}"></script>

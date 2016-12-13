@@ -8,7 +8,7 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
 
         var tweet = getTweets.getTweets(search, maxIDPopular, 0);
         tweet.tweet.then(function (response) {
-            if (response["Error"] == undefined) {
+            if (response["Error"] == undefined || response.length == 1) {
                 for (var i = 0; i < response.length - 1; i++) {
 
                     (function (response, i) {
@@ -45,6 +45,8 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
                                     (function (lastIndex, result) {
                                         setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.positives, lastIndex, result), 0);
                                     })(posLength - 1, result);
+
+                                    //setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.positives, $scope.positives.length - 1, result), 0);
                                 }
                             } else if (result["type"] == "negative" && (result["score"] <= -0.1 || result["ratio"] == -1) && !$scope.negatives.some(function(el) { return el.text === response[i]["text"]; })) {
                                 if (countNeg > 0) {
@@ -71,6 +73,8 @@ app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer
                                     (function (lastIndex, result) {
                                         setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.negatives, lastIndex, result), 0);
                                     })(negLength - 1, result);
+
+                                    //setTimeout(settingTopTweetAnalyzer.settingAnalyzer($scope.negatives, $scope.negatives.length - 1, result), 0);
                                 }
                             }
 

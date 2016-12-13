@@ -72,15 +72,21 @@ class SentimentController extends Controller{
                             if($isRecent == 0) {
                                 $singleTweet["retweet"] = $t->retweet_count;
                                 $singleTweet["user"] = $t->user->name;
+                            } else {
+                                $singleTweet["location"] = $t->user->location;
                             }
 
                             array_push($arr, $singleTweet);
+
+                            if((int)$maxID < ($t->id)){
+                                $maxID = $t->id;
+                            }
                         }
                     }
                 }
 
-                array_push($arr, $status->search_metadata->max_id_str);
-                return json_encode($arr);
+                array_push($arr, $maxID);
+                echo json_encode($arr);
             } else {
                 $error = array("Error" => "1");
                 return json_encode($error);

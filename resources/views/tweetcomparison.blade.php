@@ -221,5 +221,3 @@
     </div>
     <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop
-<script type="text/javascript" src="js/fusioncharts/fusioncharts.js"></script>
-<script type="text/javascript" src="js/fusioncharts/themes/fusioncharts.theme.fint.js"></script>

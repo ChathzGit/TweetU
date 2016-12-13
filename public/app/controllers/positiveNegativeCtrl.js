@@ -12,10 +12,57 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
     $scope.data = [50, 50];
     $scope.colors = ['#4078a2', '#77c0f8'];
     $scope.options = {
+        legend: {
+            display: true,
+            reverse: true,
+            position: 'top'
+        },
         responsive: true,
         hover: {
             mode: 'single'
         }
+    };
+
+    $scope.fusionChartsMapData = [];
+
+    $scope.fusionChartsMapDataSource = {
+        chart: {
+            "entityFillHoverColor": "#cccccc",
+            "numberScaleValue": "1,10,10",
+            "showLabels": "0",
+            "bgColor": "#f1f6fb",
+            "theme": "fint",
+            "caption": "Twitter Popularity"
+        },
+        "colorrange": {
+            "color": [
+                {
+                    "minvalue": "0",
+                    "maxvalue": "25",
+                    "code": "#ABEBC6",
+                    "displayValue": "Less"
+                },
+                {
+                    "minvalue": "26",
+                    "maxvalue": "50",
+                    "code": "#F39C12",
+                    "displayValue": "Ok"
+                },
+                {
+                    "minvalue": "51",
+                    "maxvalue": "75",
+                    "code": "#AF7AC5",
+                    "displayValue": "Better"
+                },
+                {
+                    "minvalue": "76",
+                    "maxvalue": "100",
+                    "code": "#E74C3C",
+                    "displayValue": "Perfect"
+                }
+            ]
+        },
+        "data":$scope.fusionChartsMapData
     };
 
     $scope.positives = [];
@@ -30,6 +77,10 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
     $scope.topAnalyzer["pos"] = [];
     $scope.topAnalyzer["neg"] = [];
 
+    $scope.locations = [];
+    $scope.locationCount = [];
+    $scope.totalLocationCount = 0;
+
     $scope.tweetChecked = 0;
 
     $scope.getInfo = function() {
@@ -38,7 +89,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
         $scope.isSearched = true;
 
-        if($scope.search != undefined && $scope.search.trim() != "") {
+        if ($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
 
             for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {
@@ -60,6 +111,11 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
                 GetTweetRequests[getTopTweetsRequestsCount2].cancelTweet("New Request");
             }
             GetTweetRequests.length = 0;
+
+            for (var getMapCallsCount = 0; getMapCallsCount < GetMapCalls.length; getMapCallsCount++) {
+                GetMapCalls[getMapCallsCount].cancelMapping("New Request");
+            }
+            GetMapCalls.length = 0;
 
             //getting top good bad, tweets
             var topResultCount = 5; // change here how much you need to get... hehe mama ganne 5i :D
@@ -87,6 +143,12 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
             $scope.data = [50, 50];
             $scope.tweetChecked = 0;
+
+            $scope.fusionChartsMapData.length = 0;
+            $scope.locations.length = 0;
+            $scope.locationCount.length = 0;
+
+            $scope.totalLocationCount = 0;
             getPosNeg.setPosNeg($scope.search, 10, $scope);
         }
     };

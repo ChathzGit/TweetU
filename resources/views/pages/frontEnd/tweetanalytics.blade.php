@@ -61,20 +61,16 @@
 
 
                     <div class="col-sm-12 col-xs-12">
-                        <h4>Pie Chart:</h4>
 
-                        <div class="col-sm-3 col-xs-12">
-                            <p class="text-grey hidden-xs">
-                                This chart displays the 'positive' and 'negative' tweets related to the topic you've entered.
-                            </p>
-
-                            <p class="text-grey hidden-xs">
-                                After the request is made, please wait a moment as the chart is populated.
-                            </p>
+                        <div class="col-sm-7" style="margin-top: 20px">
+                            <div height="300" width="100%" fusioncharts type="maps/worldwithcountries" dataSource="<%fusionChartsMapDataSource%>"></div>
                         </div>
 
-                        <div class="col-sm-1"></div>
-
+                        <div class="col-sm-1" style="text-align: center;">
+                            <hr>
+                            <p><strong style="font-size: 30px;"><%tweetChecked%></strong> <br> tweets analyzed</p>
+                            <hr>
+                        </div>
 
                         <div class="col-sm-4">
                             <canvas id="twitterAnalyticsPie"
@@ -86,23 +82,23 @@
                                     width="200" height="200"></canvas>
                         </div>
 
-                        <div class="col-sm-1"></div>
 
-                        <div class="col-sm-3 col-xs-12" style="margin-top: 20px; padding: 0;">
-                            <h4 class="text-grey">Legend:</h4>
 
-                            <div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">
-                                <div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #77c0f8;"></div><span class="text-grey">Positive</span>
-                            </div>
+                        {{--<div class="col-sm-3 col-xs-12" style="margin-top: 20px; padding: 0;">--}}
+                            {{--<h4 class="text-grey">Legend:</h4>--}}
 
-                            <div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">
-                                <div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #4078a2;"></div><span class="text-grey">Negative</span>
-                            </div>
+                            {{--<div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">--}}
+                                {{--<div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #77c0f8;"></div><span class="text-grey">Positive</span>--}}
+                            {{--</div>--}}
 
-                            <div class="col-sm-12 col-xs-12 text-grey" style="margin-bottom: 10px; padding:0">
-                                <p><strong><%tweetChecked%></strong> tweets analyzed</p>
-                            </div>
-                        </div>
+                            {{--<div class="col-sm-12 col-xs-6" style="margin-bottom: 10px; padding:0">--}}
+                                {{--<div style="display: inline-block; margin-right: 5px; height: 15px; width: 15px; background-color: #4078a2;"></div><span class="text-grey">Negative</span>--}}
+                            {{--</div>--}}
+
+                            {{--<div class="col-sm-12 col-xs-12 text-grey" style="margin-bottom: 10px; padding:0">--}}
+                                {{--<p><strong><%tweetChecked%></strong> tweets analyzed</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                     </div>
                 </div>
@@ -110,11 +106,18 @@
             <!-- ---------------- Pie Chart Section End ------------------------------------------------------------------------------------------- -->
 
 
+            <!-- ---------------- Popularity by country ------------------------------------------------------------------------------------------- -->
+            {{--<div class="row m-t-20 well bg-opc-65" ng-if="!isSearched">--}}
+                {{----}}
+            {{--</div>--}}
+
+            <!-- ---------------- Popularity by country ------------------------------------------------------------------------------------------- -->
+
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
             <div class="row m-t-20 well bg-opc-65" ng-if="isSearched">
                 <div class="col-sm-12">
-                    <h4 class="m-b-20">This Week's Most Popular <strong class="c-green">Positive Tweets</strong> & <strong
-                                class="c-red">Negative Tweets</strong> :</h4>
+                    <h4 class="m-b-20">Most Popular <strong class="c-green">Positive</strong> & <strong
+                                class="c-red">Negative</strong> Tweets</h4>
 
                     <div class="row p-0">
                         <div class="col-sm-6 col-xs-12">
@@ -122,7 +125,7 @@
                                 <div ng-class="{'showingAnalyzer': topAnalyzer['pos'][items['number']]}"
                                      ng-click="loadHowSentimentWorks(items['number'], 'pos')" title="Analyze"
                                      style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
-                                    <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                                    <i style="margin-left: 7px;" class="fa fa-info" aria-hidden="true"></i>
                                 </div>
                                 <div ng-if="justTweets['pos'][items['number']]" class="just-tweet"
                                      style="margin-top: 5px;">
@@ -153,7 +156,7 @@
                     <div class="col-sm-6 col-xs-12">
                         <div class="col-xs-12 bad-tweet gb-tweet" ng-repeat="items in negatives">
                             <div ng-class="{'showingAnalyzer': topAnalyzer['neg'][items['number']]}" ng-click="loadHowSentimentWorks(items['number'], 'neg')" title="Analyze" style="cursor: pointer; border:1px solid black; width: 18px; height: 21px; position: absolute; top: 0; right: 0; border-radius: 15px 0 0 15px">
-                                <i style="margin-left: 3px;" class="fa fa-search" aria-hidden="true"></i>
+                                <i style="margin-left: 7px;" class="fa fa-info" aria-hidden="true"></i>
                             </div>
                             <div ng-if="justTweets['neg'][items['number']]" class="just-tweet" style="margin-top: 5px;">
                                 <div tweet="items['text']" top-tweet></div>
@@ -174,14 +177,15 @@
                             </div>
                         </div>
                     </div>
+                    </div>
 
                 </div>
             </div>
         </div>
-            <!-- -------------------- Good Bad Tweets Section End --------------------------------------------------------------- -->
 
-        </div>
+        <!-- -------------------- Good Bad Tweets Section End --------------------------------------------------------------- -->
 
+        <!-- -------------------- Top Tweets Section Start --------------------------------------------------------------- -->
         <div id="sentiment-howto" style="display: none">
             <table class="table table-hover">
                 <tr style="text-align: center" class="row" ng-repeat="text in mouseHovered">
@@ -203,13 +207,18 @@
             </table>
         </div>
 
-        <!--Error Modal -->
+        <!-- -------------------- Top Tweets Section End --------------------------------------------------------------- -->
+
+
+        <!-- -------------------- Error Modal Section Start --------------------------------------------------------------- -->
+
         <script type="text/ng-template" id="NetworkError.html">
             <div class="modal-body">
                 <button onclick="location.reload()" type="button" class="close" data-dismiss="modal"><i style="color: red" class="fa fa-refresh" aria-hidden="true"></i></button>
                 <h4 class="modal-title">Error in connection. Please retry...</h4>
             </div>
         </script>
+
+        <!-- ----------------------- Error Modal Section Start  ---------------------------------------------------------------------------------------- -->
     </div>
-    <!-- ----------------------- Good Bad Tweets Section End ---------------------------------------------------------------------------------------- -->
 @stop
