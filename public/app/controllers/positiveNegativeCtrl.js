@@ -116,6 +116,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
                 GetMapCalls[getMapCallsCount].cancelMapping("New Request");
             }
             GetMapCalls.length = 0;
+            insideMapHttp = 0;
 
             //getting top good bad, tweets
             var topResultCount = 5; // change here how much you need to get... hehe mama ganne 5i :D

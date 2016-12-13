@@ -15,6 +15,7 @@ var GetTweetRequests = [];
 var GetTweetPosNegRequests = [];
 
 var GetMapCalls = [];
+var insideMapHttp = 0;
 
 var currentTopTweetResponse = [];
 currentTopTweetResponse["pos"] = [];
