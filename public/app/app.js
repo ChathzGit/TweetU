@@ -13,6 +13,8 @@ var GetTopTweetPosNegRequests = [];
 var GetTweetRequests = [];
 var GetTweetPosNegRequests = [];
 
+var GetMapCalls = [];
+
 var currentTopTweetResponse = [];
 currentTopTweetResponse["pos"] = [];
 currentTopTweetResponse["neg"] = [];
@@ -23,7 +25,8 @@ var app = angular.module('tweetU',
         'chart.js',
         'toaster',
         'ngCookies',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ng-fusioncharts'
     ],
 
     ['$interpolateProvider',
@@ -34,7 +37,7 @@ var app = angular.module('tweetU',
         }])
 
     // This will be used for the server calls
-    .constant('API_URL', 'http://localhost:8080/TweetU/public/')
+    .constant('API_URL', 'http://localhost:8080/TweetU_1.0/public/')
 
     /*
     * Response Codes -
