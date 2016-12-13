@@ -182,8 +182,9 @@
                     <div class="col-sm-3 m-b-5">
                         <div class="col-sm-12 admin-hp-percentagecontainer text-center selected-profile">
                             <h4><strong>Topic Comparisons</strong></h4>
-                                <span ng-class="{'c-green': TopicComparisonPercentage >= 100, 'c-red': TopicComparisonPercentage < 100 }"><% TopicComparisonPercentage %>
-                                    %</span>
+                                <span ng-class="{'c-green': TopicComparisonPercentage >= 100, 'c-red': TopicComparisonPercentage < 100 }">
+                                    <strong><% TopicComparisonPercentage %>%</strong>
+                                </span>
                             <hr>
                             <span class="text-grey" ng-show="TopicComparisonPercentage >= 100">A <% TopicComparisonPercentage %>% increase in Tweet analytic usage</span>
                             <span class="text-grey" ng-show="TopicComparisonPercentage == 0">Percentage not available</span>
@@ -195,8 +196,9 @@
                     <div class="col-sm-3 m-b-5">
                         <div class="col-sm-12 admin-hp-percentagecontainer text-center selected-profile">
                             <h4><strong>Account Comparisons</strong></h4>
-                                <span ng-class="{'c-green': AccountComparisonPercentage >= 100, 'c-red': AccountComparisonPercentage < 100 }"><% AccountComparisonPercentage %>
-                                    %</span>
+                                <span ng-class="{'c-green': AccountComparisonPercentage >= 100, 'c-red': AccountComparisonPercentage < 100 }">
+                                    <strong><% AccountComparisonPercentage %>%</strong>
+                                </span>
                             <hr>
                             <span class="text-grey" ng-show="AccountComparisonPercentage >= 100">A <% AccountComparisonPercentage %>% increase in Tweet analytic usage</span>
                             <span class="text-grey" ng-show="AccountComparisonPercentage == 0">Percentage not available</span>

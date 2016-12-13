@@ -62,7 +62,7 @@
 
                     <div class="col-sm-12 col-xs-12">
 
-                        <div class="col-sm-7" style="margin-top: 20px">
+                        <div class="col-sm-7 p-0" style="margin-top: 20px">
                             <div height="300" width="100%" fusioncharts type="maps/worldwithcountries" dataSource="<%fusionChartsMapDataSource%>"></div>
                         </div>
 

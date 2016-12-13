@@ -8,19 +8,18 @@
  */
 
 use Illuminate\Database\Seeder;
-use DB;
 
 class UserTableSeeder extends Seeder
 {
 
     public function run()
     {
-        DB:table('siteusers')->delete();
+        DB::table('siteusers')->delete();
 
         $users = array(
-            ['id' => 1, 'name' => 'admin', 'email' => 'admin@gmail.com', 'password' => 'password', 'remember_token' => ""]
+            ['id' => 1, 'name' => 'admin', 'email' => 'admin@gmail.com', 'role' => 'admin', 'password' => 'password', 'remember_token' => ""]
         );
 
-        DB:table('users')->insert($users);
+        DB::table('siteusers')->insert($users);
     }
 }
