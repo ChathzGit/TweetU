@@ -98,54 +98,64 @@
                     background-position: center;"></div>
 
             <!-- Bar Chart comparing the two -->
-            <div class="col-sm-12 well">
-                <div class="col-sm-6">
-                    <label>Good comparison between each other</label>
-                    <canvas id="bar" class="chart chart-bar" style="height:150px;"
-                            chart-data="bardata2" chart-labels="barlabels2"  chart-options="baroptions2" chart-colors="barcolors2">
+            <div class="row m-t-20 well">
+                <div class="col-sm-12" style="text-align: center"><label>Popularity and Unpopularity of the two criteria as percentages</label></div>
+                <div class="col-sm-6 well">
+                    <label>Popularity (%)</label>
+                    <canvas id="bar" class="chart chart-bar" style="height:250px;"
+                            chart-data="bardata2" chart-labels="barlabels2" chart-colors="barcolors2">
                     </canvas>
                 </div>
-                <div class="col-sm-6">
-                    <label>Bad comparison between each other</label>
-                    <canvas id="bar2" class="chart chart-bar" style="height:150px;"
-                            chart-data="bardata" chart-labels="barlabels" chart-options="baroptions" chart-colors="barcolors">
+                <div class="col-sm-6 well">
+                    <label>Unpopularity (%)</label>
+                    <canvas id="bar2" class="chart chart-bar" style="height:250px;"
+                            chart-data="bardata" chart-labels="barlabels" chart-colors="barcolors">
                     </canvas>
                 </div>
             </div>
 
             <!-- Pie charts describing each separately -->
-            <div class="col-sm-12 well">
-                <div class="col-sm-6">
-                    <label>Criteria One</label>
-                    <label style="color:#3498DB; font-size: x-large">Bad</label>
-                    <label id="negative" style="color:#3498DB; font-size: large"><%negative%>%</label>
+            <div class="row m-t-20 well">
+                <div class="col-sm-12" style="text-align: center"><label>Separate analysation of the two criteria</label></div>
+                <div class="col-sm-6 well">
+                    <div class="col-sm-12" style="text-align: center"><label id="criteria_one"><%criteria_one%></label></div>
+                    <div class="col-sm-12" style="text-align: center"></div>
+                    <div class="col-sm-12" style="text-align: center"><label>Percentage of 'Good' Tweets and 'Bad' Tweets</label></div>
                     <canvas id="pie" class="chart chart-pie" style="height:60px;"
                             chart-data="data" chart-labels="labels" chart-options="options" chart-colors="colors">
                     </canvas>
-                    <label style="color:#72C02C; font-size: x-large">Good</label>
-                    <label id="positive" style="color:#72C02C; font-size: large"><%positive%>%</label>
+                    <table class="table">
+                        <thead>
+                        <th style="text-align: center"><label style="color:#72C02C; font-size: x-large">Good</label></th>
+                        <th style="text-align: center"><label style="color:#3498DB; font-size: x-large">Bad</label></th>
+                        </thead>
+                        <tbody>
+                        <td style="text-align: center"><label id="positive" style="color:#72C02C; font-size: large"><%positive%>%</label></td>
+                        <td style="text-align: center"><label id="negative" style="color:#3498DB; font-size: large"><%negative%>%</label></td>
+                        </tbody>
+                    </table>
+                    <div id="chartContainer" style="text-align: center">Criteria One</div>
+
                 </div>
-                <div class="col-sm-6">
-                    <label>Criteria Two</label>
-                    <label style="color:#3498DB; font-size: x-large">Bad2</label>
-                    <label id="negative2" style="color:#3498DB; font-size: large"><%negative2%>%</label>
+                <div class="col-sm-6 well">
+                    <div class="col-sm-12" style="text-align: center"><label id="criteria_two"><%criteria_two%></label></div>
+                    <div class="col-sm-12" style="text-align: center"></div>
+                    <div class="col-sm-12" style="text-align: center"><label>Percentage of 'Good' Tweets and 'Bad' Tweets</label></div>
                     <canvas id="pie2" class="chart chart-pie" style="height:60px;"
                             chart-data="data2" chart-labels="labels2" chart-options="options2" chart-colors="colors2">
                     </canvas>
-                    <label style="color:#72C02C; font-size: x-large">Good2</label>
-                    <label id="positive2" style="color:#72C02C; font-size: large"><%positive2%>%</label>
-                </div>
-            </div>
+                    <table class="table">
+                        <thead>
+                            <th style="text-align: center"><label style="color:#FFC0CB; font-size: x-large">Good</label></th>
+                            <th style="text-align: center"><label style="color:#FFFF00; font-size: x-large">Bad</label></th>
+                        </thead>
+                        <tbody>
+                            <td style="text-align: center"><label id="positive2" style="color:#FFC0CB; font-size: large"><%positive2%>%</label></td>
+                            <td style="text-align: center"><label id="negative2" style="color:#FFFF00; font-size: large"><%negative2%>%</label></td>
+                        </tbody>
+                    </table>
 
-            <!-- Popularity by country -->
-            <div class="col-sm-12">
-                <div class="col-sm-6">
-                    <label>Criteria One</label>
-                    <div id="chartContainer">Criteria One</div>
-                </div>
-                <div class="col-sm-6">
-                    <label>Criteria Two</label>
-                    <div id="chartContainer2">Criteria Two</div>
+                    <div id="chartContainer2" style="text-align: center">Criteria Two</div>
                 </div>
             </div>
 
