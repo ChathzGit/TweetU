@@ -31,8 +31,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
             "numberScaleValue": "1,10,10",
             "showLabels": "0",
             "bgColor": "#f1f6fb",
-            "theme": "fint",
-            "caption": "Twitter Popularity"
+            "theme": "fint"
         },
         "colorrange": {
             "color": [
@@ -91,6 +90,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
         if ($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
+
+            $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"  Popularity";
 
             for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {
                 GetTopTweetPosNegRequests[posNegRequestsCount1].cancelChecker("New Request");
