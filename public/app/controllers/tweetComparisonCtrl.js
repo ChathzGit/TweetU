@@ -21,6 +21,9 @@ app.controller('tweetComparisonCtrl', function($scope, comparisonFactory,  $wind
 
         comparisonFactory.setPosNeg($scope.search, 2, $scope);
         comparisonFactory.setPosNeg2($scope.search2, 2, $scope);
+
+        $scope.criteria_one = $scope.search;
+        $scope.criteria_two = $scope.search2;
     };
 
 });

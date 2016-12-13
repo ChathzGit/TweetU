@@ -12,7 +12,7 @@ app.service("simpleGetTweets", function($http, $q) {
             canceller.resolve(reason);
         };
 
-        var tweet = $http.get(baseUrl + "/public/get_compare_tweets", {
+        var tweet = $http.get("get_compare_tweets", {
             params: {search: search, maxID: maxID, recent: recent},
             timeout: canceller.promise
         }).then(function (response) {
