@@ -64,15 +64,23 @@ app.controller('ctrlProf', function($scope, getProf , getLocations) {
 
         $scope.loading = true;
         $scope.isanalized = true;
-
+        $scope.locResult = [];
         getProf.getProfileTweets($scope,scrnName);
+
+
+
+    };
+
+
+    $scope.loadLocation = function(scrnName) {
+
+        $scope.loading = true;
 
         $scope.locations = [];
         $scope.locationarray = [];
         getLocations.getUseLocations(scrnName,3,$scope,-1);
-    };
 
-
+    }
 
 
 

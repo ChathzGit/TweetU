@@ -298,6 +298,24 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-12 col-xs-12">
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-twitter-custom btn-full-width"
+                                    ng-click="loadLocation(selectedAccount['screenName'])">Generate Followers Map
+                            </button>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12 m-t-20">
+                        <div id="chartContainer"></div>
+                    </div>
+
 
                 </div>
 
@@ -308,3 +326,5 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="js/fusioncharts/fusioncharts.js"></script>
+    <script type="text/javascript" src="js/fusioncharts/themes/fusioncharts.theme.fint.js"></script>

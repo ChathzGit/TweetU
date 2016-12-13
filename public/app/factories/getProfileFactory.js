@@ -114,6 +114,7 @@ app.factory('getProf', function($http) {
                     maintainAspectRatio: false
                 };
 
+
                 $scope.loading = false;
 
 
@@ -135,6 +136,8 @@ app.factory('getProf', function($http) {
 
 
 
+
+        //oni neeeee
         //$http.get("getUserLocation", {
         //
         //    params: {screenName: $sname}
@@ -157,6 +160,7 @@ app.factory('getProf', function($http) {
 
 
     }
+
 
     return {
         setProf : function ($scope) {

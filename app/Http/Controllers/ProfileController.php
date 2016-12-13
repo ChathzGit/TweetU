@@ -160,7 +160,7 @@ class ProfileController extends Controller {
         $connection = new TwitterOAuth($consumer, $consumer_secret, $access_token, $access_token_secret);
         $content = $connection->get("account/verify_credentials");
 
-        for($i = 0;$i<(20);$i++)
+        for($i = 0;$i<(10);$i++)
         {
             if ($maxID == -1)
             {
@@ -281,8 +281,9 @@ class ProfileController extends Controller {
             $maxID = $status2->next_cursor_str;
             foreach ($status2->users as $tweet2) {
 
-                array_push($locations, $tweet2->location);
-
+                if($tweet2->location!="") {
+                    array_push($locations, $tweet2->location);
+                }
 
             }
             array_push($locations, $maxID);
