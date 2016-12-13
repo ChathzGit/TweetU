@@ -2,17 +2,16 @@
  * Created by ACer on 11/19/2016.
  */
 
-app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
+
+app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, settingError) {
     function setPosNeg(search, count, $scope, $http) {
         $scope.countries = [];
 
         if (count > 0) {
 
-
             var tweet = simpleGetTweets.getTweets(search, maxIDPopular, 1);
             tweet.tweet.then(function (response) {
                 if (response["Error"] == undefined) {
-
                     for (var i = 0; i < response.length - 1; i++) {
                         (function (response, i) {
 
@@ -23,7 +22,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                             for(var i=1; i<splitted_address.length; i++){
                                 address = address + " " + splitted_address[i];
                             }
-                            var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDqtKh83UC16va5rExAQkumKax699B-rLY";
+                            var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyCPTGvmXDs0z_Qg-9rAKxPyYoMCyHZGT4w";
 
                             $scope.getcountryid = function(country_name){
                                 if(country_name == 'Afghanistan'){
@@ -283,13 +282,13 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                                     var salesByState = new FusionCharts({
                                                         "type": "maps/worldwithcountries",
                                                         "renderAt": "chartContainer",
-                                                        "width": "600",
-                                                        "height": "400",
+                                                        "width": "100%",
+                                                        "height": "300",
                                                         "dataFormat": "json",
                                                         "dataSource": {
                                                             "chart": {
-                                                                "caption": "Criteria One",
-                                                                "subcaption": "Last year",
+                                                                "caption": "Twitter Popularity",
+                                                                "subcaption": $scope.search,
                                                                 "entityFillHoverColor": "#cccccc",
                                                                 "numberScaleValue": "1,10,10",
                                                                 "showLabels": "0",
@@ -352,17 +351,6 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     $scope.positive = Math.round(100 * pos / (pos + neg));
                                     $scope.negative = Math.round(100 * neg / (pos + neg));
 
-                                    //console.log("data1");
-                                    //console.log($scope.positive);
-                                    //console.log($scope.negative);
-
-                                    //pie chart
-                                    $scope.labels = ["Good", "Bad"];
-                                    $scope.data = [$scope.positive, $scope.negative];
-                                    $scope.colors = ['#72C02C', '#3498DB', '#717984', '#F1C40F'];
-                                    $scope.options =  {};
-
-
 
                                     count--;
                                 }
@@ -379,6 +367,12 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                     }
                 } else {
                     console.log("Error in setposneg 1");
+                    //location.reload();
+                    //alert('Error');
+                    if($scope.loading){
+                        $scope.loading = false;
+                    }
+                    settingError.networkError();
                 }
             });
 
@@ -414,7 +408,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                             for(var i=1; i<splitted_address.length; i++){
                                 address = address + " " + splitted_address[i];
                             }
-                            var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDqtKh83UC16va5rExAQkumKax699B-rLY";
+                            var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyCPTGvmXDs0z_Qg-9rAKxPyYoMCyHZGT4w";
 
                             $scope.getcountryid2 = function(country_name){
                                 if(country_name == 'Afghanistan'){
@@ -674,13 +668,13 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                                     var salesByState = new FusionCharts({
                                                         "type": "maps/worldwithcountries",
                                                         "renderAt": "chartContainer2",
-                                                        "width": "600",
-                                                        "height": "400",
+                                                        "width": "100%",
+                                                        "height": "300",
                                                         "dataFormat": "json",
                                                         "dataSource": {
                                                             "chart": {
-                                                                "caption": "Criteria Two",
-                                                                "subcaption": "Last year",
+                                                                "caption": "Twitter Popularity",
+                                                                "subcaption": $scope.search2,
                                                                 "entityFillHoverColor": "#cccccc",
                                                                 "numberScaleValue": "1,10,10",
                                                                 "showLabels": "0",
@@ -744,33 +738,57 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
                                     $scope.positive2 = Math.round(100 * pos2 / (pos2 + neg2));
                                     $scope.negative2 = Math.round(100 * neg2 / (pos2 + neg2));
 
+                                    //pie chart
+                                    $scope.labels = ["Good", "Bad"];
+                                    $scope.data = [$scope.positive, $scope.negative];
+                                    $scope.colors = ['#72C02C', '#3498DB', '#717984', '#F1C40F'];
+                                    $scope.options =  {};
+
                                     //pie chart2
                                     $scope.labels2 = ["Good2", "Bad2"];
                                     $scope.data2 = [$scope.positive2, $scope.negative2];
-                                    $scope.colors2 = ['#4078a2', '#77c0f8'];
+                                    $scope.colors2 = ['#FFC0CB', '#FFFF00', '#717984', '#F1C40F'];
                                     $scope.options2 =  {};
 
                                     //bar chart good
-                                    $scope.barlabels2 = ["One", "Two"];
+                                    $scope.barlabels2 = [$scope.search, $scope.search2];
                                     $scope.bardata2 = [
-                                        [$scope.positive, $scope.positive2]
+                                        [(($scope.positive/($scope.positive+$scope.positive2))*100), (($scope.positive2/($scope.positive+$scope.positive2))*100)]
                                     ];
-                                    $scope.barcolors2 = ['#4078a2', '#77c0f8'];
+                                    $scope.barcolors2 = ['#46BFBD'];
                                     $scope.baroptions2 =  {
-                                        responsive: true,
-                                        maintainAspectRatio: false
-                                    }
+                                        scales:{
+                                            yAxes:[{
+                                                scaleOverride: true,
+                                                scaleStepWidth: 1,
+                                                scaleSteps: 100,
+                                                scaleStartValue: 0
+                                            }]
+
+                                        }
+                                        //responsive: false,
+                                        //maintainAspectRatio: false
+                                    };
 
                                     //bar chart bad
-                                    $scope.barlabels = ["One", "Two"];
+                                    $scope.barlabels = [$scope.search, $scope.search2];
                                     $scope.bardata = [
-                                        [$scope.negative, $scope.negative2]
+                                        [(($scope.negative/($scope.negative+$scope.negative2))*100), (($scope.negative2/($scope.negative+$scope.negative2))*100)]
                                     ];
-                                    $scope.barcolors = ['#717984', '#F1C40F'];
+                                    $scope.barcolors = ['#FDB45C'];
                                     $scope.baroptions =  {
-                                        responsive: true,
-                                        maintainAspectRatio: false
-                                    }
+                                        scales:{
+                                            yAxes:[{
+                                                scaleOverride: true,
+                                                scaleStepWidth: 1,
+                                                scaleSteps: 100,
+                                                scaleStartValue: 0
+                                            }]
+
+                                        }
+                                        //responsive: false,
+                                        //maintainAspectRatio: false
+                                    };
 
                                     count--;
                                 }
@@ -788,6 +806,12 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg) {
 
                 } else {
                     console.log("Error in setposneg 2");
+                    //location.reload();
+                    //alert('Error');
+                    if($scope.loading){
+                        $scope.loading = false;
+                    }
+                    settingError.networkError();
                 }
             });
 

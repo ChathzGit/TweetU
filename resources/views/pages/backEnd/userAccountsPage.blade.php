@@ -64,8 +64,15 @@
                                ng-click="setSelectUser(user)" data-target="#myModal">Edit</a>
                         </td>
                         <td>
-                            <button class="btn btn-full-width btn-danger" ng-click="deleteUser(user.id)">Delete
+                            {{--<button class="btn btn-full-width btn-danger" ng-click="deleteUser(user.id)">Delete--}}
+                            {{--</button>--}}
+
+                            <button data-toggle="modal"
+                                    ng-click="setSelectUser(user)" data-target="#deleteConfirmModal"
+                                    class="btn btn-full-width btn-danger">Delete
                             </button>
+                            {{--data-toggle="modal"--}}
+                            {{--ng-click="setSelectUser(user)" data-target="#myModal"--}}
                         </td>
                     </tr>
                     </tbody>
@@ -135,6 +142,9 @@
                             </div>
 
 
+                        </form>
+
+                        <form name="passForm" class="form-horizontal" novalidate="">
                             <!-- -------------------------------- PASSWORD ------------------------------------------------------------- -->
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
@@ -147,26 +157,6 @@
                                           ng-show="frmEmployees.password.$invalid && frmEmployees.password.$touched">Password field is required</span>
                                 </div>
                             </div>
-
-
-                            {{--<!-- -------------------------------- CONFIRM PASSWORD ------------------------------------------------------------- -->--}}
-                            {{--<div class="form-group">--}}
-                                {{--<label for="inputEmail3" class="col-sm-3 control-label">Confirm Password</label>--}}
-
-                                {{--<div class="col-sm-9">--}}
-                                    {{--<input type="password" class="form-control" id="confirm_password"--}}
-                                           {{--name="confirm_password"--}}
-                                           {{--placeholder="Confirm Password"--}}
-                                           {{--ng-model="selectedUser.confirmpassword" ng-required="true">--}}
-
-                                    {{--<span class="help-inline c-red"--}}
-                                          {{--ng-show="frmEmployees.confirm_password.$invalid && frmEmployees.confirm_password.$touched">Please type the password again</span>--}}
-
-                                {{--<span class="help-inline c-red"--}}
-                                      {{--ng-show="selectedUser.password != selectedUser.confirmpassword && frmEmployees.confirm_password.$valid">Mismatching passwords</span>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
                         </form>
                         <!-- -------------------------------- FORM END ------------------------------------------------------------- -->
 
@@ -175,6 +165,34 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary p-l-30 p-r-30" id="btn-save" ng-click="adminSave()"
                                 ng-disabled="frmEmployees.$invalid">Save Changes
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div id="deleteConfirmModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Delete User</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <h5 class="text-center">Are you sure you want to delete "<% selectedUser.name %>"?</h5>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary p-l-30 p-r-30" data-dismiss="modal"
+                                ng-click="deleteUser(selectedUser.id)">
+                            Delete User
                         </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>

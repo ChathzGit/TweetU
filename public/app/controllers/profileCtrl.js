@@ -4,7 +4,7 @@
 
 
 
-app.controller('ctrlProf', function($scope, getProf) {
+app.controller('ctrlProf', function($scope, getProf , getLocations) {
 
     $scope.loading = false;
     $scope.isSearched = false;
@@ -66,6 +66,10 @@ app.controller('ctrlProf', function($scope, getProf) {
         $scope.isanalized = true;
 
         getProf.getProfileTweets($scope,scrnName);
+
+        $scope.locations = [];
+        $scope.locationarray = [];
+        getLocations.getUseLocations(scrnName,3,$scope,-1);
     };
 
 

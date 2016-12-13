@@ -48,6 +48,7 @@ class SearchLogController extends Controller
 
     }
 
+
     public function loadSearchDataTestDataInterface()
     {
 
@@ -75,6 +76,7 @@ class SearchLogController extends Controller
 
 
     }
+
 
     public function getSearchLogs()
     {
@@ -342,31 +344,6 @@ class SearchLogController extends Controller
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function getPercentageChanges()

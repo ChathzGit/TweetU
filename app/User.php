@@ -16,7 +16,7 @@ class User extends EloquentUser implements AuthenticatableContract, CanResetPass
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'siteusers';
 
 	/**
 	 * The attributes that are mass assignable.

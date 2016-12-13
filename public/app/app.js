@@ -5,7 +5,8 @@
 var pos = 0, neg = 0, maxIDSearch = -1, maxIDPopular = -1;
 
 var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+//var baseUrl = getUrl .protocol + "//" + getUrl.host + "/";
+var baseUrl = "";
 
 var GetTopTweetsRequests = [];
 var GetTopTweetPosNegRequests = [];
@@ -37,7 +38,7 @@ var app = angular.module('tweetU',
         }])
 
     // This will be used for the server calls
-    .constant('API_URL', 'http://localhost:8080/TweetU_1.0/public/')
+    .constant('API_URL', baseUrl)
 
     /*
     * Response Codes -

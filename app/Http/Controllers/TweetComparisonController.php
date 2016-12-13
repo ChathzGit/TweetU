@@ -1,8 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 /**
- * Dhanuka Anjana
- * dhanu.anjana.93@gmail.com
+ * Chathra Senevirathne
  */
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Input;
@@ -52,15 +51,15 @@ class TweetComparisonController extends Controller{
 
 			if($isRecent == 1) {
 				if ($maxID == -1) {
-					$status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "include_entities" => true]);
+					$status = $connection->get("search/tweets", ["q" => $search, "count" => 500, "result_type" => "recent", "lang" => "en", "include_entities" => true]);
 				} else {
-					$status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "recent", "lang" => "en", "max_id" => $maxID, "include_entities" => true]);
+					$status = $connection->get("search/tweets", ["q" => $search, "count" => 500, "result_type" => "recent", "lang" => "en", "max_id" => $maxID, "include_entities" => true]);
 				}
 			} else {
 				if ($maxID == -1) {
-					$status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "include_entities" => true]);
+					$status = $connection->get("search/tweets", ["q" => $search, "count" => 500, "result_type" => "popular", "lang" => "en", "include_entities" => true]);
 				} else {
-					$status = $connection->get("search/tweets", ["q" => $search, "count" => 100, "result_type" => "popular", "lang" => "en", "max_id" => $maxID, "include_entities" => true]);
+					$status = $connection->get("search/tweets", ["q" => $search, "count" => 500, "result_type" => "popular", "lang" => "en", "max_id" => $maxID, "include_entities" => true]);
 				}
 			}
 
@@ -78,9 +77,9 @@ class TweetComparisonController extends Controller{
 
 								$singleTweet["text"] = htmlspecialchars_decode($t->text);
 								$singleTweet["retweet"] = $t->retweet_count;
-								$singleTweet["tweeterslocation"] = $t->user->location;
 								$singleTweet["user"] = $t->user->name;
 								$singleTweet["id"] = $t->id;
+								$singleTweet["createdat"] = $t->created_at;
 
 
 							} else {
@@ -88,6 +87,7 @@ class TweetComparisonController extends Controller{
 								$singleTweet["user"] = $t->user->name;
 								$singleTweet["tweeterslocation"] = $t->user->location;
 								$singleTweet["id"] = $t->id;
+								$singleTweet["createdat"] = $t->created_at;
 							}
 
 							array_push($arr, $singleTweet);

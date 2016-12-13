@@ -52,7 +52,7 @@
                         </Button>
                     </div>
 
-                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                    <div class="col-sm-12 col-xs-12 m-t-20" ng-if="!isSearched">
                         <hr>
                         <p class="text-grey text-center">Analyze two accounts simultaneously, and compare the public
                             perception of

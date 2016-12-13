@@ -15,7 +15,7 @@ app.service(serviceName,
             * */
             this.saveUserAccount = function (request, callback) {
 
-                var url = API_URL + "save_user";
+                var url = "save_user";
 
                 /*
                  * HTTP post method to save the user data to the database.
@@ -51,7 +51,7 @@ app.service(serviceName,
             /*
             * This method calls the server and requests a list of all the users in the database*/
             this.loadAllUsers = function (callback) {
-                var url = API_URL + "load_all_users";
+                var url = "load_all_users";
 
                 $http.get(url)
                     .success(function (response) {
@@ -86,7 +86,7 @@ app.service(serviceName,
             this.deleteUser = function (request, callback) {
 
 
-                var url = API_URL + "delete_user";
+                var url = "delete_user";
 
                 /*
                  * HTTP post method to save the user data to the database.
