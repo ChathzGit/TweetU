@@ -425,6 +425,12 @@
 <script src="{{ URL::asset('sb-admin-resources/morrisjs/morris.min.js') }}"></script>
 <script src="{{ URL::asset('sb-admin-resources/morrisjs/morris-data.js') }}"></script>
 
+
+<!-- angular-fusion-charts -->
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/fusioncharts.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/themes/fusioncharts.theme.fint.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/fusioncharts/angular-fusioncharts.min.js') }}"></script>
+
 <!-- Custom Theme JavaScript -->
 <script src="{{ URL::asset('js/sb-admin-2.min.js') }}"></script>
 
