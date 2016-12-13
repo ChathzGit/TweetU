@@ -282,8 +282,8 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
                                                     var salesByState = new FusionCharts({
                                                         "type": "maps/worldwithcountries",
                                                         "renderAt": "chartContainer",
-                                                        "width": "500",
-                                                        "height": "400",
+                                                        "width": "100%",
+                                                        "height": "300",
                                                         "dataFormat": "json",
                                                         "dataSource": {
                                                             "chart": {
@@ -372,7 +372,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
                     if($scope.loading){
                         $scope.loading = false;
                     }
-                    settingError.networkEsrror();
+                    settingError.networkError();
                 }
             });
 
@@ -668,8 +668,8 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
                                                     var salesByState = new FusionCharts({
                                                         "type": "maps/worldwithcountries",
                                                         "renderAt": "chartContainer2",
-                                                        "width": "500",
-                                                        "height": "400",
+                                                        "width": "100%",
+                                                        "height": "300",
                                                         "dataFormat": "json",
                                                         "dataSource": {
                                                             "chart": {
