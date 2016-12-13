@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
 
     public function run()
     {
-        DB:table('users')->delete();
+        DB:table('siteusers')->delete();
 
         $users = array(
             ['id' => 1, 'name' => 'admin', 'email' => 'admin@gmail.com', 'password' => 'password', 'remember_token' => ""]
