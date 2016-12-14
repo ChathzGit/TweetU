@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 /**
- * Chathra Senevirathne
- * chathrasen@gmail.com
+ * Created by
+ * Chathra Senevirathne <chathrasen@gmail.com>
+ *
  */
+
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Input;
 
@@ -132,30 +134,6 @@ class TweetComparisonController extends Controller{
 		$oembed = $connection->get("statuses/oembed", ["id" => $id]);
 
 		return ($oembed->html);
-
-	}
-
-	/*
-	 * trial
-	 */
-	public function getOmbedstr(){
-
-		//$id = Input::get('id');
-
-		include_once(app_path() . '/Libraries/twitterOauth/autoload.php');
-
-		$consumer = "YhgNCzaFHgTTPsOyNSdiTR0K0";
-		$consumer_secret = "A7LvxyhSDuFOCHwfad7Ki2LKxU2iySOkmzRkq9uNhggUufe2Sw";
-
-		$access_token = "4773766462-qdJnWeDy1LEHW1hVc6loqPDrXViSjVAyWKVFqLG";
-		$access_token_secret = "h8ioEfrcTHfmRmEHy4G3Qz3v40dL3FmIX2Iz1MLksnxES";
-
-		$connection = new TwitterOAuth($consumer, $consumer_secret, $access_token, $access_token_secret);
-		$content = $connection->get("account/verify_credentials");
-
-		$oembed = $connection->get("statuses/oembed", ["id" => '507185938620219395']);
-
-		return json_encode($oembed);
 
 	}
 
