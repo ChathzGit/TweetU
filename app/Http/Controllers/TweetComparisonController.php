@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 /**
  * Chathra Senevirathne
+ * chathrasen@gmail.com
  */
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Input;
@@ -79,7 +80,7 @@ class TweetComparisonController extends Controller{
 								$singleTweet["retweet"] = $t->retweet_count;
 								$singleTweet["user"] = $t->user->name;
 								$singleTweet["id"] = $t->id;
-								$singleTweet["createdat"] = $t->created_at;
+								$singleTweet["createdat"] = $t;
 
 
 							} else {
@@ -88,6 +89,7 @@ class TweetComparisonController extends Controller{
 								$singleTweet["tweeterslocation"] = $t->user->location;
 								$singleTweet["id"] = $t->id;
 								$singleTweet["createdat"] = $t->created_at;
+								$singleTweet["retweet"] = $t->retweet_count;
 							}
 
 							array_push($arr, $singleTweet);
@@ -114,6 +116,8 @@ class TweetComparisonController extends Controller{
 	 */
 	public function getOmbeds(){
 
+		$id = Input::get('id');
+
 		include_once(app_path() . '/Libraries/twitterOauth/autoload.php');
 
 		$consumer = "YhgNCzaFHgTTPsOyNSdiTR0K0";
@@ -125,7 +129,7 @@ class TweetComparisonController extends Controller{
 		$connection = new TwitterOAuth($consumer, $consumer_secret, $access_token, $access_token_secret);
 		$content = $connection->get("account/verify_credentials");
 
-		$oembed = $connection->get("statuses/oembed", ["id" => '796938009853722624']);
+		$oembed = $connection->get("statuses/oembed", ["id" => $id]);
 
 		return ($oembed->html);
 

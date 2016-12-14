@@ -98,7 +98,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">About</a>
+                    <a href="about_view">About</a>
                 </li>
                 {{--<li class="dropdown">--}}
                     {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>--}}
