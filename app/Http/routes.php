@@ -27,6 +27,8 @@ Route::get('get_ombeds', 'TweetComparisonController@getOmbeds');
 
 Route::get('comparison_view', 'TweetComparisonController@index');
 
+Route::get('about_view', 'HomePageController@viewAbout');
+
 
 
 Route::get('get_tweets', 'SentimentController@getTweets');
