@@ -8,6 +8,9 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
 
 
+        /*
+         * Sets up all the necessary scope variables
+         */
         $scope.TweetPercentage = 0;
         $scope.AccountPercentage = 0;
         $scope.AccountComparisonPercentage = 0;
@@ -19,13 +22,12 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
         $scope.AllTopicComps = 0;
 
 
-
-
+        /*
+         * This function loads all the usage data from the back end to the view
+         */
         $scope.loadUsageData = function () {
 
-            $scope.request = {
-
-            };
+            $scope.request = {};
 
             searchLogService.loadUsagePercentages(function (response) {
 
@@ -37,12 +39,11 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
                     $scope.TopicComparisonPercentage = response.TopicComparisonPercentage;
 
 
-
                     var graphData = [
-                        { Type: 'Tweet Analysis', value: response.TweetsThisMonth },
-                        { Type: 'Account Analysis', value: response.AccountsThisMonth },
-                        { Type: 'Topic Comparisons', value: response.TopicComparisonsThisMonth },
-                        { Type: 'Account Comparisons', value: response.AccountComparisonsThisMonth }
+                        {Type: 'Tweet Analysis', value: response.TweetsThisMonth},
+                        {Type: 'Account Analysis', value: response.AccountsThisMonth},
+                        {Type: 'Topic Comparisons', value: response.TopicComparisonsThisMonth},
+                        {Type: 'Account Comparisons', value: response.AccountComparisonsThisMonth}
                     ];
 
                     drawLineGraph(graphData);
@@ -84,11 +85,10 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
         $scope.loadUsageData();
 
 
-
-
-
-        function drawLineGraph(graphData)
-        {
+        /*
+         * This function draws the line graph that's visible in the dashboard of the administrator view
+         */
+        function drawLineGraph(graphData) {
             new Morris.Bar({
                 // ID of the element in which to draw the chart.
                 element: 'usageChart',
@@ -120,8 +120,6 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
                 labels: ['Hits']
             });
         }
-
-
 
 
     }]);

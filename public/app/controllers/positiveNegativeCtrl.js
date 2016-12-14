@@ -31,7 +31,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
             "numberScaleValue": "1,10,10",
             "showLabels": "0",
             "bgColor": "#f1f6fb",
-            "theme": "fint"
+            "theme": "fint",
+            "subCaption": "Popularity"
         },
         "colorrange": {
             "color": [
@@ -91,7 +92,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
         if ($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
 
-            $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"  Popularity";
+            $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"";
 
             for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {
                 GetTopTweetPosNegRequests[posNegRequestsCount1].cancelChecker("New Request");
@@ -151,7 +152,7 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
             $scope.locationCount.length = 0;
 
             $scope.totalLocationCount = 0;
-            getPosNeg.setPosNeg($scope.search, 10, $scope);
+            getPosNeg.setPosNeg($scope.search, 5, $scope);
         }
     };
 

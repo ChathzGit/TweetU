@@ -18,6 +18,10 @@ class LoginController extends Controller {
         return view('pages.frontEnd.userlogin');
     }
 
+    /*
+     * This function checks if there's a session active
+     * at the moment
+     */
     public function checkSession()
     {
         session_start();
@@ -65,6 +69,12 @@ class LoginController extends Controller {
 
     }
 
+
+    /*
+     * Destroys the current session if there's a session active
+     * at the moment. This happens when the user logs out of the
+     * system.
+     */
     public function logout()
     {
 

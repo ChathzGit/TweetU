@@ -7,6 +7,10 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
 
 
 
+    /*
+    * This function loads the data from the cookies,
+    * and stores them in root scope variables.
+    */
     $rootScope.loggedIn = $cookies.get('loggedIn');
     $rootScope.userRole = $cookies.get('userRole');
     $rootScope.userID = $cookies.get('userID');
@@ -14,12 +18,19 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
 
 
 
+    /*
+    * This function is used to log the user out of the system
+    */
     $scope.logout = function(){
 
         loginService.destroySession();
         
     };
 
+    /*
+    * This function saves the log into the database, no matter what
+    * type of analysis the user conducts.
+    */
     $scope.saveTweetAnaylysisLog = function (type, keyword) {
 
         var userID = $cookies.get('userID');
