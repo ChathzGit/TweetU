@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -86,7 +88,7 @@ Route::get('getAllSearchLogs', 'SearchLogController@getAllSearchLogs');
 Route::get('getPercentageChange', 'SearchLogController@getPercentageChanges');
 
 Route::post('getAllSearchLogCount', 'SearchLogController@getAllSearchLogCount');
-Route::post('getMonthlySearchLogCount', 'SearchLogController@getMonthlySearchLogCount');
+Route::get('getMonthlySearchLogCount', 'SearchLogController@getMonthlySearchLogCount');
 
 Route::get('getSearchLogs', 'SearchLogController@getSearchLogs');
 Route::get('SearchLogTestData', 'SearchLogController@loadSearchDataTestDataInterface');
@@ -94,3 +96,10 @@ Route::get('loadUsageStatistics', 'SearchLogController@loadUsageStatisticsPage')
 
 Route::post('saveSearchLog', 'SearchLogController@saveSearchLog');
 
+
+
+Route::get('send-tweets','SendTweetsController@sendTweets');
+
+Route::get('keyword-count','GetKeywordCountController@getWeeklySearchCount');
+
+Route::get('view-cloud','WordCloudController@getKeywords');
