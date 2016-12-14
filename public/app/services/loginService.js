@@ -53,11 +53,9 @@ app.service(serviceName,
             };
 
 
-
-
-
-
-
+            /*
+            * This function checks if there's a session currently active
+            */
             this.checkSession = function () {
 
                 var url = "checkSession";
@@ -92,10 +90,9 @@ app.service(serviceName,
 
 
 
-
-
-
-
+            /*
+            * This function destroys the currently active session
+            */
             this.destroySession = function () {
 
                 var url = "logout";

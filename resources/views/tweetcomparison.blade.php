@@ -115,13 +115,13 @@
                 <div class="col-sm-12 p-0">
                     <div class="col-sm-12" style="text-align: center"><label>Popularity and Unpopularity of the two criteria as percentages</label></div>
                     <div class="col-sm-6 well">
-                        <label>Popularity (%)</label>
+                        <label>'Good' Popularity (%)</label>
                         <canvas id="bar" class="chart chart-bar" style="height:250px;"
                                 chart-data="bardata2" chart-labels="barlabels2" chart-colors="barcolors2">
                         </canvas>
                     </div>
                     <div class="col-sm-6 well">
-                        <label>Unpopularity (%)</label>
+                        <label>'Bad' Popularity (%)</label>
                         <canvas id="bar2" class="chart chart-bar" style="height:250px;"
                                 chart-data="bardata" chart-labels="barlabels" chart-colors="barcolors">
                         </canvas>
@@ -153,8 +153,20 @@
                             </tbody>
                         </table>
                         <div id="chartContainer" style="text-align: center">Criteria One</div>
-
+                        <div class="col-sm-12" style="text-align: center"><label>Some 'Good' Tweets</label></div>
+                        <div class="col-sm-12">
+                            <div ng-repeat="t in postrialtweets track by $index">
+                                <div ng-bind-html="t | unsafe"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="text-align: center"><label>Some 'Bad' Tweets</label></div>
+                        <div class="col-sm-12">
+                            <div ng-repeat="t in negtrialtweets track by $index">
+                                <div ng-bind-html="t | unsafe"></div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="col-sm-6 col-xs-12 well">
                         <div class="col-sm-12" style="text-align: center"><label id="criteria_two"><%criteria_two%></label></div>
                         <div class="col-sm-12" style="text-align: center"></div>
@@ -172,19 +184,25 @@
                             <td style="text-align: center"><label id="negative2" style="color:#FFFF00; font-size: large"><%negative2%>%</label></td>
                             </tbody>
                         </table>
-
                         <div id="chartContainer2" style="text-align: center">Criteria Two</div>
+                        <div class="col-sm-12" style="text-align: center"><label>Some 'Good' Tweets</label></div>
+                        <div class="col-sm-12">
+                            <div ng-repeat="t in postrialtweets2 track by $index">
+                                <div ng-bind-html="t | unsafe"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="text-align: center"><label>Some 'Bad' Tweets</label></div>
+                        <div class="col-sm-12">
+                            <div ng-repeat="t in negtrialtweets2 track by $index">
+                                <div ng-bind-html="t | unsafe"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- ----------------- Trial Tweets ------------------------------->
-            <div class="col-sm-12">
-                <div ng-repeat="t in trialtweets">
-                    <div ng-bind-html="t | unsafe"></div>
-                </div>
 
-            </div>
 
         </div>
 

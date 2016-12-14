@@ -2,7 +2,7 @@
  * Created by Kasun on 11/19/2016.
  */
 
-app.factory('getInfoProf', function($http) {
+app.factory('getInfoProf', function($http,settingError) {
 
     function setProf($scope){
 
@@ -18,16 +18,31 @@ app.factory('getInfoProf', function($http) {
              * scopeis passed to the factory.(this one)
              */
             params: {search: $scope.searchCriteria1, maxID: maxIDSearch}
-        }).success(function (response) {
+        }).then(function (res) {
+
+            var response = res.data;
 
             if (response["Error"] == undefined) {
 
                 $scope.profiles1 = response;
 
             } else {
-                console.log("Error");
+                if($scope.loading){
+                    $scope.loading = false;
+                }
+
+                settingError.networkError();
             }
+        }, function errorCallback() {
+
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         });
+
+
 
         //2nd profile
         $http.get("get_profiles", {
@@ -39,7 +54,9 @@ app.factory('getInfoProf', function($http) {
              * scopeis passed to the factory.(this one)
              */
             params: {search: $scope.searchCriteria2, maxID: maxIDSearch}
-        }).success(function (response) {
+        }).then(function (res) {
+
+            var response = res.data;
 
             if (response["Error"] == undefined) {
 
@@ -47,10 +64,22 @@ app.factory('getInfoProf', function($http) {
                 $scope.loading = false;
 
             } else {
-                console.log("Error");
+                if($scope.loading){
+                    $scope.loading = false;
+                }
+
+                settingError.networkError();
             }
+        }, function errorCallback() {
+
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         });
     }
+
     return {
         setProf : function ($scope) {
             return setProf($scope);

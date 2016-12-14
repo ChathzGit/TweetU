@@ -38,7 +38,7 @@
                         </Button>
                     </div>
 
-                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                    <div class="col-sm-12 col-xs-12 m-t-20" ng-if="!isSearched">
                         <hr>
                         <p class="text-grey text-center">
                             Analyze a topic of your choice. Tweet-U will read through the related tweets
@@ -116,7 +116,7 @@
             <!-- -------------------- Good Bad Tweets Section Start --------------------------------------------------------------- -->
             <div class="row m-t-20 well bg-opc-65" ng-if="isSearched">
                 <div class="col-sm-12">
-                    <h4 class="m-b-20">Most Popular <strong class="c-green">Positive</strong> & <strong
+                    <h4 class="m-b-20">Most Recently Popular <strong class="c-green">Positive</strong> & <strong
                                 class="c-red">Negative</strong> Tweets</h4>
 
                     <div class="row p-0">

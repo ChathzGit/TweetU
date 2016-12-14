@@ -162,6 +162,14 @@
                 </div>
 
 
+                <!--Error Modal -->
+                <script type="text/ng-template" id="NetworkError.html">
+                    <div class="modal-body">
+                        <button onclick="location.reload()" type="button" class="close" data-dismiss="modal"><i style="color: red" class="fa fa-refresh" aria-hidden="true"></i></button>
+                        <h4 class="modal-title">Error in connection. Please retry...</h4>
+                    </div>
+                </script>
+
             </div>
 
 
@@ -298,6 +306,24 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-12 col-xs-12">
+                        <hr>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-twitter-custom btn-full-width"
+                                    ng-click="loadLocation(selectedAccount['screenName'])">Generate Followers Map
+                            </button>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12 m-t-20">
+                        <div id="chartContainer"></div>
+                    </div>
+
 
                 </div>
 
@@ -308,3 +334,5 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="js/fusioncharts/fusioncharts.js"></script>
+    <script type="text/javascript" src="js/fusioncharts/themes/fusioncharts.theme.fint.js"></script>

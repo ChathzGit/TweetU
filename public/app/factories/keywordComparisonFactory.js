@@ -6,14 +6,48 @@
 app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, settingError) {
     function setPosNeg(search, count, $scope, $http) {
         $scope.countries = [];
+        $scope.postrialtweets = [];
+        $scope.negtrialtweets = [];
+        $scope.postweetid = [];
+        $scope.negtweetid = [];
+        var c = 1;
+        var z = 1;
+        //$scope.onedate = [];
+        //$scope.onerate = 0;
+        //$scope.onesplitted = [];
+        //$scope.onetimesplitted = [];
 
         if (count > 0) {
 
             var tweet = simpleGetTweets.getTweets(search, maxIDPopular, 1);
-            tweet.tweet.then(function (response) {
+            tweet.tweet.then(function (response, $http) {
                 if (response["Error"] == undefined) {
                     for (var i = 0; i < response.length - 1; i++) {
-                        (function (response, i) {
+                        (function (response, i, $http) {
+
+                            //get rate
+                            //$scope.onesplitted = response[i]["createdat"].split(" ");
+                            //$scope.onetimesplitted = $scope.onesplitted[3].split(":");
+
+                            //console.log(parseInt($scope.onetimesplitted[0]));
+                            //if((parseInt($scope.onetimesplitted[0]) > 1) && (parseInt($scope.onetimesplitted[0]) < 11)){
+                            //    $scope.onerate = $scope.onerate + 1;
+                            //    console.log($scope.onerate);
+                            //}
+
+                            //console.log($scope.onetimesplitted);
+
+                            //if($scope.onedate.length == 0){
+                            //    $scope.onedate = $scope.onesplitted;
+                            //    $scope.onerate++;
+                            //}else if($scope.onedate[1] == $scope.onesplitted[1] && $scope.onedate[2] == $scope.onesplitted[2] && $scope.onedate[5] == $scope.onesplitted[5])  {
+                            //    if(parseInt($scope.onetimesplitted[0])<=11 && parseInt($scope.onetimesplitted[0])>=8){
+                            //        $scope.onerate++;
+                            //        console.log($scope.onetimesplitted[0])
+                            //    }
+                            //}
+
+                            //console.log($scope.onedate);
 
                             //get country
                             var separators = [' ', '\\\+', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', ',', '!'];
@@ -88,7 +122,7 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
                                 if(country_name == 'Greenland'){
                                     return '24';
                                 }
-                                if(country_name == '	Haiti'){
+                                if(country_name == 'Haiti'){
                                     return '13';
                                 }
                                 if(country_name == 'Hong Kong'){
@@ -344,13 +378,42 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
 
                                     if (result["type"] == "positive") {
                                         pos += 1;
+                                        if(c<3){
+                                            if($scope.postweetid[0] != response[i]["id"] && $scope.postweetid[1] != response[i]["id"]){
+                                                $scope.postweetid.push(response[i]["id"]);
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: 'get_ombeds',
+                                                    data: {id: response[i]["id"]},
+                                                    success:function(r){
+                                                        $scope.postrialtweets.push(r);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                        c++;
+
                                     } else if (result["type"] == "negative") {
                                         neg += 1;
+
+                                        if(z<3){
+                                            if($scope.negtweetid[0] != response[i]["id"] && $scope.negtweetid[1] != response[i]["id"]){
+                                                $scope.negtweetid.push(response[i]["id"]);
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: 'get_ombeds',
+                                                    data: {id: response[i]["id"]},
+                                                    success:function(r){
+                                                        $scope.negtrialtweets.push(r);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                        z++;
                                     }
 
                                     $scope.positive = Math.round(100 * pos / (pos + neg));
                                     $scope.negative = Math.round(100 * neg / (pos + neg));
-
 
                                     count--;
                                 }
@@ -359,6 +422,20 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
                                     maxIDSearch = response[response.length - 1];
                                     return setPosNeg(search, count, $scope);
                                 }
+
+                                //for(var x=0; x<$scope.postweetid.length; x++){
+                                //    console.log('pop');
+                                //    for(var y=0; y<$scope.posuni.length; y++){
+                                //        if($scope.postweetid[x] != $scope.posuni[y]){
+                                //            $http.get("get_ombeds", {
+                                //                params: {id: $scope.postweetid[x]}
+                                //            }).then(function (result) {
+                                //                console.log(result);
+                                //                $scope.posuni.push($scope.postweetid[x]);
+                                //            });
+                                //        }
+                                //    }
+                                //}
 
 
                             });
@@ -384,7 +461,15 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
 
     function setPosNeg2(search, count, $scope, $http, $sce) {
         $scope.countries2 = [];
-        $scope.trialtweets = [];
+        $scope.postrialtweets2 = [];
+        $scope.negtrialtweets2 = [];
+        $scope.postweetid2 = [];
+        $scope.negtweetid2 = [];
+        var c2 = 1;
+        var z2 = 1;
+        //$scope.twodate = [];
+        //$scope.twosplitted = [];
+        //$scope.tworate = 0;
 
         //$.get(baseUrl + "/public/get_ombeds").then(function (data) {
         //
@@ -400,6 +485,16 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
 
                     for (var i = 0; i < response.length - 1; i++) {
                         (function (response, i) {
+
+                            ////get rate
+                            //$scope.twosplitted = response[i]["createdat"].split(" ");
+                            //
+                            //if($scope.twodate.length == 0){
+                            //    $scope.twodate = $scope.twosplitted;
+                            //    $scope.tworate++;
+                            //}else if($scope.twodate[1] == $scope.twodate[1] && $scope.twodate[2] == $scope.twosplitted[2] && $scope.twodate[5] == $scope.twosplitted[5])  {
+                            //    $scope.tworate++;
+                            //}
 
                             //get country
                             var separators = [' ', '\\\+', '-', '\\\(', '\\\)', '\\*', '/', ':', '\\\?', ',', '!'];
@@ -731,8 +826,39 @@ app.factory('comparisonFactory', function(simpleGetTweets, simpleCheckPosNeg, se
 
                                     if (result["type"] == "positive") {
                                         pos2 += 1;
+
+                                        if(c2<3){
+                                            if($scope.postweetid2[0] != response[i]["id"] && $scope.postweetid2[1] != response[i]["id"]){
+                                                $scope.postweetid2.push(response[i]["id"]);
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: 'get_ombeds',
+                                                    data: {id: response[i]["id"]},
+                                                    success:function(r){
+                                                        $scope.postrialtweets2.push(r);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                        c2++;
+
                                     } else if (result["type"] == "negative") {
                                         neg2 += 1;
+
+                                        if(z2<3){
+                                            if($scope.negtweetid2[0] != response[i]["id"] && $scope.negtweetid2[1] != response[i]["id"]){
+                                                $scope.negtweetid2.push(response[i]["id"]);
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: 'get_ombeds',
+                                                    data: {id: response[i]["id"]},
+                                                    success:function(r){
+                                                        $scope.negtrialtweets2.push(r);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                        z2++;
                                     }
 
                                     $scope.positive2 = Math.round(100 * pos2 / (pos2 + neg2));
