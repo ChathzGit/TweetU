@@ -311,25 +311,25 @@ app.factory('getLocations', function ($http,settingError) {
                                                                     "color": [
                                                                         {
                                                                             "minvalue": "0",
-                                                                            "maxvalue": "24",
+                                                                            "maxvalue": "9",
                                                                             "code": "#ABEBC6",
                                                                             "displayValue": "Less"
                                                                         },
                                                                         {
-                                                                            "minvalue": "25",
-                                                                            "maxvalue": "49",
+                                                                            "minvalue": "10",
+                                                                            "maxvalue": "19",
                                                                             "code": "#F39C12",
                                                                             "displayValue": "Okay"
                                                                         },
                                                                         {
-                                                                            "minvalue": "50",
-                                                                            "maxvalue": "74",
+                                                                            "minvalue": "20",
+                                                                            "maxvalue": "29",
                                                                             "code": "#AF7AC5",
                                                                             "displayValue": "Better"
                                                                         },
                                                                         {
-                                                                            "minvalue": "75",
-                                                                            "maxvalue": "100",
+                                                                            "minvalue": "30",
+                                                                            "maxvalue": "50",
                                                                             "code": "#E74C3C",
                                                                             "displayValue": "Perfect"
                                                                         }
@@ -367,7 +367,7 @@ app.factory('getLocations', function ($http,settingError) {
                         $scope.loading = false;
                     }
 
-                    settingError.networkError();
+                    //settingError.networkError();
                 }
             }, function errorCallback() {
 
@@ -379,12 +379,6 @@ app.factory('getLocations', function ($http,settingError) {
             });
 
 
-        } else{
-            if($scope.loading){
-                $scope.loading = false;
-            }
-
-            settingError.networkError();
         }
     }
 
