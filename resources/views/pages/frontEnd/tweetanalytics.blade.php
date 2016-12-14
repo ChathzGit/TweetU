@@ -38,7 +38,7 @@
                         </Button>
                     </div>
 
-                    <div class="col-sm-12 m-t-20" ng-if="!isSearched">
+                    <div class="col-sm-12 col-xs-12 m-t-20" ng-if="!isSearched">
                         <hr>
                         <p class="text-grey text-center">
                             Analyze a topic of your choice. Tweet-U will read through the related tweets
