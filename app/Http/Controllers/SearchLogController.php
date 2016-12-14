@@ -22,6 +22,14 @@ class SearchLogController extends Controller
         //
     }
 
+    /*
+     * This function checks if there's an active session
+     * if there is, it checks if the user logged in is an
+     * administrator or a normal user. If it's a normal user,
+     * they are redirected to the home page, if they are an
+     * administrator user, they are redirected to the admin
+     * home page.
+     */
     public function loadUsageStatisticsPage()
     {
         session_start();
@@ -49,6 +57,9 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function loads the search data test interface
+     */
     public function loadSearchDataTestDataInterface()
     {
 
@@ -78,6 +89,9 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function gets the search logs, and returns them
+     */
     public function getSearchLogs()
     {
         $searchLogList = [];
@@ -105,6 +119,10 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function retrieves all the search logs from the database and
+     * displays them to the user. All the records from the database.
+     */
     public function getAllSearchLogs()
     {
 
@@ -132,6 +150,10 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function returns the count of all the search records for each
+     * type of search criteria.
+     */
     public function getAllSearchLogCount()
     {
 
@@ -165,16 +187,18 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function returns the search log count for the month.
+     */
     public function getMonthlySearchLogCount()
     {
-
         $date_time = new \DateTime('last month');
+
+        //This gets the date from 30 dates ago
         $last_month = $date_time->format('Y-m-d H:i:s');
 
+        //This gets the current date
         $current_date = new \DateTime();
-        //return json_encode(Date('Y-m-d H:i:s', strtotime($last_month)));
-
-
 
         $searchLogList = [];
         $responseCode = new TweetUResponseCode();
@@ -189,7 +213,11 @@ class SearchLogController extends Controller
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $last_month)
                 ->count();
-            $searchLogCountComparisons = SearchLog::where('type', '3')
+            $searchLogCountTopicComparisons = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+            $searchLogCountAccountComparisons = SearchLog::where('type', '4')
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $last_month)
                 ->count();
@@ -198,7 +226,8 @@ class SearchLogController extends Controller
                 'status' => $responseCode->success,
                 'searchLogCountTweets' => $searchLogCountTweets,
                 'searchLogCountAccounts' => $searchLogCountAccounts,
-                'searchLogCountComparisons' => $searchLogCountComparisons
+                'searchLogCountComparisons' => $searchLogCountTopicComparisons,
+                'searchLogCountAccountComparisons' => $searchLogCountAccountComparisons
             );
 
             return json_encode($response);
@@ -213,6 +242,12 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function gets the data from the front end and saves
+     * the data to the database just when a user conducts a search
+     * in the front end. This records the key word, the user id, the type
+     * of search and the time stamp.
+     */
     public function saveSearchLog(Request $request)
     {
         $searchLog = new SearchLog;
@@ -346,6 +381,13 @@ class SearchLogController extends Controller
     }
 
 
+    /*
+     * This function gets the percentage changes.
+     * This is done by getting the searchlog count from
+     * the database for this month (last thirty days) and the
+     * month before that, and comparing the two to get the
+     * increase or decrease of progress.
+     */
     public function getPercentageChanges()
     {
         $date_time = new \DateTime('last month');

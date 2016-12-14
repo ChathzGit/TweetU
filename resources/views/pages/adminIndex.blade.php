@@ -323,6 +323,10 @@
                     </li>
 
                     <li>
+                        <a href="view-cloud"><i class="fa fa-area-chart fa-fw"></i> Usage Statistics</a>
+                    </li>
+
+                    <li>
                         <a href="home"><i class="fa fa-home fa-fw"></i> Back To Home</a>
                     </li>
 

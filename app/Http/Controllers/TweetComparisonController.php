@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 /**
- * Chathra Senevirathne
- * chathrasen@gmail.com
+ * Created by
+ * Chathra Senevirathne <chathrasen@gmail.com>
+ *
  */
+
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Input;
 

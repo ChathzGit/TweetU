@@ -3,14 +3,13 @@
  */
 
 
-app.factory('getProf', function($http) {
+app.factory('getProf', function($http,settingError) {
 
 
     function setProf( $scope){
 
 
         $scope.profiles =[];
-        //var profiles = [];
 
         $http.get("get_profiles", {
 
@@ -21,8 +20,8 @@ app.factory('getProf', function($http) {
              * scopeis passed to the factory.(this one)
              */
             params: {search: $scope.searchCriteria, maxID: maxIDSearch}
-        }).success(function (response) {
-            //console.log(response);
+        }).then(function (res) {
+            var response = res.data;
             if (response["Error"] == undefined) {
 
                 $scope.profiles = response;
@@ -30,10 +29,27 @@ app.factory('getProf', function($http) {
                 $scope.loading = false;
 
             } else {
-                console.log("Error");
+                if($scope.loading){
+                    $scope.loading = false;
+                }
+
+                settingError.networkError();
             }
+        }, function errorCallback() {
+
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         });
     }
+
+
+
+
+
+
 
     function getProfileTweets($scope,$sname){
         $scope.HashtagKeys = [];
@@ -52,18 +68,29 @@ app.factory('getProf', function($http) {
         $http.get("getProfileTweets", {
 
             params: {screenName: $sname}
-        }).success(function (response) {
+        }).then(function (res) {
 
-
+            var response = res.data;
             if (response["Error"] == undefined) {
 
                 $scope.tweets = response;
 
 
             } else {
-                console.log("Error");
-                alert('fail')
+
+                if($scope.loading){
+                    $scope.loading = false;
+
+                }
+                settingError.networkError();
             }
+        }, function errorCallback() {
+
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         });
 
 
@@ -77,8 +104,9 @@ app.factory('getProf', function($http) {
 
             params: {screenName: $sname}
             //    params: {screenName: 'MahelaJay'}
-        }).success(function (response) {
+        }).then(function (res) {
 
+            var response = res.data;
             // console.log(response);
             if (response["Error"] == undefined) {
 
@@ -117,46 +145,22 @@ app.factory('getProf', function($http) {
 
                 $scope.loading = false;
 
-
-                //$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-                //$scope.data = [300, 500, 100];
-
-                //console.log($scope.HashtagValues);
             } else {
-                console.log("Error");
-                alert('fail')
+                if($scope.loading){
+                    $scope.loading = false;
+                }
+
+                settingError.networkError();
             }
 
+        }, function errorCallback() {
+
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         });
-
-
-
-
-
-
-
-
-
-        //oni neeeee
-        //$http.get("getUserLocation", {
-        //
-        //    params: {screenName: $sname}
-        //    //params: {screenName: '@KasunKodithuwak'}
-        //}).success(function (response) {
-        //
-        //
-        //    if (response["Error"] == undefined) {
-        //
-        //        $scope.locations = response['l'];
-        //
-        //        console.log( $scope.locations);
-        //        console.log( response['locations']);
-        //
-        //    } else {
-        //        console.log("Error");
-        //        alert('fail')
-        //    }
-        //});
 
 
     }

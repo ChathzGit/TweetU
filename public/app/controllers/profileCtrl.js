@@ -43,6 +43,8 @@ app.controller('ctrlProf', function($scope, getProf , getLocations) {
 
     };
 
+
+
     /*
      * This function loads the selected account into the
      * user account section on the right side
@@ -68,7 +70,6 @@ app.controller('ctrlProf', function($scope, getProf , getLocations) {
         getProf.getProfileTweets($scope,scrnName);
 
 
-
     };
 
 
@@ -78,7 +79,7 @@ app.controller('ctrlProf', function($scope, getProf , getLocations) {
 
         $scope.locations = [];
         $scope.locationarray = [];
-        getLocations.getUseLocations(scrnName,3,$scope,-1);
+        getLocations.getUseLocations(scrnName,5,$scope,-1);
 
     }
 
