@@ -90,7 +90,26 @@ app.factory('getPosNeg', function (getTweets, checkPosNeg, setCountry, settingEr
                                         }
 
                                         insideMapHttp--;
+                                        if(insideMapHttp <= 0) {
+                                            $scope.fusionChartsMapData.forEach(function (data) {
 
+                                                for (var key in $scope.locations) {
+
+                                                    if ($scope.locations.hasOwnProperty(key) && data["locationPlace"].indexOf(key) != -1) {
+                                                        var availableCountryCode = data["id"];
+                                                        $scope.locationCount[availableCountryCode] += $scope.locations[key];
+                                                        $scope.totalLocationCount += $scope.locations[key];
+                                                        $scope.locations[key] = 0;
+                                                    }
+
+                                                }
+                                                var countryCode = data["id"];
+                                                data["value"] = Math.round(100 * $scope.locationCount[countryCode] / $scope.totalLocationCount);
+
+                                            });
+                                        }
+                                    }, function errorCallback() {
+                                        insideMapHttp--;
                                         if(insideMapHttp <= 0) {
                                             $scope.fusionChartsMapData.forEach(function (data) {
 
@@ -157,8 +176,69 @@ app.factory('getPosNeg', function (getTweets, checkPosNeg, setCountry, settingEr
                             $scope.loading = false;
                         }
 
+                        for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {
+                            GetTopTweetPosNegRequests[posNegRequestsCount1].cancelChecker("New Request");
+                        }
+                        GetTopTweetPosNegRequests.length = 0;
+
+                        for (var getTopTweetsRequestsCount1 = 0; getTopTweetsRequestsCount1 < GetTopTweetsRequests.length; getTopTweetsRequestsCount1++) {
+                            GetTopTweetsRequests[getTopTweetsRequestsCount1].cancelTweet("New Request");
+                        }
+                        GetTopTweetsRequests.length = 0;
+
+                        for (var posNegRequestsCount2 = 0; posNegRequestsCount2 < GetTweetPosNegRequests.length; posNegRequestsCount2++) {
+                            GetTweetPosNegRequests[posNegRequestsCount2].cancelChecker("New Request");
+                        }
+                        GetTweetPosNegRequests.length = 0;
+
+                        for (var getTopTweetsRequestsCount2 = 0; getTopTweetsRequestsCount2 < GetTweetRequests.length; getTopTweetsRequestsCount2++) {
+                            GetTweetRequests[getTopTweetsRequestsCount2].cancelTweet("New Request");
+                        }
+                        GetTweetRequests.length = 0;
+
+                        for (var getMapCallsCount = 0; getMapCallsCount < GetMapCalls.length; getMapCallsCount++) {
+                            GetMapCalls[getMapCallsCount].cancelMapping("New Request");
+                        }
+                        GetMapCalls.length = 0;
+                        insideMapHttp = 0;
+
                         settingError.networkError();
                     }
+                }
+            }, function errorCallback() {
+                if(maxIDSearch == -1) {
+
+                    if($scope.loading){
+                        $scope.loading = false;
+                    }
+
+                    for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {
+                        GetTopTweetPosNegRequests[posNegRequestsCount1].cancelChecker("New Request");
+                    }
+                    GetTopTweetPosNegRequests.length = 0;
+
+                    for (var getTopTweetsRequestsCount1 = 0; getTopTweetsRequestsCount1 < GetTopTweetsRequests.length; getTopTweetsRequestsCount1++) {
+                        GetTopTweetsRequests[getTopTweetsRequestsCount1].cancelTweet("New Request");
+                    }
+                    GetTopTweetsRequests.length = 0;
+
+                    for (var posNegRequestsCount2 = 0; posNegRequestsCount2 < GetTweetPosNegRequests.length; posNegRequestsCount2++) {
+                        GetTweetPosNegRequests[posNegRequestsCount2].cancelChecker("New Request");
+                    }
+                    GetTweetPosNegRequests.length = 0;
+
+                    for (var getTopTweetsRequestsCount2 = 0; getTopTweetsRequestsCount2 < GetTweetRequests.length; getTopTweetsRequestsCount2++) {
+                        GetTweetRequests[getTopTweetsRequestsCount2].cancelTweet("New Request");
+                    }
+                    GetTweetRequests.length = 0;
+
+                    for (var getMapCallsCount = 0; getMapCallsCount < GetMapCalls.length; getMapCallsCount++) {
+                        GetMapCalls[getMapCallsCount].cancelMapping("New Request");
+                    }
+                    GetMapCalls.length = 0;
+                    insideMapHttp = 0;
+
+                    settingError.networkError();
                 }
             });
 

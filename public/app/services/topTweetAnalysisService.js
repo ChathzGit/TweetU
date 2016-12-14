@@ -14,7 +14,7 @@ app.service(serviceName, function(){
 
         for(var i = 0; i < splitText.length; i++) {
 
-            if(splitText[i].replace(/[^a-zA-Z]+/g, '').toLowerCase().indexOf("httpstco") >= 0){
+            if(splitText[i].replace(/[^a-zA-Z]+/g, '').toLowerCase().indexOf("http") >= 0){
                 continue;
             }
 
