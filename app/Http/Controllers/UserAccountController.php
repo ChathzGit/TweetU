@@ -160,6 +160,10 @@ class UserAccountController extends Controller
     }
 
 
+    /*
+     * Deletes a user from the database.
+     * This takes the user ID as an input from the front end.
+     */
     public function deleteUser(Request $request)
     {
         $userID = $request->input('userID');

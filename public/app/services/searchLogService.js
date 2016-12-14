@@ -9,6 +9,10 @@ app.service(serviceName,
         function ($http, API_URL, $location, toaster, SUCCESS, ERROR) {
 
 
+            /*
+            * This function loads the usage percentages from the back end
+            * and returns the values to the front end
+            */
             this.loadUsagePercentages = function (callback) {
 
                 var url = "getPercentageChange";
@@ -42,6 +46,9 @@ app.service(serviceName,
             };
 
 
+            /*
+            * This function loads the monthly usage statistics of the site
+            */
             this.loadMonthlyUsageStatistics = function (request, callback) {
 
                 var url = "getMonthlySearchLogCount";
@@ -80,7 +87,10 @@ app.service(serviceName,
 
 
 
-
+            /*
+            * This function loads all the usage statistics of the site. No filtering
+            * all the recorded usage data.
+            */
             this.loadUsageStatistics = function (request, callback) {
 
                 var url = "getAllSearchLogCount";

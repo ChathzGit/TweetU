@@ -12,7 +12,7 @@ app.service(serviceName,
 
             /*
             * This method calls the back end methods that save a user to the database.
-            * */
+            */
             this.saveUserAccount = function (request, callback) {
 
                 var url = "save_user";
@@ -49,7 +49,8 @@ app.service(serviceName,
 
 
             /*
-            * This method calls the server and requests a list of all the users in the database*/
+            * This method calls the server and requests a list of all the users in the database
+            */
             this.loadAllUsers = function (callback) {
                 var url = "load_all_users";
 
@@ -83,6 +84,9 @@ app.service(serviceName,
             };
 
 
+            /*
+            * This function deletes a user
+            */
             this.deleteUser = function (request, callback) {
 
 
