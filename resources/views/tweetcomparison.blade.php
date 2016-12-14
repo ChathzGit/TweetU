@@ -167,7 +167,7 @@
                             {{--</div>--}}
                             {{--</div>--}}
                             <div class="col-sm-12">
-                                <div ng-repeat="t in posblocktweets">
+                                <div ng-repeat="t in posblocktweets track by $index">
                                     <div><blockquote class="twitter-tweet"><%t%></blockquote></div>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                             {{--</div>--}}
                             {{--</div>--}}
                             <div class="col-sm-12">
-                                <div ng-repeat="t in negblocktweets">
+                                <div ng-repeat="t in negblocktweets track by $index">
                                     <div><blockquote class="twitter-tweet"><%t%></blockquote></div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 {{--<div ng-bind-html="t | unsafe"></div>--}}
                                 {{--</div>--}}
                                 <div class="col-sm-12">
-                                    <div ng-repeat="t in posblocktweets2">
+                                    <div ng-repeat="t in posblocktweets2 track by $index">
                                         <div><blockquote class="twitter-tweet"><%t%></blockquote></div>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@
                                 {{--<div ng-bind-html="t | unsafe"></div>--}}
                                 {{--</div>--}}
                                 <div class="col-sm-12">
-                                    <div ng-repeat="t in negblocktweets2">
+                                    <div ng-repeat="t in negblocktweets2 track by $index">
                                         <div><blockquote class="twitter-tweet"><%t%></blockquote></div>
                                     </div>
                                 </div>
