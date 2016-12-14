@@ -93,8 +93,8 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window,
             $scope.loading = true;
 
             // Sending data to DB
-            //$http.get("view-cloud?term=" + $scope.search);
-            //******
+            $http.get("view-cloud?term=" + $scope.search);
+
 
             $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"";
 
