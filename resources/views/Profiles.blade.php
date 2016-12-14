@@ -162,6 +162,14 @@
                 </div>
 
 
+                <!--Error Modal -->
+                <script type="text/ng-template" id="NetworkError.html">
+                    <div class="modal-body">
+                        <button onclick="location.reload()" type="button" class="close" data-dismiss="modal"><i style="color: red" class="fa fa-refresh" aria-hidden="true"></i></button>
+                        <h4 class="modal-title">Error in connection. Please retry...</h4>
+                    </div>
+                </script>
+
             </div>
 
 

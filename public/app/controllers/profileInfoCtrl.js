@@ -70,21 +70,31 @@ app.controller('ctrlInfoProf', function($scope, getInfoProf) {
 
 
         //popularity chart
+        $firstProfFolCount = $scope.selectedFirstProfile["followersCount"];
+        $secondProfFolCount = $scope.selectedSecondProfile["followersCount"];
+        $totFolCount = $firstProfFolCount + $secondProfFolCount;
+        $pcntageFirstAccount = Math.round(($firstProfFolCount/$totFolCount)*100);
+        $pcntageSecondAccount =  Math.round(($secondProfFolCount/$totFolCount)*100);
+
         $scope.labels = [$scope.selectedSecondProfile["name"], $scope.selectedFirstProfile["name"]];
-        $scope.data = [$scope.selectedSecondProfile["followersCount"],$scope.selectedFirstProfile["followersCount"]];
-        $scope.colors = ['#55acee', '#4078a2'];
+        $scope.data = [$pcntageSecondAccount,$pcntageFirstAccount];
+        $scope.colors = ['#4078a2', '#55acee'];
         $scope.options =  {
-            responsive: false,
             maintainAspectRatio: false
         };
 
 
         //usage chart
+        $firstProfTwtCount = $scope.selectedFirstProfile["tweetcount"];
+        $secondProfTwtCount = $scope.selectedSecondProfile["tweetcount"];
+        $totTwtCount = $firstProfTwtCount + $secondProfTwtCount;
+        $pcntageFirstTwtAccount = Math.round(($firstProfTwtCount/$totTwtCount)*100);
+        $pcntageSecondTwtAccount =  Math.round(($secondProfTwtCount/$totTwtCount)*100);
+
         $scope.labels1 = [$scope.selectedSecondProfile["name"], $scope.selectedFirstProfile["name"]];
-        $scope.data1 = [$scope.selectedSecondProfile["tweetcount"],$scope.selectedFirstProfile["tweetcount"]];
-        $scope.colors1 = ['#88ff4d', '#66ccff'];
+        $scope.data1 = [$pcntageSecondTwtAccount,$pcntageFirstTwtAccount];
+        $scope.colors1 = ['#88ff4d', '#581845'];
         $scope.options1 =  {
-            responsive: false,
             maintainAspectRatio: false
         }
     };
