@@ -1,7 +1,9 @@
 /**
  * Created by Kasun on 11/19/2016.
  */
-app.factory('getLocations', function ($http) {
+app.factory('getLocations', function ($http,settingError) {
+
+
     function getUseLocations(screenName, count, $scope, $maxid) {
         $scope.alllocations = [];
         if (count > 0) {
@@ -9,7 +11,9 @@ app.factory('getLocations', function ($http) {
             $http.get("getUserLocation", {
 
                 params: {screenName: screenName, maxid: $maxid}
-            }).success(function (response) {
+            }).then(function (res) {
+
+                var response = res.data;
 
                 //console.log(response);
                 if (response["Error"] == undefined) {
@@ -359,14 +363,28 @@ app.factory('getLocations', function ($http) {
 
 
                 } else {
-                    console.log("Error");
-                    alert('fail')
+                    if($scope.loading){
+                        $scope.loading = false;
+                    }
+
+                    settingError.networkError();
                 }
+            }, function errorCallback() {
+
+                if($scope.loading){
+                    $scope.loading = false;
+                }
+
+                settingError.networkError();
             });
 
 
         } else{
-            return;
+            if($scope.loading){
+                $scope.loading = false;
+            }
+
+            settingError.networkError();
         }
     }
 

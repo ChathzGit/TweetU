@@ -192,14 +192,13 @@ class SearchLogController extends Controller
      */
     public function getMonthlySearchLogCount()
     {
-
         $date_time = new \DateTime('last month');
+
+        //This gets the date from 30 dates ago
         $last_month = $date_time->format('Y-m-d H:i:s');
 
+        //This gets the current date
         $current_date = new \DateTime();
-        //return json_encode(Date('Y-m-d H:i:s', strtotime($last_month)));
-
-
 
         $searchLogList = [];
         $responseCode = new TweetUResponseCode();
@@ -214,7 +213,11 @@ class SearchLogController extends Controller
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $last_month)
                 ->count();
-            $searchLogCountComparisons = SearchLog::where('type', '3')
+            $searchLogCountTopicComparisons = SearchLog::where('type', '3')
+                ->where('timestamp', '<=', $current_date)
+                ->where('timestamp', '>=', $last_month)
+                ->count();
+            $searchLogCountAccountComparisons = SearchLog::where('type', '4')
                 ->where('timestamp', '<=', $current_date)
                 ->where('timestamp', '>=', $last_month)
                 ->count();
@@ -223,7 +226,8 @@ class SearchLogController extends Controller
                 'status' => $responseCode->success,
                 'searchLogCountTweets' => $searchLogCountTweets,
                 'searchLogCountAccounts' => $searchLogCountAccounts,
-                'searchLogCountComparisons' => $searchLogCountComparisons
+                'searchLogCountComparisons' => $searchLogCountTopicComparisons,
+                'searchLogCountAccountComparisons' => $searchLogCountAccountComparisons
             );
 
             return json_encode($response);
