@@ -1,5 +1,16 @@
 /**
  * Created by ACer on 10/28/2016.
+ *
+ * From this factory main purpose is to set the positive or negative top tweets nd display them
+ * and show the user how those tweets have been calculated
+ *
+ * From this factory it's not directly getting the negative or positive tweet by the response coming from twin word,
+ * in here only getting a result has over 0.1 which is positive under 0.1 which is negative
+ * and an ratio directly equals to 0.1 or -0.1 which check as directly negatives or directly positives.
+ *
+ * To show how analytical part is done calling "settingTopTweetAnalyzer" service which handle the displaying that part
+ *
+ * Error handling done for network failures and display the error model
  */
 
 app.factory('getTops', function (getTweets, checkPosNeg, settingTopTweetAnalyzer, settingError) {

@@ -1,5 +1,8 @@
 /**
  * Created by Dhanuka on 11/19/2016.
+ *
+ * This will create necessary things for twitter analyzing part.
+ * Making hash, @users unique unique display manner.
  */
 
 var serviceName = 'settingTopTweetAnalyzer';

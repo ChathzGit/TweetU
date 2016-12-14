@@ -20,6 +20,8 @@
 
     <title>Tweet-U</title>
 
+    <link rel='shortcut icon' href='{{ URL::asset('images/favicon.ico') }}' type='image/x-icon' />
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
 

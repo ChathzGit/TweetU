@@ -102,6 +102,10 @@ class SentimentController extends Controller{
     /**
      * For the moment not using this function :D
      */
+
+
+
+    /***
     public function getPositiveNegative()
     {
         $sentences = json_decode(Input::get('sentences'));
@@ -189,5 +193,5 @@ class SentimentController extends Controller{
         curl_multi_close($curlMultiInit);
     }
 
-
+        **/
 }

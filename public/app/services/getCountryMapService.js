@@ -1,5 +1,8 @@
 /**
  * Created by ACer on 10/28/2016.
+ *
+ * Calling google map API to convert twitter location to the country
+ * and country to Fusion Chart friendly code
  */
 
 app.service("setCountry", function ($http, $q) {

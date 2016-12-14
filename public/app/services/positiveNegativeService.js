@@ -1,5 +1,8 @@
 /**
  * Created by ACer on 10/28/2016.
+ *
+ * This function will call the twin word api
+ * and have embedded with canceller to stop http request in middle
  */
 
 app.service("checkPosNeg", function ($http, $q) {

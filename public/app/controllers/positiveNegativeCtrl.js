@@ -2,7 +2,7 @@
  * Created by ACer on 10/28/2016.
  */
 
-app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window) {
+app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window, $http) {
 
     $scope.loading = false;
 
@@ -91,6 +91,10 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window)
 
         if ($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
+
+            // Sending data to DB
+            //$http.get("view-cloud?term=" + $scope.search);
+            //******
 
             $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"";
 

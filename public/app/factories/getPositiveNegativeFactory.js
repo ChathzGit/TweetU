@@ -1,5 +1,16 @@
 /**
  * Created by ACer on 10/28/2016.
+ *
+ * From this factory main purpose is to set the positive or negative tweets into a pie char
+ * and set tweeted user's location in a map
+ *
+ * From this factory it's not directly getting the negative or positive tweet by the response coming from twin word,
+ * in here only getting a result has over 0.1 which is positive under 0.1 which is negative
+ * and an ratio directly equals to 0.1 or -0.1 which check as directly negatives or directly positives.
+ *
+ * In map area setting the data that needs to colour the map
+ *
+ * Error handling done for network failures and display the error model
  */
 
 
