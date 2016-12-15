@@ -97,8 +97,8 @@
                     <h1 class="page-header">Tweet About Site</h1>
 
                     <form id="tweets" method="get" action="send-tweets" target="formSending">
-                        <input type="text" name="nnn" id="nnn" />
-                        <input type="submit" name="submit" id="submit" value="Submit" />
+                        <input type="text" name="nnn" id="nnn" placeholder="Enter a tweet" />
+                        <input type="submit" name="submit" id="submit" value="Tweet" />
                     </form>
 
                 </div>
