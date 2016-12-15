@@ -92,10 +92,6 @@ app.controller('posNegSentiment', function ($scope, getPosNeg, getTops, $window,
         if ($scope.search != undefined && $scope.search.trim() != "") {
             $scope.loading = true;
 
-            // Sending data to DB
-            $http.get("view-cloud?term=" + $scope.search);
-
-
             $scope.fusionChartsMapDataSource["chart"]["caption"] = "\"" + $scope.search + "\"";
 
             for (var posNegRequestsCount1 = 0; posNegRequestsCount1 < GetTopTweetPosNegRequests.length; posNegRequestsCount1++) {

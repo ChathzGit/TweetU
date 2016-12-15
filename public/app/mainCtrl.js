@@ -2,7 +2,7 @@
  * Created by Sahan on 10/8/2016.
  */
 
-app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toaster', 'SUCCESS', 'ERROR', 'loginService', 'searchLogService', function ($scope, $rootScope, $cookies, $window, toaster, SUCCESS, ERROR, loginService, searchLogService) {
+app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toaster', 'SUCCESS', 'ERROR', 'loginService', 'searchLogService', function ($scope, $rootScope, $cookies, $window, toaster, SUCCESS, ERROR, loginService, searchLogService, $http) {
 
 
 
@@ -32,6 +32,8 @@ app.controller('mainCtrl', ['$scope', '$rootScope', '$cookies', '$window', 'toas
     * type of analysis the user conducts.
     */
     $scope.saveTweetAnaylysisLog = function (type, keyword) {
+
+        $http.get("view-cloud?term=" + keyword);
 
         var userID = $cookies.get('userID');
 
