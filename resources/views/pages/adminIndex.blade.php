@@ -12,6 +12,8 @@
 
     <title>Tweet-U Admin</title>
 
+    <link rel='shortcut icon' href='{{ URL::asset('images/favicon.ico') }}' type='image/x-icon' />
+
     <!-- Bootstrap Core CSS -->
     {{--<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ URL::asset('sb-admin-resources/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
