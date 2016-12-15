@@ -65,8 +65,9 @@ app.controller('usageStatisticsController', ['$scope', '$http', 'API_URL', '$loc
 
                     $scope.AllTweets = response.searchLogCountTweets;
                     $scope.AllAccounts = response.searchLogCountAccounts;
-                    $scope.AllAccountComps = response.searchLogCountTopidComparisons;
-                    $scope.AllTopicComps = response.searchLogCountAccountComparisons;
+                    $scope.AllAccountComps = response.searchLogCountAccountComparisons;
+                    $scope.AllTopicComps = response.searchLogCountTopidComparisons;
+
                 }
 
                 else if (response.status === ERROR) {
