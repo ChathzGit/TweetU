@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
 
-require 'C:\xampp\htdocs\TweetU_1.0\vendor\autoload.php';
+//include(app_path().'\includes\autoload.php');
 
 class SendTweetsController extends Controller
 {
