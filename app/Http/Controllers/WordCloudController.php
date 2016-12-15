@@ -41,6 +41,8 @@ class WordCloudController extends Controller
                         //if the term does not exist - insert a new record
                         DB::insert('insert into searches (term, counter, datetime) values (?, ?, ?)', [$term, 1, $now]);
                     }
+
+                    return null;
                 }
 
 
